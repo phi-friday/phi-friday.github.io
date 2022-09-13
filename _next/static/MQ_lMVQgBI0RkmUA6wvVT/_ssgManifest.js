@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F","\u002Fposts\u002F@page\u002F[idx]","\u002Fposts\u002F@tag\u002F[...tag]","\u002Fposts\u002F[...name]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
