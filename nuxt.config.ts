@@ -50,7 +50,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/@page', '/sitemap.xml'],
+      routes: ['/@post', '/sitemap.xml'],
     },
   },
   robots: {
