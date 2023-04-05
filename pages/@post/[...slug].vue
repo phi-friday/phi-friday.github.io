@@ -11,6 +11,9 @@ import type { ArticleInfo, Article } from '~~/utils/article';
 let { path } = useRoute();
 const prefix = '/' + (path.split('/').at(1) ?? '');
 path = '/' + path.split('/').slice(2).join('/');
+if (path.endsWith('/')) {
+  path = path.slice(0, -1)
+}
 
 const default_query = get_default_query();
 const { data: selected_article } = await useAsyncData(`selected_data_${path}`, () => {
