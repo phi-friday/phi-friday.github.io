@@ -8,19 +8,21 @@ import { serverQueryContent } from '#content/server';
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
 const add_prefix = (path: string | undefined) => {
-  if (!path){
-    return undefined
+  if (!path) {
+    return undefined;
   }
-  if (path.startsWith('/')){
-    return POST_PREFIX + '/' + path.slice(1)
+  if (path.startsWith('/')) {
+    return POST_PREFIX + '/' + path.slice(1);
   }
-  return POST_PREFIX + '/' + path
-}
+  return POST_PREFIX + '/' + path;
+};
 
 export default defineEventHandler(async (event) => {
   const sitemap = new SitemapStream({ hostname: BASE_URL });
 
-  const docs = await serverQueryContent(event).find();
+  const docs = await serverQueryContent(event)
+    .where({ publish: { $eq: true } })
+    .find();
   for (const doc of docs) {
     sitemap.write({ url: add_prefix(doc._path), changefreq: 'monthly' });
   }

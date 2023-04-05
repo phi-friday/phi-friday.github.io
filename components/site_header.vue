@@ -36,9 +36,8 @@
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
-const url = config.public.hostname;
 useHead({
-  script: [{ async: true, src: 'https://cse.google.com/cse.js?cx=b368175c2b370414c' }],
+  script: [{ async: true, src: config.public.google.search }],
 });
 </script>
 

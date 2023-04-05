@@ -32,8 +32,8 @@ export default defineNuxtConfig({
       tag_prefix: process.env.TAG_PREFIX,
       page_prefix: process.env.PAGE_PREFIX,
       default_skip: 0,
-      default_limit: 2,
-      pagination_size: 3,
+      default_limit: 5,
+      pagination_size: 5,
       comment: {
         src: 'https://utteranc.es/client.js',
         repo: 'phi-friday/phi-friday.github.io',
@@ -42,11 +42,18 @@ export default defineNuxtConfig({
         crossorigin: 'anonymous',
         async: true,
       },
+      google: {
+        analysis: 'https://www.googletagmanager.com/gtag/js?id=G-XJF2S7MP0D',
+        search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c'
+      },
     },
   },
   nitro: {
     prerender: {
       routes: ['/@page', '/sitemap.xml'],
     },
+  },
+  robots: {
+    configPath: '~/robots.config.js',
   },
 });
