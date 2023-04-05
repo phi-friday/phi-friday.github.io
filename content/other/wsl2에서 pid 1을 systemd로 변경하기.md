@@ -6,6 +6,7 @@ tags:
 page: null
 description: 잘 만들어놓은 배포판을 가져다 쓰자
 date: '2022-08-14T22:13:27.850+09:00'
+publish: true
 ---
 
 # `systemd`로 인한 에러
