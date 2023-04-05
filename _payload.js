@@ -1,0 +1,1 @@
+export default {data:{"last-article-only-path":{_path:"\u002Fother\u002Fvim"}},prerenderedAt:1680711522760}

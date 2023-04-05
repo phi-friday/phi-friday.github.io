@@ -1,9 +1,4 @@
-# *
 User-agent: *
-Allow: /
+Disallow: /
 
-# Host
-Host: https://phi-friday.github.io
-
-# Sitemaps
-Sitemap: https://phi-friday.github.io/sitemap.xml
+Sitemap: undefined/sitemap.xml
