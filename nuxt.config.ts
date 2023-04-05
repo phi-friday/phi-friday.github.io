@@ -44,13 +44,13 @@ export default defineNuxtConfig({
       },
       google: {
         analysis: 'https://www.googletagmanager.com/gtag/js?id=G-XJF2S7MP0D',
-        search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c'
+        search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c',
       },
     },
   },
   nitro: {
     prerender: {
-      routes: ['/@post', '/sitemap.xml'],
+      routes: ['/@post', '/@post/dummy', '/sitemap.xml'],
     },
   },
   robots: {
