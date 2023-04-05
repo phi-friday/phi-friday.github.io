@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fother\u002Fvim"}},prerenderedAt:1680711522760}
+export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Freturns2"}},prerenderedAt:1680712244596}
