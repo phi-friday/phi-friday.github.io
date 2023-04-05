@@ -2,6 +2,12 @@ name: cd
 
 on: [push, pull_request]
 
+env:
+  NUXT_HOSTNAME: "https://phi-friday.github.io"
+  POST_PREFIX: /@post
+  TAG_PREFIX: /@tag
+  PAGE_PREFIX: /@page
+
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
