@@ -1,12 +1,12 @@
 <template>
   <main id="main">
-    <Post :article="article" :prev="surround[0]" :next="surround[1]" :prefix="prefix" />
+    <Post :article="article" :prev="prev" :next="next" :prefix="prefix" />
     <Comment />
   </main>
 </template>
 
 <script setup lang="ts">
-import type { ArticleMeta, Article } from '~~/utils/article';
+import type { ArticleInfo, Article } from '~~/utils/article';
 
 let { path } = useRoute();
 const prefix = '/' + (path.split('/').at(1) ?? '');
@@ -20,10 +20,12 @@ const article = remove_pick_from_ref(selected_article);
 const { data: selected_surround } = await useAsyncData(
   `selected_surround_${path}`,
   () => {
-    return queryContent<ArticleMeta>(default_query)
-      .only(['_path', 'title', 'description'])
+    return queryContent<ArticleInfo>(default_query)
+      .only(['_path', 'title', 'description', 'date'])
       .findSurround(path);
   }
 );
 const surround = remove_pick_from_ref(selected_surround);
+const prev = computed(()=>surround.value[0])
+const next = computed(()=>surround.value[-1])
 </script>

@@ -33,7 +33,7 @@
           </ContentRenderer>
         </article>
       </section>
-      <PrevNext :prev="props.prev" :next="props.next" :prefix="prefix" />
+      <PrevNext :prev="prev" :next="next" :prefix="prefix" />
     </div>
   </div>
 </template>
@@ -43,12 +43,14 @@ import type { Article, ArticleMeta } from '~~/utils/article';
 import { TocLink, MarkdownNode } from '@nuxt/content/dist/runtime/types';
 const props = defineProps<{
   article: Article;
-  prev?: ArticleMeta;
-  next?: ArticleMeta;
+  prev?: ArticleMeta | null;
+  next?: ArticleMeta | null;
   prefix?: string;
 }>();
 
 const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
+const prev = props.prev ?? undefined
+const next = props.next ?? undefined
 
 if (!re_date.test(props.article.date)) {
   throw createError({

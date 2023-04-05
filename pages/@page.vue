@@ -17,7 +17,6 @@
         <ul v-if="list.length > 0" class="article-list">
           <li v-for="article in list" :key="article._path" class="article-item">
             <PageItem
-              v-if="Boolean(article.page)"
               :article="article"
               :post_prefix="config.public.post_prefix"
               :page_prefix="config.public.page_prefix"
