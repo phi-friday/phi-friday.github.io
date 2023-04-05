@@ -1,0 +1,8 @@
+{
+    "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "editor.tabSize": 2,
+    "css.lint.unknownAtRules": "ignore"
+}
