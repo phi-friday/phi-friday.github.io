@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-Sitemap: undefined/sitemap.xml
+Sitemap: https://phi-friday.github.io/sitemap.xml
