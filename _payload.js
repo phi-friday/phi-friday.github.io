@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fother\u002Fvim"}},prerenderedAt:1680790998658}
+export default {data:{"last-article-only-path":{_path:"\u002Fjs\u002Fnextjs-nuxtjs"}},prerenderedAt:1680797251691}
