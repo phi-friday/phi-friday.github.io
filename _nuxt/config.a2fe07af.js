@@ -1,0 +1,1 @@
+import{V as n,W as o,Q as i,X as c}from"./entry.f9c0e8f8.js";const e=n({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),f={},s=o(e,f);function a(){const p=i();return p._appConfig||(p._appConfig=c(s)),p._appConfig}export{a as u};
