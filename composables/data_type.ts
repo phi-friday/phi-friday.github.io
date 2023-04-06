@@ -1,10 +1,3 @@
-import type {
-  FixPageArticle,
-  FixTaggedArticle,
-  PageArticle,
-  TaggedArticle,
-} from '~~/utils/article';
-
 import { ParsedContent } from '@nuxt/content/dist/runtime/types';
 
 function remove_pick_from_ref<T = ParsedContent>(
@@ -23,4 +16,10 @@ function remove_pick_from_ref<T = ParsedContent>(
   return value;
 }
 
-export { remove_pick_from_ref };
+function remove_pick<T = ParsedContent>(value: Pick<T, any>[]): T[];
+function remove_pick<T = ParsedContent>(value: Pick<T, any>): T;
+function remove_pick<T = ParsedContent>(value: Pick<T, any>[] | Pick<T, any>) {
+  return value;
+}
+
+export { remove_pick_from_ref, remove_pick };

@@ -2,13 +2,13 @@
   <div class="article-main">
     <div>
       <header class="article-header">
-        <h1 class="mb-1 heading">{{ props.article.title }}</h1>
+        <h1 class="mb-1 heading">{{ article.title }}</h1>
         <p v-if="Boolean(article.description)" class="mb-1 supporting">
-          {{ props.article.description }}
+          {{ article.description }}
         </p>
-        <ul v-if="props.article.tags?.length" class="flex-wrap pb-0 article-tags">
+        <ul v-if="article.tags?.length" class="flex-wrap pb-0 article-tags">
           <p class="pt-1 font-mono text-sm font-thin text-slate-400">tags:</p>
-          <div v-for="(tag, n) in props.article.tags" :key="n">
+          <div v-for="(tag, n) in article.tags" :key="n">
             <Tag :tag="tag" :do_select="true" />
           </div>
         </ul>
@@ -26,7 +26,7 @@
           <Toc class="toc" :links="toc_links" :active_toc_id="active_toc_id" />
         </aside>
         <article class="article page">
-          <ContentRenderer class="nuxt-content" :value="props.article" ref="content">
+          <ContentRenderer class="nuxt-content" :value="article" ref="content">
             <template #empty>
               <p>No content found.</p>
             </template>
@@ -42,15 +42,25 @@
 import type { Article, ArticleMeta } from '~~/utils/article';
 import { TocLink, MarkdownNode } from '@nuxt/content/dist/runtime/types';
 const props = defineProps<{
-  article: Article;
+  article?: Article | null;
   prev?: ArticleMeta | null;
   next?: ArticleMeta | null;
   prefix?: string;
 }>();
 
 const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
-const prev = props.prev ?? undefined
-const next = props.next ?? undefined
+const prev = props.prev ?? undefined;
+const next = props.next ?? undefined;
+
+let article: Article;
+if (!props.article) {
+  throw createError({
+    statusCode: 500,
+    statusMessage: `invaild article type: ${typeof props.article}`,
+  });
+} else {
+  article = props.article;
+}
 
 if (!re_date.test(props.article.date)) {
   throw createError({
