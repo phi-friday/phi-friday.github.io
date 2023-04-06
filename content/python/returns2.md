@@ -7,7 +7,6 @@ tags:
 page: dry-python/returns
 description: 파이썬 타입을 명확하게 만들면 vscode가 착해진다
 date: '2022-09-13T22:22:07.993+09:00'
-publish: true
 ---
 
 # `ROP`
