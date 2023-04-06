@@ -36,7 +36,6 @@ watch(
   }
 );
 
-
 const flatten = (links: TocLink[]) => {
   return links
     .map((link) => {
@@ -77,18 +76,14 @@ const force_active_id = (link: TocLink) => {
   @apply text-slate-500 text-sm;
 }
 
-.toc-link._2 {
+.toc-link._3 {
   @apply pl-3;
 }
-.toc-link._3 {
+.toc-link._4 {
   @apply pl-6;
 }
-
-.toc-link._4 {
-  @apply pl-9;
-}
 .toc-link._5 {
-  @apply pl-12;
+  @apply pl-9;
 }
 
 .toc-link._undefined {
