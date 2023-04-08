@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
   const sitemap = new SitemapStream({ hostname: BASE_URL });
 
   const docs = await serverQueryContent(event)
-    .where({ publish: { $eq: true } })
+    .where({ publish: { $eq: true }, title: { $ne: 'dummy' } })
     .find();
   let date: string | undefined;
   for (const doc of docs) {
