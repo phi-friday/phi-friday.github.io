@@ -49,6 +49,7 @@ export default defineNuxtConfig({
       google: {
         analysis: 'https://www.googletagmanager.com/gtag/js?id=G-XJF2S7MP0D',
         search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c',
+        seo: 'lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw',
       },
     },
   },

@@ -19,6 +19,7 @@ useHead({
     { name: 'robots', content: 'index,follow,noarchive' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { hid: 'description', name: 'description', content: config.public.description },
+    { name: 'google-site-verification', content: config.public.google.seo },
   ],
   link: [
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
