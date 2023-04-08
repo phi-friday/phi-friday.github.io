@@ -14,13 +14,9 @@
     </div>
   </div>
   <div class="tag-list" ref="page_parent_ref" :class="{ active: expanded }">
-    <ul
-      class="flex flex-wrap article-tags"
-      ref="page_ref"
-      :class="{ expanded: expanded }"
-    >
+    <ul class="flex flex-wrap article-tags" ref="page_ref">
       <div v-for="(page, n) in article_pages" :key="n">
-        <Page class="font-semibold" :page="page" :add_page="true" />
+        <PageOne class="font-semibold" :page="page" :add_page="true" />
       </div>
     </ul>
   </div>
@@ -65,19 +61,3 @@ watch(
   () => toggle_page()
 );
 </script>
-
-<style scoped lang="css">
-.tag-list {
-  @apply items-center gap-2 p-2 border;
-  @apply border-transparent rounded-lg;
-}
-.tag-list.active {
-  @apply border-slate-200;
-}
-.article-tags {
-  @apply transition-all max-w-0 overflow-hidden;
-}
-.article-tags.expanded {
-  @apply max-w-full;
-}
-</style>

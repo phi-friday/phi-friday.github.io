@@ -6,7 +6,7 @@
           <h1 class="text-2xl font-semibold">{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <ul class="flex-wrap article-tags">
-            <Page :page="article.page" :add_page="true" />
+            <PageOne :page="article.page" :add_page="true" />
           </ul>
           <p class="font-mono text-sm font-thin text-slate-400">
             created at: {{ date }}

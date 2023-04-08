@@ -60,12 +60,13 @@ const force_active_id = (link: TocLink) => {
 
 <style scoped lang="css">
 .toc {
-  @apply py-4 bg-slate-50 border border-slate-200 rounded-lg;
-  @apply max-h-[calc(100vh-6rem)] overflow-auto;
+  @apply py-4 max-h-[calc(100vh-6rem)] overflow-auto rounded-lg border;
+  @apply bg-slate-50 border-slate-200;
+  @apply dark:bg-neutral-900  dark:border-neutral-600;
 }
 
 .toc-header {
-  @apply px-4 pb-2 mb-2 border-b border-slate-200;
+  @apply px-4 pb-2 mb-2 border-b border-slate-200 dark:border-neutral-600;
 }
 
 .toc-links {
@@ -73,7 +74,7 @@ const force_active_id = (link: TocLink) => {
 }
 
 .toc-link {
-  @apply text-slate-500 text-sm;
+  @apply text-slate-500 dark:text-neutral-300 text-sm;
 }
 
 .toc-link._3 {

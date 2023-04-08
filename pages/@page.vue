@@ -13,7 +13,7 @@
     </header>
     <div>
       <section class="page-section">
-        <Pages :page_data="page_data" />
+        <PageSelect :page_data="page_data" />
         <ul v-if="list.length > 0" class="article-list">
           <li v-for="article in list" :key="article._path" class="article-item">
             <PageItem

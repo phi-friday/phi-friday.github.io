@@ -14,13 +14,9 @@
     </div>
   </div>
   <div class="tag-list" ref="tag_parent_ref" :class="{ active: expanded }">
-    <ul
-      class="flex flex-wrap article-tags"
-      ref="tag_ref"
-      :class="{ expanded: expanded }"
-    >
+    <ul class="flex flex-wrap article-tags" ref="tag_ref">
       <div v-for="(tag, n) in article_tags" :key="n">
-        <Tag class="font-semibold" :tag="tag" :add_tag="true" />
+        <TagOne class="font-semibold" :tag="tag" :add_tag="true" />
       </div>
     </ul>
   </div>
@@ -78,19 +74,3 @@ watch(
   () => toggle_tag()
 );
 </script>
-
-<style scoped lang="css">
-.tag-list {
-  @apply items-center gap-2 p-2 border;
-  @apply border-transparent rounded-lg;
-}
-.tag-list.active {
-  @apply border-slate-200;
-}
-.article-tags {
-  @apply transition-all max-w-0 overflow-hidden;
-}
-.article-tags.expanded {
-  @apply max-w-full;
-}
-</style>

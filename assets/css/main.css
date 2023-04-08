@@ -6,7 +6,6 @@
 
 * {
   @apply scroll-m-20;
-
 }
 
 html {
@@ -14,14 +13,13 @@ html {
 }
 
 body {
-  @apply text-slate-700;
+  @apply text-black dark:text-white;
+  @apply bg-white dark:bg-black;
 }
-
 
 a {
   text-decoration: underline;
 }
-
 
 h1,
 h2,
@@ -32,29 +30,31 @@ h6 {
   @apply font-header;
 }
 
+hr {
+  @apply dark:border-neutral-600;
+}
+
 .icon {
   @apply inline-flex w-6 h-6;
 }
 
 .icon.solid {
-  @apply fill-slate-500;
+  @apply fill-slate-500 dark:fill-neutral-200;
 }
 
 .icon.stroke {
-  @apply stroke-slate-500;
+  @apply stroke-slate-500 dark:stroke-neutral-200;
 }
 
 .cta {
-  @apply p-1.5 px-2 bg-slate-50 border border-slate-200 font-semibold rounded-lg;
-  @apply transition-all hover:-translate-y-0.5 focus:bg-slate-100 active:translate-y-0.5 active:shadow-inner;
+  @apply p-1.5 px-2 font-semibold rounded-lg border;
+  @apply transition-all hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-inner;
+  @apply bg-slate-50 border-slate-200;
+  @apply dark:bg-neutral-900 dark:border-neutral-600;
 }
 
 .cta.w-icon {
   @apply flex items-center gap-2 pr-3;
-}
-
-.img-cont img {
-  @apply h-full w-full object-cover;
 }
 
 .article-tags {
@@ -66,13 +66,29 @@ h6 {
   @apply transition-all !py-0.5 hover:-translate-y-0.5;
 }
 
+.tag {
+  @apply text-slate-700 dark:text-neutral-50;
+  @apply bg-slate-100 dark:bg-neutral-900;
+}
+.tag.select {
+  @apply bg-sky-200 dark:bg-slate-700;
+}
+
+.tag-list {
+  @apply items-center gap-2 p-2 border;
+  @apply border-transparent rounded-lg;
+}
+.tag-list.active {
+  @apply border-slate-200 dark:border-neutral-200;
+}
+
 /* BLOG PAGES */
 
 .page-heading {
-  @apply p-12 bg-slate-50;
+  @apply p-12 bg-slate-50 dark:bg-neutral-900;
 }
 
-.page-heading>.wrapper {
+.page-heading > .wrapper {
   @apply max-w-3xl m-auto;
 }
 
@@ -85,13 +101,14 @@ h6 {
 }
 
 .article-item {
-  @apply pt-6 first-of-type:border-none border-t border-slate-200;
+  @apply pt-6 first-of-type:border-none border-t;
+  @apply border-slate-200 dark:border-neutral-700;
 }
 
 .article-item a {
   @apply no-underline;
 }
 
-.article-item>*>.wrapper {
+.article-item > * > .wrapper {
   @apply flex items-start gap-4;
 }

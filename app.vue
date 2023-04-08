@@ -3,13 +3,14 @@
     <SiteHeader />
     <NuxtPage />
     <SiteFooter />
-    <TopDown />
+    <Scroll />
     <GoogleAnalysis />
   </div>
 </template>
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
+
 useHead({
   title: config.public.name,
   meta: [

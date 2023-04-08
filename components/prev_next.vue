@@ -39,7 +39,7 @@ const add_prefix = (
   if (!path.startsWith('/')) {
     return prefix + '/' + path;
   }
-  return prefix + path
+  return prefix + path;
 };
 
 const prev_path: string = add_prefix(props.prefix, props.prev?._path);
@@ -48,7 +48,8 @@ const next_path: string = add_prefix(props.prefix, props.next?._path);
 
 <style scoped>
 .prev-next-cont {
-  @apply flex gap-4 justify-between p-4 border border-slate-200 rounded-lg;
+  @apply flex gap-4 justify-between p-4 border rounded-lg;
+  @apply border-slate-200 dark:border-neutral-600;
 }
 
 .link-item a {

@@ -18,7 +18,12 @@ defineProps(['type']);
 
 <style scoped lang="css">
 .info-box {
-  @apply flex items-start my-6 gap-2 p-4 bg-slate-100 border border-slate-200 text-slate-500 rounded-lg;
+  @apply flex items-start my-6 gap-2 p-4 border rounded-lg;
+  @apply bg-slate-100 border-slate-200 text-slate-500;
+  @apply dark:opacity-80;
+}
+.info-box .icon.solid {
+  @apply fill-slate-500;
 }
 .info-box.warning {
   @apply bg-yellow-200 border-yellow-400 text-yellow-600;

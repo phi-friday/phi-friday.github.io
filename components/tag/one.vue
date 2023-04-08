@@ -1,12 +1,5 @@
 <template>
-  <li
-    class="tag text-slate-700"
-    :class="{
-      'bg-slate-100': !is_select,
-      'bg-sky-200': is_select,
-    }"
-    @click="toggle_tag"
-  >
+  <li class="tag" :class="{ select: is_select }" @click="toggle_tag">
     <NuxtLink :to="path">
       {{ props.tag }}
     </NuxtLink>
@@ -38,10 +31,10 @@ const toggle_tag = () => {
     tags.value.add(props.tag);
   }
 };
-let path : {path: string, query?: {select?: string}}
+let path: { path: string; query?: { select?: string } };
 if (props.do_select ?? false) {
-  path = {path: config.public.tag_prefix, query: {select: props.tag}}
+  path = { path: config.public.tag_prefix, query: { select: props.tag } };
 } else {
-  path = {path: config.public.tag_prefix}
+  path = { path: config.public.tag_prefix };
 }
 </script>

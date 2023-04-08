@@ -7,7 +7,7 @@
           <p>{{ article.description }}</p>
           <ul class="flex-wrap article-tags">
             <div v-for="(tag, n) in article_tags" :key="n">
-              <Tag :tag="tag" :add_tag="true" />
+              <TagOne :tag="tag" :add_tag="true" />
             </div>
           </ul>
           <p class="font-mono text-sm font-thin text-slate-400">

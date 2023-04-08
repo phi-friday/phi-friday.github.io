@@ -1,7 +1,12 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   extends: '@nuxt-themes/typography',
-  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxtjs/robots'],
+  modules: [
+    '@nuxt/content',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/robots',
+    '@nuxtjs/color-mode',
+  ],
   content: {
     // https://content.nuxtjs.org/api/configuration
     highlight: {
@@ -38,7 +43,6 @@ export default defineNuxtConfig({
         src: 'https://utteranc.es/client.js',
         repo: 'phi-friday/phi-friday.github.io',
         issue_term: 'pathname',
-        theme: 'github-light',
         crossorigin: 'anonymous',
         async: true,
       },
@@ -55,5 +59,11 @@ export default defineNuxtConfig({
   },
   robots: {
     configPath: '~/robots.config.js',
+  },
+  colorMode: {
+    preference: 'system',
+    fallback: 'light',
+    storageKey: 'nuxt-color-schema',
+    classSuffix: '',
   },
 });

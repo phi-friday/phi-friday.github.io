@@ -13,7 +13,7 @@
     </header>
     <div>
       <section class="page-section">
-        <Tags :tag_data="tagged_data" />
+        <TagSelect :tag_data="tagged_data" />
         <ul v-if="list.length > 0" class="article-list">
           <li v-for="article in list" :key="article._path" class="article-item">
             <TagItem

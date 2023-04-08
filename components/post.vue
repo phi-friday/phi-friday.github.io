@@ -9,12 +9,12 @@
         <ul v-if="article.tags?.length" class="flex-wrap pb-0 article-tags">
           <p class="pt-1 font-mono text-sm font-thin text-slate-400">tags:</p>
           <div v-for="(tag, n) in article.tags" :key="n">
-            <Tag :tag="tag" :do_select="true" />
+            <TagOne :tag="tag" :do_select="true" />
           </div>
         </ul>
         <ul v-if="article.page" class="flex-wrap mt-0 mb-1 article-tags">
           <p class="pt-1 font-mono text-sm font-thin text-slate-400">page:</p>
-          <Page :page="article.page" :do_select="true" />
+          <PageOne :page="article.page" :do_select="true" />
         </ul>
         <p class="font-mono text-sm font-thin text-slate-400">created at: {{ date }}</p>
       </header>

@@ -1,12 +1,5 @@
 <template>
-  <li
-    class="tag text-slate-700"
-    :class="{
-      'bg-slate-100': !is_select,
-      'bg-sky-200': is_select,
-    }"
-    @click="toggle_page"
-  >
+  <li class="tag" :class="{ select: is_select }" @click="toggle_page">
     <NuxtLink :to="path">
       {{ props.page }}
     </NuxtLink>
@@ -38,10 +31,10 @@ const toggle_page = () => {
     pages.value.add(props.page);
   }
 };
-let path : {path: string, query?: {select?: string}}
+let path: { path: string; query?: { select?: string } };
 if (props.do_select ?? false) {
-  path = {path: config.public.page_prefix, query: {select: props.page}}
+  path = { path: config.public.page_prefix, query: { select: props.page } };
 } else {
-  path = {path: config.public.page_prefix}
+  path = { path: config.public.page_prefix };
 }
 </script>

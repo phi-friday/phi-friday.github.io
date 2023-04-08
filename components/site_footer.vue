@@ -10,7 +10,7 @@
 </template>
 <style scoped lang="css">
 .site-footer {
-  @apply bg-white px-4 py-12 border-t border-slate-100;
+  @apply px-4 py-12 border-t border-slate-100 dark:border-neutral-800;
 }
 
 .site-footer > .wrapper {

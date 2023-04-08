@@ -10,20 +10,27 @@
 
         <nav class="site-nav">
           <div class="grid justify-between grid-cols-2">
-            <ul class="col-span-1 col-start-1 row-auto mr-2">
-              <NuxtLink :to="config.public.tag_prefix" class="no-underline">
-                <figure class="pt-1 text-lg site-logo">
-                  <h1>Tags</h1>
-                </figure>
-              </NuxtLink>
-            </ul>
-            <ul class="col-span-1 col-start-2 row-auto links">
-              <NuxtLink :to="config.public.page_prefix" class="no-underline">
-                <figure class="pt-1 text-lg site-logo">
-                  <h1>Pages</h1>
-                </figure>
-              </NuxtLink>
-            </ul>
+            <div class="col-span-1 col-start-1">
+              <div class="grid justify-between grid-cols-2">
+                <ul class="col-span-1 col-start-1 row-auto mr-2">
+                  <NuxtLink :to="config.public.tag_prefix" class="no-underline">
+                    <figure class="pt-1 text-lg site-logo">
+                      <h1>Tags</h1>
+                    </figure>
+                  </NuxtLink>
+                </ul>
+                <ul class="col-span-1 col-start-2 row-auto links">
+                  <NuxtLink :to="config.public.page_prefix" class="no-underline">
+                    <figure class="pt-1 text-lg site-logo">
+                      <h1>Pages</h1>
+                    </figure>
+                  </NuxtLink>
+                </ul>
+              </div>
+            </div>
+            <div class="col-span-1 col-start-2">
+              <ColorToggle class="w-8 h-8 mx-2 my-0"></ColorToggle>
+            </div>
           </div>
         </nav>
       </div>
@@ -45,6 +52,7 @@ useHead({
 .site-header {
   @apply sticky top-0 w-full p-4 bg-slate-100 bg-opacity-40;
   @apply border-b-2 border-white border-opacity-30 backdrop-blur-lg z-20;
+  @apply dark:bg-neutral-900 dark:border-neutral-800;
 }
 
 .site-header > .wrapper {

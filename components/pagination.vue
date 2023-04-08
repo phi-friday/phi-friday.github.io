@@ -168,7 +168,7 @@ const next_page = computed(() => {
 });
 const refresh = () => {
   if (!props.count_data.length) {
-    return
+    return;
   }
 
   let _page: number;
@@ -202,12 +202,15 @@ watch(
   @apply bg-transparent rounded-full;
 }
 .botton-text.active {
-  @apply text-neutral-700 hover:bg-neutral-100;
+  @apply text-neutral-700 dark:text-neutral-400;
+  @apply hover:bg-neutral-100 dark:hover:bg-neutral-700;
 }
 .botton-text.inactive {
-  @apply text-neutral-400 pointer-events-none;
+  @apply text-neutral-400 dark:text-neutral-700 pointer-events-none;
 }
 .botton-text.select {
-  @apply bg-slate-100 font-semibold;
+  @apply text-neutral-700 dark:text-neutral-200;
+  @apply bg-slate-100 dark:bg-neutral-700;
+  @apply font-semibold;
 }
 </style>
