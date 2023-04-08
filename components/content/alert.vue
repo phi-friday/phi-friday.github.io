@@ -1,9 +1,11 @@
 <template>
   <div class="info-box" :class="[type]">
-    <ExclamationTriangleIcon v-if="type == 'warning'" class="icon solid" />
-    <ExclamationCircleIcon v-else-if="type == 'error'" class="icon solid" />
-    <InformationCircleIcon v-else class="icon solid" />
-    <ContentSlot :use="$slots.default" unwrap="p" />
+    <div class="opacity-100">
+      <ExclamationTriangleIcon v-if="type == 'warning'" class="icon solid" />
+      <ExclamationCircleIcon v-else-if="type == 'error'" class="icon solid" />
+      <InformationCircleIcon v-else class="icon solid" />
+      <ContentSlot :use="$slots.default" unwrap="p" />
+    </div>
   </div>
 </template>
 
