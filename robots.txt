@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /
 
 Sitemap: https://phi-friday.github.io/sitemap.xml
