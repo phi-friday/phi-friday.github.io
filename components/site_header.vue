@@ -34,7 +34,7 @@
           </div>
         </nav>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center text-black">
         <div class="gcse-searchbox-only"></div>
       </div>
     </div>
