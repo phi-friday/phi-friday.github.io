@@ -69,5 +69,6 @@ export {
   set_page_post_count,
   get_color_schema_safe,
   set_color_schema_safe,
+  get_color_schemas,
 };
 export type { color_schema };

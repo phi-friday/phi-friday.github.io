@@ -64,4 +64,36 @@ const create_go_to_bottom_button = (id: string, display_bound: number) => {
   button_from_id.addEventListener('click', to_bottom);
 };
 
-export { get_bottom, is_bottom, create_go_to_top_button, create_go_to_bottom_button };
+const _throttle = (func: Function, period: number) => {
+  let run: boolean = true;
+  return function inner(this: any) {
+    if (run) {
+      func.apply(this, arguments);
+      run = false;
+      setTimeout(() => {
+        run = true;
+      }, period);
+    }
+  };
+};
+
+const create_scroll_event = (
+  event_func: (this: Window, ev: Event) => any,
+  throttle?: number
+) => {
+  let use_func: (this: Window, ev: Event) => any;
+  if (throttle) {
+    use_func = _throttle(event_func, throttle);
+  } else {
+    use_func = event_func;
+  }
+  window.addEventListener('scroll', use_func);
+};
+
+export {
+  get_bottom,
+  is_bottom,
+  create_go_to_top_button,
+  create_go_to_bottom_button,
+  create_scroll_event,
+};
