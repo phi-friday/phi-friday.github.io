@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fjs\u002Fnextjs-nuxtjs"}},prerenderedAt:1680991280498}
+export default {data:{"last-article-only-path":{_path:"\u002Fjs\u002Fnextjs-nuxtjs"}},prerenderedAt:1681727669764}
