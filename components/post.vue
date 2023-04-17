@@ -148,7 +148,7 @@ onUnmounted(() => {
 }
 
 .article-header .heading {
-  @apply font-extrabold text-5xl;
+  @apply font-extrabold text-5xl leading-tight break-keep;
 }
 
 .article-header .supporting {

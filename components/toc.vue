@@ -74,7 +74,7 @@ const force_active_id = (link: TocLink) => {
 }
 
 .toc-link {
-  @apply text-slate-500 dark:text-neutral-300 text-sm;
+  @apply text-slate-500 dark:text-neutral-300 text-sm break-keep;
 }
 
 .toc-link._3 {
