@@ -68,7 +68,7 @@ hr {
 
 .tag {
   @apply text-slate-700 dark:text-neutral-50;
-  @apply bg-slate-100 dark:bg-neutral-900;
+  @apply bg-slate-100 dark:bg-neutral-700;
 }
 .tag.select {
   @apply bg-sky-200 dark:bg-slate-700;
