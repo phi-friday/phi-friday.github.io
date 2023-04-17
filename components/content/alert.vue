@@ -1,6 +1,6 @@
 <template>
   <div class="info-box" :class="[type]">
-    <div class="opacity-100">
+    <div class="leading-normal opacity-100 break-keep">
       <ExclamationTriangleIcon v-if="type == 'warning'" class="icon solid" />
       <ExclamationCircleIcon v-else-if="type == 'error'" class="icon solid" />
       <InformationCircleIcon v-else class="icon solid" />
