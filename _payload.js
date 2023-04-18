@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fpolars"}},prerenderedAt:1681739445150}
+export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fpolars"}},prerenderedAt:1681829130951}
