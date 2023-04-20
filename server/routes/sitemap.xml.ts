@@ -26,6 +26,20 @@ const get_date = (doc: ParsedContent) => {
   return (doc.date as string).match(re_date)?.at(0) as string;
 };
 
+const add_suffix = (path: string | undefined) => {
+  if (!path) {
+    return undefined;
+  }
+  if (path.endsWith('/')) {
+    return path;
+  }
+  return path + '/';
+};
+
+const add_prefix_and_suffix = (path: string | undefined) => {
+  return add_suffix(add_prefix(path));
+};
+
 const get_static_endpoints = (): string[] => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const files = get_files(`${__dirname}/../../pages`);
@@ -75,18 +89,24 @@ export default defineEventHandler(async (event) => {
     date = get_date(doc);
     if (date) {
       sitemap_index_stream.write({
-        url: add_prefix(doc._path),
+        url: add_prefix_and_suffix(doc._path),
         changefreq: 'daily',
         lastmod: doc.date,
       });
     } else {
-      sitemap_index_stream.write({ url: add_prefix(doc._path), changefreq: 'daily' });
+      sitemap_index_stream.write({
+        url: add_prefix_and_suffix(doc._path),
+        changefreq: 'daily',
+      });
     }
   }
 
   const static_endpoints = get_static_endpoints();
   for (const static_endpoint of static_endpoints) {
-    sitemap_index_stream.write({ url: static_endpoint, changefreq: 'daily' });
+    sitemap_index_stream.write({
+      url: add_suffix(static_endpoint),
+      changefreq: 'daily',
+    });
   }
 
   sitemap_index_stream.end();
