@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      name: 'phi.log',
+      name: process.env.NUXT_HOST_TITLE,
       description: 'phi.log',
       hostname: process.env.NUXT_HOSTNAME,
       post_prefix: process.env.POST_PREFIX,
@@ -55,7 +55,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/@post', '/sitemap.xml'],
+      routes: ['/@post', '/sitemap.xml', '/rss.xml'],
     },
   },
   robots: {

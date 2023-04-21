@@ -91,6 +91,7 @@ export default defineEventHandler(async (event) => {
 
   const docs = await serverQueryContent(event)
     .where({ publish: { $eq: true }, title: { $ne: 'dummy' } })
+    .sort({ title: 1, date: -1 })
     .find();
   let date: string | undefined;
   for (const doc of docs) {

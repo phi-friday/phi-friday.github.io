@@ -3,6 +3,7 @@ name: cd
 on: [push, pull_request]
 
 env:
+  NUXT_HOST_TITLE: "phi.log"
   NUXT_HOSTNAME: "https://phi-friday.github.io"
   POST_PREFIX: /@post
   TAG_PREFIX: /@tag
