@@ -13,6 +13,9 @@ const config = useRuntimeConfig();
 
 useHead({
   title: config.public.name,
+  htmlAttrs: {
+    lang: 'ko',
+  },
   meta: [
     { charset: 'utf-8' },
     { name: 'author', content: 'phi.friday@gmail.com, phi' },
