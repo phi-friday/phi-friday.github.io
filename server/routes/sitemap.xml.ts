@@ -11,8 +11,12 @@ const POST_PREFIX = process.env.POST_PREFIX as string;
 const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
 
 const add_prefix = (path: string | undefined) => {
-  if (!path) {
+  // empty string -> pass
+  if (path === undefined) {
     return undefined;
+  }
+  if (!path) {
+    return path;
   }
   if (path.startsWith('/')) {
     return POST_PREFIX + '/' + path.slice(1);
@@ -27,8 +31,12 @@ const get_date = (doc: ParsedContent) => {
 };
 
 const add_suffix = (path: string | undefined) => {
-  if (!path) {
+  // empty string -> pass
+  if (path === undefined) {
     return undefined;
+  }
+  if (!path) {
+    return path;
   }
   if (path.endsWith('/')) {
     return path;
