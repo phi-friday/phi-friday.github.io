@@ -51,10 +51,16 @@ const article_tags = computed((): [string, number][] => {
     .filter((value: any) => {
       return typeof value == 'string';
     })
+    .map((tag): [string, number] => [
+      tag as string,
+      count.value.get(tag as string) ?? 0,
+    ])
     .sort((left, right) => {
-      return (left as string).localeCompare(right as string);
-    })
-    .map((tag) => [tag as string, count.value.get(tag as string) ?? 0]);
+      if (left[1] === right[1]) {
+        return left[0].localeCompare(right[0]);
+      }
+      return right[1] > left[1] ? 1 : -1;
+    });
 });
 
 const expanded = get_expanded();

@@ -40,10 +40,13 @@ const article_pages = computed((): [string, number][] => {
       })
     ),
   ]
+    .map((page): [string, number] => [page, count.value.get(page) ?? 0])
     .sort((left, right) => {
-      return left.localeCompare(right);
-    })
-    .map((page) => [page, count.value.get(page) ?? 0]);
+      if (left[1] === right[1]) {
+        return left[0].localeCompare(right[0]);
+      }
+      return right[1] > left[1] ? 1 : -1;
+    });
 });
 
 const expanded = get_expanded();
