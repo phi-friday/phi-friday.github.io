@@ -42,9 +42,8 @@ const flatten = (tags: any, key: any = undefined) => {
   return _tags;
 };
 
-const tags = get_tags();
 const reset_tag = () => {
-  tags.value.clear();
+  set_tags(new Set());
 };
 const _article_tags = [...new Set(flatten(props.tag_data, 'tags'))]
   .filter((value: any) => {

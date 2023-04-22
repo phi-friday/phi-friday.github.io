@@ -28,9 +28,8 @@ import type { FixPageArticle } from '~~/utils/article';
 const props = defineProps<{ page_data: FixPageArticle[] }>();
 const config = useRuntimeConfig();
 
-const pages = get_pages();
 const reset_page = () => {
-  pages.value.clear();
+  set_pages(new Set());
 };
 const article_pages = [
   ...new Set(

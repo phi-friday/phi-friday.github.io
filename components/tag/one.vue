@@ -26,9 +26,9 @@ const toggle_tag = () => {
     return;
   }
   if (is_select.value) {
-    tags.value.delete(props.tag);
+    set_tags(new Set([...tags.value].filter((element) => element !== props.tag)));
   } else {
-    tags.value.add(props.tag);
+    set_tags(new Set([...tags.value, props.tag]));
   }
 };
 let path: { path: string; query?: { select?: string } };

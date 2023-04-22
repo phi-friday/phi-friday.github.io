@@ -72,9 +72,11 @@ const { data: _maybe_page_data } = await useAsyncData('maybe_page_data', () => {
     .find();
 });
 const maybe_page_data = remove_pick_from_ref(_maybe_page_data);
-const page_data = computed(()=>{
-  return maybe_page_data.value.filter((value) => value.page?.length) as FixPageArticle[]
-})
+const page_data = computed(() => {
+  return maybe_page_data.value.filter(
+    (value) => value.page?.length
+  ) as FixPageArticle[];
+});
 const list = computed(() => {
   const _pages = pages.value;
   if (_pages.size === 0) {
@@ -91,8 +93,7 @@ onMounted(() => {
     !Array.isArray(route.query.select) &&
     page_data.value.map((value) => value.page).includes(route.query.select)
   ) {
-    pages.value.clear();
-    pages.value.add(route.query.select);
+    set_pages(new Set([route.query.select]));
   }
 });
 

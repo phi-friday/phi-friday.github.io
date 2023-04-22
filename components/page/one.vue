@@ -26,9 +26,9 @@ const toggle_page = () => {
     return;
   }
   if (is_select.value) {
-    pages.value.delete(props.page);
+    set_pages(new Set([...pages.value].filter((element) => element !== props.page)));
   } else {
-    pages.value.add(props.page);
+    set_pages(new Set([...pages.value, props.page]));
   }
 };
 let path: { path: string; query?: { select?: string } };

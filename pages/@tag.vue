@@ -101,8 +101,7 @@ onMounted(() => {
         continue;
       }
       if (tag_data.tags.includes(route.query.select)) {
-        tags.value.clear();
-        tags.value.add(route.query.select);
+        set_tags(new Set([route.query.select]));
         break;
       }
     }
