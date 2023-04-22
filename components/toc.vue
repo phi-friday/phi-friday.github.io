@@ -10,7 +10,10 @@
         :id="create_toc_id(link.id)"
         @click="force_active_id(link)"
         class="toc-link"
-        :class="{ ...create_class_name(link), 'font-bold': link.id === current_toc_id }"
+        :class="{
+          ...create_class_name(link),
+          'font-bold': current_toc_id.has(link.id),
+        }"
       >
         <a :href="`#${link.id}`">
           {{ link.text }}
@@ -22,9 +25,9 @@
 
 <script setup lang="ts">
 import { TocLink } from '@nuxt/content/dist/runtime/types';
-const props = defineProps<{ links: TocLink[]; active_toc_id?: string }>();
+const props = defineProps<{ links: TocLink[]; active_toc_id?: string[] }>();
 
-const current_toc_id = ref();
+const current_toc_id = ref<Set<string>>(new Set());
 
 const create_toc_id = (id: string) => {
   return `toc-${id}`;
@@ -32,7 +35,8 @@ const create_toc_id = (id: string) => {
 watch(
   () => props.active_toc_id,
   () => {
-    current_toc_id.value = props.active_toc_id;
+    current_toc_id.value.clear();
+    props.active_toc_id?.forEach((toc_id) => current_toc_id.value.add(toc_id));
   }
 );
 
@@ -54,7 +58,8 @@ const create_class_name = (link: TocLink) => {
   return obj;
 };
 const force_active_id = (link: TocLink) => {
-  current_toc_id.value = link.id;
+  current_toc_id.value.clear();
+  current_toc_id.value.add(link.id);
 };
 </script>
 

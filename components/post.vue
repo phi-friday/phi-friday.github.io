@@ -23,7 +23,7 @@
     <div>
       <section class="article-section">
         <aside class="aside">
-          <Toc class="toc" :links="toc_links" :active_toc_id="active_toc_id" />
+          <Toc class="toc" :links="toc_links" :active_toc_id="active_toc_id_array" />
         </aside>
         <article class="article page">
           <ContentRenderer class="nuxt-content" :value="article" ref="content">
@@ -105,7 +105,8 @@ const toc_links: TocLink[] = props.article.body.children
     };
   });
 
-const active_toc_id = ref();
+const active_toc_id = ref<Set<string>>(new Set());
+const active_toc_id_array = computed(() => [...active_toc_id.value]);
 const content = ref();
 const observer: Ref<IntersectionObserver | null | undefined> = ref(null);
 const observerOptions = reactive({
@@ -116,8 +117,12 @@ onMounted(() => {
   observer.value = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const id = entry.target.getAttribute('id');
-      if (entry.isIntersecting) {
-        active_toc_id.value = id;
+      if (id) {
+        if (entry.isIntersecting) {
+          active_toc_id.value.add(id);
+        } else {
+          active_toc_id.value.delete(id);
+        }
       }
     });
   }, observerOptions);
