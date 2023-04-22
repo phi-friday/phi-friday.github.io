@@ -55,6 +55,14 @@ const set_color_schema_safe = (color: color_schema) => {
     color_mode.preference = color;
   }
 };
+const [get_tag_count, set_tag_count] = create_state(
+  'tag_count',
+  () => new Map<string, number>()
+);
+const [get_page_count, set_page_count] = create_state(
+  'page_count',
+  () => new Map<string, number>()
+);
 
 export {
   get_expanded,
@@ -70,5 +78,9 @@ export {
   get_color_schema_safe,
   set_color_schema_safe,
   get_color_schemas,
+  get_tag_count,
+  set_tag_count,
+  get_page_count,
+  set_page_count,
 };
 export type { color_schema };

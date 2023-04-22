@@ -77,7 +77,24 @@ const page_data = computed(() => {
     (value) => value.page?.length
   ) as FixPageArticle[];
 });
+
+const _dummy_active = computed(() => {
+  const result = get_page_count();
+  return result.value.size > 0;
+});
+const _dummy = () => {
+  if (_dummy_active.value) {
+    return;
+  }
+  const result = new Map<string, number>();
+  page_data.value.forEach((article) => {
+    result.set(article.page, (result.get(article.page) ?? 0) + 1);
+  });
+  set_page_count(result);
+};
+
 const list = computed(() => {
+  _dummy()
   const _pages = pages.value;
   if (_pages.size === 0) {
     return page_data.value.slice(skip.value, skip.value + limit);

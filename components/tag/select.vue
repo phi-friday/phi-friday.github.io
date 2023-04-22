@@ -15,8 +15,8 @@
   </div>
   <div class="tag-list" ref="tag_parent_ref" :class="{ active: expanded }">
     <ul class="flex flex-wrap article-tags" ref="tag_ref">
-      <div v-for="(tag, n) in article_tags" :key="n">
-        <TagOne class="font-semibold" :tag="tag" :add_tag="true" />
+      <div v-for="([tag, count], n) in article_tags" :key="n">
+        <TagOne class="font-semibold" :tag="tag" :count="count" :add_tag="true" />
       </div>
     </ul>
   </div>
@@ -45,14 +45,17 @@ const flatten = (tags: any, key: any = undefined) => {
 const reset_tag = () => {
   set_tags(new Set());
 };
-const _article_tags = [...new Set(flatten(props.tag_data, 'tags'))]
-  .filter((value: any) => {
-    return typeof value == 'string';
-  })
-  .sort((left, right) => {
-    return (left as string).localeCompare(right as string);
-  });
-const article_tags = _article_tags as string[];
+const article_tags = computed((): [string, number][] => {
+  const count = get_tag_count();
+  return [...new Set(flatten(props.tag_data, 'tags'))]
+    .filter((value: any) => {
+      return typeof value == 'string';
+    })
+    .sort((left, right) => {
+      return (left as string).localeCompare(right as string);
+    })
+    .map((tag) => [tag as string, count.value.get(tag as string) ?? 0]);
+});
 
 const expanded = get_expanded();
 const toggle_expand = () => {

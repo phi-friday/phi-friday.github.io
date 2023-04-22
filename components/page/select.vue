@@ -15,8 +15,8 @@
   </div>
   <div class="tag-list" ref="page_parent_ref" :class="{ active: expanded }">
     <ul class="flex flex-wrap article-tags" ref="page_ref">
-      <div v-for="(page, n) in article_pages" :key="n">
-        <PageOne class="font-semibold" :page="page" :add_page="true" />
+      <div v-for="([page, count], n) in article_pages" :key="n">
+        <PageOne class="font-semibold" :page="page" :count="count" :add_page="true" />
       </div>
     </ul>
   </div>
@@ -31,14 +31,19 @@ const config = useRuntimeConfig();
 const reset_page = () => {
   set_pages(new Set());
 };
-const article_pages = [
-  ...new Set(
-    props.page_data.map((value) => {
-      return value.page;
+const article_pages = computed((): [string, number][] => {
+  const count = get_page_count();
+  return [
+    ...new Set(
+      props.page_data.map((value) => {
+        return value.page;
+      })
+    ),
+  ]
+    .sort((left, right) => {
+      return left.localeCompare(right);
     })
-  ),
-].sort((left, right) => {
-  return left.localeCompare(right);
+    .map((page) => [page, count.value.get(page) ?? 0]);
 });
 
 const expanded = get_expanded();

@@ -1,7 +1,7 @@
 <template>
   <li class="tag" :class="{ select: is_select }" @click="toggle_page">
     <NuxtLink :to="path">
-      {{ props.page }}
+      {{ page }}
     </NuxtLink>
   </li>
 </template>
@@ -9,6 +9,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   page: string;
+  count?: number;
   add_page?: boolean;
   do_select?: boolean;
 }>();
@@ -37,4 +38,5 @@ if (props.do_select ?? false) {
 } else {
   path = { path: config.public.page_prefix };
 }
+const page = props.count ?? 0 > 0 ? `${props.page} [${props.count}]` : props.page;
 </script>

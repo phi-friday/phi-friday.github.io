@@ -78,7 +78,26 @@ const tagged_data = computed(() => {
     (value) => value.tags?.length
   ) as FixTaggedArticle[];
 });
+
+const _dummy_active = computed(() => {
+  const result = get_tag_count();
+  return result.value.size > 0;
+});
+const _dummy = () => {
+  if (_dummy_active.value) {
+    return
+  }
+  const result = new Map<string, number>();
+  tagged_data.value.forEach((article) => {
+    article.tags.forEach((tag) => {
+      result.set(tag, (result.get(tag) ?? 0) + 1);
+    });
+  });
+  set_tag_count(result);
+};
+
 const list = computed(() => {
+  _dummy()
   const _tags = tags.value;
   if (_tags.size === 0) {
     return tagged_data.value.slice(skip.value, skip.value + limit);
