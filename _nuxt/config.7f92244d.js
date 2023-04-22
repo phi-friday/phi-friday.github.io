@@ -1,0 +1,1 @@
+import{T as p,U as o,Q as i,V as c}from"./entry.81fd4aea.js";const e=p({}),f=p({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),s={},t=o(e,f,s);function g(){const n=i();return n._appConfig||(n._appConfig=c(t)),n._appConfig}export{g as u};

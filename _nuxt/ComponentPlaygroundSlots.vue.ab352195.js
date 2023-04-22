@@ -1,0 +1,1 @@
+import{a as t,o,f as n,i as a,E as s}from"./entry.81fd4aea.js";const r={class:"component-playground-data-section"},l=t({__name:"ComponentPlaygroundSlots",props:{componentData:{type:Object,required:!0}},setup(e){return(c,p)=>(o(),n("div",r,[a("pre",null,s(JSON.stringify(e.componentData,null,2)),1)]))}});export{l as _};
