@@ -540,6 +540,23 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@nuxt-themes/elements@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@nuxt-themes/elements/-/elements-0.9.4.tgz#30809660ed1771a3c33e8140dbe23204d8aa5022"
+  integrity sha512-d7XgHc/gjMpre26+N76APL1vlnQHiZTOk61GC4I/ZYQuioSfoKuoIP+Ixrr0QgM22j4MRBtAaBnDAg1wRJrDCQ==
+  dependencies:
+    "@nuxt-themes/tokens" "^1.9.1"
+    "@vueuse/core" "^9.13.0"
+
+"@nuxt-themes/tokens@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@nuxt-themes/tokens/-/tokens-1.9.1.tgz#c49ce4e8de9f9e90dedd73c66f9000755ff1a945"
+  integrity sha512-5C28kfRvKnTX8Tux+xwyaf+2pxKgQ53dC9l6C33sZwRRyfUJulGDZCFjKbuNq4iqVwdGvkFSQBYBYjFAv6t75g==
+  dependencies:
+    "@nuxtjs/color-mode" "^3.2.0"
+    "@vueuse/core" "^9.13.0"
+    pinceau "^0.18.8"
+
 "@nuxt-themes/typography@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@nuxt-themes/typography/-/typography-0.11.0.tgz#d9c470ded5a04aa1391c4b7a59e7321b3d77b1b0"
@@ -1223,7 +1240,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.47.tgz#e597ef75086c6e896ff5478a6bfc0a7aa4bbd14c"
   integrity sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==
 
-"@vueuse/core@9.13.0":
+"@vueuse/core@9.13.0", "@vueuse/core@^9.13.0":
   version "9.13.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.13.0.tgz#2f69e66d1905c1e4eebc249a01759cf88ea00cf4"
   integrity sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==
