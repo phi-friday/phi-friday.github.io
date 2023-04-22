@@ -4,7 +4,6 @@
     <NuxtPage />
     <SiteFooter />
     <Scroll />
-    <GoogleAnalysis />
   </div>
 </template>
 

@@ -18,7 +18,9 @@
     "@types/rss": "^0.0.30",
     "@vueuse/nuxt": "^9.13.0",
     "nuxt": "^3.3.2",
+    "nuxt-gtag": "^0.5.7",
     "rss": "^1.2.2",
     "sitemap": "^7.1.1"
-  }
+  },
+  "dependencies": {}
 }

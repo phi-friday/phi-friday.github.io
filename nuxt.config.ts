@@ -6,7 +6,16 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/robots',
     '@nuxtjs/color-mode',
+    'nuxt-gtag',
   ],
+  gtag: {
+    id: process.env.GTAG_ID ?? '',
+    initialConsent: true,
+    loadingStrategy: 'async',
+    config: {
+      page_title: process.env.NUXT_HOST_TITLE ?? '',
+    },
+  },
   content: {
     // https://content.nuxtjs.org/api/configuration
     highlight: {
@@ -47,7 +56,6 @@ export default defineNuxtConfig({
         async: true,
       },
       google: {
-        analysis: 'https://www.googletagmanager.com/gtag/js?id=G-XJF2S7MP0D',
         search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c',
         seo: 'lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw',
       },
