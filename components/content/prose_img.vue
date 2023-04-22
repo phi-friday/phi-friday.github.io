@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="expanded" :style="expanded_style">
-      <img
+      <NuxtImg
         @click="expanded = false"
         :style="expandable_img_style"
         v-bind="$attrs"
@@ -9,15 +9,17 @@
         :alt="alt"
         :width="width"
         :height="height"
+        loading="lazy"
       />
     </div>
-    <img
+    <NuxtImg
       @click="expanded = true"
       v-bind="$attrs"
       :src="refinedSrc"
       :alt="alt"
       :width="width"
       :height="height"
+      loading="lazy"
     />
   </div>
 </template>
@@ -84,7 +86,6 @@ const refinedSrc = computed(() => {
 </script>
 
 <style lang="ts" scoped>
-// @ts-expect-error
 css({
   img: {
     margin: '{prose.img.margin}'

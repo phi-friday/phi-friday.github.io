@@ -39,7 +39,7 @@ alert가 추가된다
 이렇게 사전에 정의한 컴포넌트가 렌더링된다.
 
 어떻게 정의하냐에 따라서
-::alert{type=error}
+::alert{type=danger}
 이렇게 할 수도 있다.
 ::
 

@@ -3,7 +3,6 @@
 </template>
 
 <style lang="ts" scoped>
-// @ts-expect-error
 css({
   p: {
     fontFamily: '{typography.font.body}',

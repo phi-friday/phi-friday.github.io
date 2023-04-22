@@ -1,12 +1,53 @@
+import { createResolver } from '@nuxt/kit';
+const { resolve } = createResolver(import.meta.url);
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  extends: ['@nuxt-themes/elements', '@nuxt-themes/typography'],
+  extends: ['@nuxt-themes/typography'],
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/robots',
     '@nuxtjs/color-mode',
+    '@nuxt/image-edge',
+    '@nuxt-themes/tokens',
     'nuxt-gtag',
+  ],
+  build: {
+    transpile: ['/image-edge/'],
+  },
+  components: [
+    {
+      path: resolve('components'),
+      global: true,
+      prefix: '',
+    },
+    {
+      path: resolve('node_modules/@nuxt-themes/elements/components/globals'),
+      global: true,
+      prefix: '',
+      ignore: ['NuxtImg.vue', 'NuxtImg'],
+    },
+    {
+      path: resolve('node_modules/@nuxt-themes/elements/components/icons'),
+      global: true,
+      prefix: '',
+    },
+    {
+      path: resolve('node_modules/@nuxt-themes/elements/components/landing'),
+      global: true,
+      prefix: '',
+    },
+    {
+      path: resolve('node_modules/@nuxt-themes/elements/components/volta'),
+      global: true,
+      prefix: '',
+    },
+    {
+      path: resolve('node_modules/@nuxt-themes/elements/components/meta'),
+      global: true,
+      prefix: '',
+    },
   ],
   gtag: {
     id: process.env.GTAG_ID ?? '',
