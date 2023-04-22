@@ -1,3 +1,7 @@
 User-agent: *
 
+Allow: *
+Disallow: /
+Disallow: /@post
+Disallow: /@post/
 Sitemap: https://phi-friday.github.io/sitemap.xml
