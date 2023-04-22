@@ -48,7 +48,7 @@ jobs:
 ```
 
 위 설정 파일은 `gitea`에서 다음과 같이 실행되는 것을 확인 할 수 있다.
-![](/images/other/gitea-action/gitea-action-demo.webp)
+![](/images/other/gitea-action/gitea-action-demo.png)
 
 ## 사용 후기
 `jenkins`나 `devops`의 `pipeline`을 사용하다 `gitea`의 `action`을 사용해보면 속이 시원해진다. 

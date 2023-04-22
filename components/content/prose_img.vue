@@ -10,6 +10,8 @@
         :width="width"
         :height="height"
         loading="lazy"
+        format="webp"
+        quality="90"
       />
     </div>
     <NuxtImg
@@ -20,6 +22,8 @@
       :width="width"
       :height="height"
       loading="lazy"
+      format="webp"
+      quality="90"
     />
   </div>
 </template>
