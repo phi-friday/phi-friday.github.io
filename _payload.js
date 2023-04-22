@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fother\u002Fgitea-action"}},prerenderedAt:1682096521151}
+export default {data:{"last-article-only-path":{_path:"\u002Fother\u002Fgitea-action"}},prerenderedAt:1682148328977}
