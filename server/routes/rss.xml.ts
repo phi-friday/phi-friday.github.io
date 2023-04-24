@@ -50,6 +50,21 @@ function add_prefix_and_suffix(path: string | undefined) {
   return add_suffix(add_prefix(path));
 }
 
+function add_base_url(path: undefined): undefined;
+function add_base_url(path: string): string;
+function add_base_url(path: string | undefined): string | undefined;
+function add_base_url(path: string | undefined) {
+  // empty string -> pass
+  if (path === undefined) {
+    return undefined;
+  }
+  if (!path) {
+    return add_suffix(BASE_URL);
+  }
+  const _path = path.startsWith('/') ? path.slice(1) : path;
+  const _base = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
+  return add_suffix(_base + '/' + _path);
+}
 
 export default defineEventHandler(async (event) => {
   const feed = new RSS({
@@ -66,6 +81,7 @@ export default defineEventHandler(async (event) => {
   let date: string;
   let path: string;
   let title: string;
+  let url: string
   for (const doc of docs) {
     maybe_date = get_date(doc);
     if (!maybe_date || !doc._path || !doc.title) {
@@ -74,9 +90,11 @@ export default defineEventHandler(async (event) => {
     date = maybe_date;
     path = doc._path;
     title = doc.title;
+    url = add_prefix_and_suffix(path)
     feed.item({
       title,
-      url: add_prefix_and_suffix(path),
+      url: add_base_url(url),
+      guid: url,
       date,
       description: doc.description ?? '',
     });
