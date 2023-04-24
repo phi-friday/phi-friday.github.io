@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 24 Apr 2023 12:13:14 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 24 Apr 2023 15:37:58 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[requests vs httpx vs aiohttp, 뭐가 더 빠를까]]></title>
+            <description><![CDATA[그냥 편한거 쓰는게 제일 나은거 같은데?]]></description>
+            <link>https://phi-friday.github.io/@post/python/http_client_vs/</link>
+            <guid isPermaLink="false">/@post/python/http_client_vs/</guid>
+            <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[gitea에서 ci/cd를 위한 action 사용하기]]></title>
             <description><![CDATA[gihub action와 거의 비슷하다]]></description>
