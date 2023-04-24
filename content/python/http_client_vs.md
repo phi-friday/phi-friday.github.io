@@ -54,11 +54,16 @@ __비동기 호출만__ 지원한다.
 <summary>httpx</summary>
  
 ```python [test_httpx.py]
+from __future__ import annotations
+
 import asyncio
+import math
 import time
+import typing
 from contextlib import AsyncExitStack
 
 import httpx
+import uvloop
 
 CLIENT_COUNT = 10
 REQUEST_COUNT = 1000
@@ -71,9 +76,21 @@ HEADER = {
 TIMEOUT = 10
 
 
+async def _timer(
+    func: typing.Callable[..., typing.Coroutine[typing.Any, typing.Any, typing.Any]],
+    *args: typing.Any,
+    **kwargs: typing.Any,
+) -> typing.Any:
+    start = time.perf_counter()
+    result = await func(*args, **kwargs)
+    end = time.perf_counter()
+    return result, end - start
+
+
 async def _request_one(client: httpx.AsyncClient) -> None:
     response = await client.get(URL, headers=HEADER)
     response.raise_for_status()
+
 
 async def _enter_and_put_client(
     stack: AsyncExitStack,
@@ -85,16 +102,39 @@ async def _enter_and_put_client(
 
 async def _run_request(
     queue: asyncio.Queue[httpx.AsyncClient],
+    timer_queue: asyncio.Queue[float],
     semaphore: asyncio.Semaphore,
 ) -> None:
     async with semaphore:
         client = await queue.get()
-        await _request_one(client)
-        await queue.put(client)
+        _, _time = await _timer(_request_one, client)
+    await timer_queue.put(_time)
+    await queue.put(client)
+
+
+def _gen(queue: asyncio.Queue[float]) -> typing.Generator[float, None, None]:
+    while not queue.empty():
+        yield queue.get_nowait()
+
+
+def _print_time(timer_queue: asyncio.Queue[float]) -> None:
+    time_result = list(_gen(timer_queue))
+    print(
+        "sum={:.4f}, median={:.4f}, mean={:.4f}, std={:.4f}".format(
+            sum(time_result),
+            sorted(time_result)[len(time_result) // 2],
+            (mean := sum(time_result) / len(time_result)),
+            math.sqrt(
+                sum(pow(x - mean, 2) for x in time_result) / len(time_result),
+            ),
+        ),
+    )
+
 
 async def _request_many(client_count: int, request_count: int) -> None:
     async with AsyncExitStack() as stack:
         queue: asyncio.Queue[httpx.AsyncClient] = asyncio.Queue(client_count)
+        timer_queue: asyncio.Queue[float] = asyncio.Queue(request_count)
         semaphore = asyncio.Semaphore(client_count)
 
         async with asyncio.TaskGroup() as tg:
@@ -105,19 +145,19 @@ async def _request_many(client_count: int, request_count: int) -> None:
 
         async with asyncio.TaskGroup() as tg:
             _ = [
-                tg.create_task(_run_request(queue, semaphore))
+                tg.create_task(_run_request(queue, timer_queue, semaphore))
                 for _ in range(request_count)
             ]
+        _print_time(timer_queue)
 
 
-async def main():
-    start = time.perf_counter()
-    await _request_many(CLIENT_COUNT, REQUEST_COUNT)
-    end = time.perf_counter()
-    print(f"time={end - start}")
+async def main() -> None:
+    _, _time = await _timer(_request_many, CLIENT_COUNT, REQUEST_COUNT)
+    print(f"total={_time:.4f}")
 
 
 if __name__ == "__main__":
+    uvloop.install()
     asyncio.run(main())
 ```
 </details>
@@ -126,11 +166,16 @@ if __name__ == "__main__":
 <summary>aiohttp</summary>
  
 ```python [test_aiohttp.py]
+from __future__ import annotations
+
 import asyncio
+import math
 import time
+import typing
 from contextlib import AsyncExitStack
 
 import aiohttp
+import uvloop
 
 CLIENT_COUNT = 10
 REQUEST_COUNT = 1000
@@ -141,6 +186,17 @@ HEADER = {
     "Chrome/112.0.0.0 Safari/537.36",
 }
 TIMEOUT = 10
+
+
+async def _timer(
+    func: typing.Callable[..., typing.Coroutine[typing.Any, typing.Any, typing.Any]],
+    *args: typing.Any,
+    **kwargs: typing.Any,
+) -> typing.Any:
+    start = time.perf_counter()
+    result = await func(*args, **kwargs)
+    end = time.perf_counter()
+    return result, end - start
 
 
 async def _request_one(client: aiohttp.ClientSession) -> None:
@@ -160,16 +216,39 @@ async def _enter_and_put_client(
 
 async def _run_request(
     queue: asyncio.Queue[aiohttp.ClientSession],
+    timer_queue: asyncio.Queue[float],
     semaphore: asyncio.Semaphore,
 ) -> None:
     async with semaphore:
         client = await queue.get()
-        await _request_one(client)
-        await queue.put(client)
+        _, _time = await _timer(_request_one, client)
+    await timer_queue.put(_time)
+    await queue.put(client)
+
+
+def _gen(queue: asyncio.Queue[float]) -> typing.Generator[float, None, None]:
+    while not queue.empty():
+        yield queue.get_nowait()
+
+
+def _print_time(timer_queue: asyncio.Queue[float]) -> None:
+    time_result = list(_gen(timer_queue))
+    print(
+        "sum={:.4f}, median={:.4f}, mean={:.4f}, std={:.4f}".format(
+            sum(time_result),
+            sorted(time_result)[len(time_result) // 2],
+            (mean := sum(time_result) / len(time_result)),
+            math.sqrt(
+                sum(pow(x - mean, 2) for x in time_result) / len(time_result),
+            ),
+        ),
+    )
+
 
 async def _request_many(client_count: int, request_count: int) -> None:
     async with AsyncExitStack() as stack:
         queue: asyncio.Queue[aiohttp.ClientSession] = asyncio.Queue(client_count)
+        timer_queue: asyncio.Queue[float] = asyncio.Queue(request_count)
         semaphore = asyncio.Semaphore(client_count)
 
         async with asyncio.TaskGroup() as tg:
@@ -180,19 +259,19 @@ async def _request_many(client_count: int, request_count: int) -> None:
 
         async with asyncio.TaskGroup() as tg:
             _ = [
-                tg.create_task(_run_request(queue, semaphore))
+                tg.create_task(_run_request(queue, timer_queue, semaphore))
                 for _ in range(request_count)
             ]
+        _print_time(timer_queue)
 
 
-async def main():
-    start = time.perf_counter()
-    await _request_many(CLIENT_COUNT, REQUEST_COUNT)
-    end = time.perf_counter()
-    print(f"time={end - start}")
+async def main() -> None:
+    _, _time = await _timer(_request_many, CLIENT_COUNT, REQUEST_COUNT)
+    print(f"total={_time:.4f}")
 
 
 if __name__ == "__main__":
+    uvloop.install()
     asyncio.run(main())
 ```
 </details>
@@ -203,12 +282,16 @@ if __name__ == "__main__":
 <summary>requests</summary>
  
 ```python [test_requests.py]
+from __future__ import annotations
+
+import math
 import time
-from concurrent.futures import ThreadPoolExecutor, wait
+import typing
 from queue import Queue
 from threading import Semaphore
 
 import requests
+from joblib import Parallel, delayed
 
 CLIENT_COUNT = 10
 REQUEST_COUNT = 1000
@@ -220,36 +303,72 @@ HEADER = {
 }
 TIMEOUT = 10
 
+
+def _timer(
+    func: typing.Callable[..., typing.Any],
+    *args: typing.Any,
+    **kwargs: typing.Any,
+) -> typing.Any:
+    start = time.perf_counter()
+    result = func(*args, **kwargs)
+    end = time.perf_counter()
+    return result, end - start
+
+
 def _request_one(client: requests.Session) -> None:
     response = client.get(URL, headers=HEADER, timeout=TIMEOUT)
     response.raise_for_status()
 
+
 def _run_request(
-    queue: Queue[requests.Session], semaphore: Semaphore,
+    queue: Queue[requests.Session],
+    timer_queue: Queue[float],
+    semaphore: Semaphore,
 ) -> None:
     with semaphore:
         client = queue.get()
-        _request_one(client)
-        queue.put_nowait(client)
+        _, _time = _timer(_request_one, client)
+    timer_queue.put_nowait(_time)
+    queue.put_nowait(client)
+
+
+def _gen(queue: Queue[float]) -> typing.Generator[float, None, None]:
+    while not queue.empty():
+        yield queue.get_nowait()
+
+
+def _print_time(timer_queue: Queue[float]) -> None:
+    time_result = list(_gen(timer_queue))
+    print(
+        "sum={:.4f}, median={:.4f}, mean={:.4f}, std={:.4f}".format(
+            sum(time_result),
+            sorted(time_result)[len(time_result) // 2],
+            (mean := sum(time_result) / len(time_result)),
+            math.sqrt(
+                sum(pow(x - mean, 2) for x in time_result) / len(time_result),
+            ),
+        ),
+    )
 
 
 def _request_many(client_count: int, request_count: int) -> None:
     semaphore = Semaphore(client_count)
     queue: Queue[requests.Session] = Queue(maxsize=client_count)
+    timer_queue: Queue[float] = Queue(maxsize=request_count)
     for _ in range(client_count):
         queue.put_nowait(requests.Session())
-    with ThreadPoolExecutor(max_workers=client_count) as pool:
-        future = [
-            pool.submit(_run_request, queue, semaphore)
+    delayed_run_request = delayed(_run_request)
+    with Parallel(n_jobs=client_count, backend="threading", prefer="threads") as pool:
+        _ = pool(
+            delayed_run_request(queue, timer_queue, semaphore)
             for _ in range(request_count)
-        ]
-        wait(future, return_when="ALL_COMPLETED")
+        )
+    _print_time(timer_queue)
 
-def main():
-    start = time.perf_counter()
-    _request_many(CLIENT_COUNT, REQUEST_COUNT)
-    end = time.perf_counter()
-    print(f"time={end - start}")
+
+def main() -> None:
+    _, _time = _timer(_request_many, CLIENT_COUNT, REQUEST_COUNT)
+    print(f"total={_time:.4f}")
 
 
 if __name__ == "__main__":
@@ -261,11 +380,14 @@ if __name__ == "__main__":
 
 ```shell
 ❯ .../.venv/bin/python .../test_httpx.py
-time=4.603886660999706
+sum=42.3378, median=0.0412, mean=0.0423, std=0.0092
+total=4.4529
 ❯ .../.venv/bin/python .../test_aiohttp.py
-time=4.555423996000172
+sum=41.7602, median=0.0390, mean=0.0418, std=0.0132
+total=4.2363
 ❯ .../.venv/bin/python .../test_requests.py
-time=4.501287121998757
+sum=44.8297, median=0.0414, mean=0.0448, std=0.0279
+total=4.5194
 ```
 
 ### 기대와는 다른 결과
@@ -276,7 +398,10 @@ time=4.501287121998757
 혹시 실제로는 요청이 실행되지 않은건 아닌가 하고 확인해봤지만 정상이다.
 
 ### 내가 뭔가 잘못 작성한 것 같다
-`aiohttp`에 익숙하지 않은 점과, 공통된 방식으로 요청을 실행하고자 욕심부린 것 때문에 `http` 요청과는 무관한 지점에서 지연이 발생하지 않았을까.
+~~`aiohttp`에 익숙하지 않은 점과, 공통된 방식으로 요청을 실행하고자 욕심부린 것 때문에 `http` 요청과는 무관한 지점에서 지연이 발생하지 않았을까.~~
+::alert{type=info}
+다시 측정해보면서 실제 요청에 대해서 집계를 해봤는데 정말 별 차이가 없다
+::
 
 다음에 다시한번 시도해보자
 
