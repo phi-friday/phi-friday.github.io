@@ -23,11 +23,12 @@ const add_prefix = (path: string | undefined) => {
   }
   return POST_PREFIX + '/' + path;
 };
-const get_date = (doc: ParsedContent) => {
-  if (!doc.date || !re_date.test(doc.date)) {
+const get_mtime = async (doc: ParsedContent) => {
+  if (!doc._file) {
     return undefined;
   }
-  return (doc.date as string).match(re_date)?.at(0) as string;
+  const stat = await fs.promises.stat('./' + (doc._source ?? '') + '/' + doc._file);
+  return stat.mtime.toISOString();
 };
 
 const add_suffix = (path: string | undefined) => {
@@ -95,12 +96,12 @@ export default defineEventHandler(async (event) => {
     .find();
   let date: string | undefined;
   for (const doc of docs) {
-    date = get_date(doc);
+    date = await get_mtime(doc)
     if (date) {
       sitemap_index_stream.write({
         url: add_prefix_and_suffix(doc._path),
         changefreq: 'daily',
-        lastmod: doc.date,
+        lastmod: date,
       });
     } else {
       sitemap_index_stream.write({
