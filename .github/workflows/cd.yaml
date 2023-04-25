@@ -9,7 +9,7 @@ env:
   TAG_PREFIX: /@tag
   PAGE_PREFIX: /@page
   GTAG_ID: ${{ secrets.GTAG_ID }}
-  GIT_REPOSITORY: ${{ GITHUB_ACTION_REPOSITORY }}
+  GIT_REPOSITORY: ${{ env.GITHUB_ACTION_REPOSITORY }}
   
 
 jobs:
