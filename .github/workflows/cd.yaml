@@ -45,9 +45,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Generate
-        run: yarn generate
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} yarn generate
 
 
       - name: Deploy
