@@ -8,7 +8,7 @@ import { serverQueryContent } from '#content/server';
 
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
-const REPOSITORY = process.env.GIT_REPOSITORY as string;
+const REPOSITORY = process.env.GITHUB_ACTION_REPOSITORY as string;
 const GITHUB_TOKEN = process.env.INPUT_GITHUB_TOKEN as string;
 
 const add_prefix = (path: string | undefined) => {
