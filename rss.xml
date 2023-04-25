@@ -4,7 +4,7 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 25 Apr 2023 14:15:01 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 25 Apr 2023 14:17:15 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[requests vs httpx vs aiohttp, 뭐가 더 빠를까]]></title>
