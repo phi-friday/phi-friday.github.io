@@ -9,6 +9,8 @@ env:
   TAG_PREFIX: /@tag
   PAGE_PREFIX: /@page
   GTAG_ID: ${{ secrets.GTAG_ID }}
+  GIT_REPOSITORY: ${{ GITHUB_ACTION_REPOSITORY }}
+  
 
 jobs:
   cd:
@@ -45,6 +47,9 @@ jobs:
 
       - name: Generate
         run: yarn generate
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

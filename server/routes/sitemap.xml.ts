@@ -2,15 +2,14 @@ import { SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap';
 import { dirname, resolve } from 'path';
 
 import { ParsedContent } from '@nuxt/content/dist/runtime/types';
-import { exec } from 'child_process';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import {promisify} from 'util'
 import { serverQueryContent } from '#content/server';
 
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
-const async_exec = promisify(exec)
+const REPOSITORY = process.env.GIT_REPOSITORY as string;
+const GITHUB_TOKEN = process.env.INPUT_GITHUB_TOKEN as string;
 
 const add_prefix = (path: string | undefined) => {
   // empty string -> pass
@@ -30,13 +29,35 @@ const get_last_commit_date = async (doc: ParsedContent) => {
   if (!doc._file || !doc._source) {
     return undefined;
   }
-  const path = './' + doc._source + '/' + doc._file.replaceAll(' ', '\\ ');
-  const process = await async_exec(
-    'git log -1 --format="%at" ' +
-      path +
-      ' | xargs -I{} date -d @{} +"%Y-%m-%dT%H:%M:%S%z"', {encoding: 'utf-8'}
-  );
-  return process.stdout.trim()
+  const path = '/' + doc._source + '/' + doc._file;
+  const response = await fetch(
+    'https://api.github.com/repos/' +
+      REPOSITORY +
+      '/commits?' +
+      new URLSearchParams([
+        ['path', path],
+        ['page', '1'],
+        ['per_page', '1'],
+        ['sha', 'main'],
+      ]),
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .catch((error) => {
+      throw error;
+    });
+  if (response.length === 0) {
+    console.log(path, 0);
+    return undefined;
+  }
+  console.log(path, response[0].commit?.author?.date);
+
+  return response[0].commit?.author?.date;
 };
 
 const add_suffix = (path: string | undefined) => {
