@@ -2,13 +2,15 @@ import { SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap';
 import { dirname, resolve } from 'path';
 
 import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { exec } from 'child_process';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import {promisify} from 'util'
 import { serverQueryContent } from '#content/server';
 
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
-const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
+const async_exec = promisify(exec)
 
 const add_prefix = (path: string | undefined) => {
   // empty string -> pass
@@ -23,12 +25,18 @@ const add_prefix = (path: string | undefined) => {
   }
   return POST_PREFIX + '/' + path;
 };
-const get_mtime = async (doc: ParsedContent) => {
-  if (!doc._file) {
+
+const get_last_commit_date = async (doc: ParsedContent) => {
+  if (!doc._file || !doc._source) {
     return undefined;
   }
-  const stat = await fs.promises.stat('./' + (doc._source ?? '') + '/' + doc._file);
-  return stat.mtime.toISOString();
+  const path = './' + doc._source + '/' + doc._file.replaceAll(' ', '\\ ');
+  const process = await async_exec(
+    'git log -1 --format="%at" ' +
+      path +
+      ' | xargs -I{} date -d @{} +"%Y-%m-%dT%H:%M:%S%z"', {encoding: 'utf-8'}
+  );
+  return process.stdout.trim()
 };
 
 const add_suffix = (path: string | undefined) => {
@@ -96,7 +104,7 @@ export default defineEventHandler(async (event) => {
     .find();
   let date: string | undefined;
   for (const doc of docs) {
-    date = await get_mtime(doc)
+    date = await get_last_commit_date(doc);
     if (date) {
       sitemap_index_stream.write({
         url: add_prefix_and_suffix(doc._path),
