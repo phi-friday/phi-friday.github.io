@@ -8,8 +8,7 @@ import { serverQueryContent } from '#content/server';
 
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
-const REPOSITORY = process.env.GITHUB_ACTION_REPOSITORY as string;
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN as string;
+const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
 
 const add_prefix = (path: string | undefined) => {
   // empty string -> pass
@@ -25,39 +24,11 @@ const add_prefix = (path: string | undefined) => {
   return POST_PREFIX + '/' + path;
 };
 
-const get_last_commit_date = async (doc: ParsedContent) => {
-  if (!doc._file || !doc._source) {
+const get_date = (doc: ParsedContent) => {
+  if (!doc.date || !re_date.test(doc.date)) {
     return undefined;
   }
-  const path = '/' + doc._source + '/' + doc._file;
-  const response = await fetch(
-    'https://api.github.com/repos/' +
-      REPOSITORY +
-      '/commits?' +
-      new URLSearchParams([
-        ['path', path],
-        ['page', '1'],
-        ['per_page', '1'],
-        ['sha', 'main'],
-      ]),
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .catch((error) => {
-      throw error;
-    });
-  if (response.length === 0) {
-    console.log(path, 0);
-    return undefined;
-  }
-  console.log(path, response[0].commit?.author?.date);
-
-  return response[0].commit?.author?.date;
+  return (doc.date as string).match(re_date)?.at(0) as string;
 };
 
 const add_suffix = (path: string | undefined) => {
@@ -125,7 +96,7 @@ export default defineEventHandler(async (event) => {
     .find();
   let date: string | undefined;
   for (const doc of docs) {
-    date = await get_last_commit_date(doc);
+    date = get_date(doc);
     if (date) {
       sitemap_index_stream.write({
         url: add_prefix_and_suffix(doc._path),
