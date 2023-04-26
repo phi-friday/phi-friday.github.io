@@ -1,6 +1,5 @@
 User-agent: *
 
-Disallow: /$
 Disallow: /@post
 Allow: /@post/*
 Allow: /@tag
