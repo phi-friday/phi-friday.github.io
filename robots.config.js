@@ -1,7 +1,6 @@
 export default [
   { UserAgent: '*' },
   { BlankLine: true },
-  { Disallow: '/$' },
   { Disallow: '/@post' },
   { Allow: '/@post/*' },
   { Allow: '/@tag' },
