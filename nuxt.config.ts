@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['/image-edge/'],
   },
+  router: { options: { strict: true } },
   components: [
     {
       path: resolve('components'),
