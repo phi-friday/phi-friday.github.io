@@ -10,7 +10,10 @@ const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
 const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
 
-const add_prefix = (path: string | undefined) => {
+function add_prefix(path: undefined): undefined;
+function add_prefix(path: string): string;
+function add_prefix(path: string | undefined): string | undefined;
+function add_prefix(path: string | undefined) {
   // empty string -> pass
   if (path === undefined) {
     return undefined;
@@ -22,31 +25,13 @@ const add_prefix = (path: string | undefined) => {
     return POST_PREFIX + '/' + path.slice(1);
   }
   return POST_PREFIX + '/' + path;
-};
+}
 
 const get_date = (doc: ParsedContent) => {
   if (!doc.date || !re_date.test(doc.date)) {
     return undefined;
   }
   return (doc.date as string).match(re_date)?.at(0) as string;
-};
-
-const add_suffix = (path: string | undefined) => {
-  // empty string -> pass
-  if (path === undefined) {
-    return undefined;
-  }
-  if (!path) {
-    return path;
-  }
-  if (path.endsWith('/')) {
-    return path;
-  }
-  return path + '/';
-};
-
-const add_prefix_and_suffix = (path: string | undefined) => {
-  return add_suffix(add_prefix(path));
 };
 
 const get_static_endpoints = (): string[] => {
@@ -99,13 +84,13 @@ export default defineEventHandler(async (event) => {
     date = get_date(doc);
     if (date) {
       sitemap_index_stream.write({
-        url: add_prefix_and_suffix(doc._path),
+        url: add_prefix(doc._path),
         changefreq: 'daily',
         lastmod: date,
       });
     } else {
       sitemap_index_stream.write({
-        url: add_prefix_and_suffix(doc._path),
+        url: add_prefix(doc._path),
         changefreq: 'daily',
       });
     }
@@ -114,7 +99,7 @@ export default defineEventHandler(async (event) => {
   const static_endpoints = get_static_endpoints();
   for (const static_endpoint of static_endpoints) {
     sitemap_index_stream.write({
-      url: add_suffix(static_endpoint),
+      url: static_endpoint,
       changefreq: 'daily',
     });
   }

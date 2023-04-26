@@ -6,7 +6,10 @@ const BASE_URL = process.env.NUXT_HOSTNAME as string;
 const POST_PREFIX = process.env.POST_PREFIX as string;
 const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
 
-const add_prefix = (path: string | undefined) => {
+function add_prefix(path: undefined): undefined;
+function add_prefix(path: string): string;
+function add_prefix(path: string | undefined): string | undefined;
+function add_prefix(path: string | undefined) {
   // empty string -> pass
   if (path === undefined) {
     return undefined;
@@ -43,13 +46,6 @@ function add_suffix(path: string | undefined) {
   return path + '/';
 }
 
-function add_prefix_and_suffix(path: undefined): undefined;
-function add_prefix_and_suffix(path: string): string;
-function add_prefix_and_suffix(path: string | undefined): string | undefined;
-function add_prefix_and_suffix(path: string | undefined) {
-  return add_suffix(add_prefix(path));
-}
-
 function add_base_url(path: undefined): undefined;
 function add_base_url(path: string): string;
 function add_base_url(path: string | undefined): string | undefined;
@@ -63,7 +59,7 @@ function add_base_url(path: string | undefined) {
   }
   const _path = path.startsWith('/') ? path.slice(1) : path;
   const _base = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
-  return add_suffix(_base + '/' + _path);
+  return _base + '/' + _path;
 }
 
 export default defineEventHandler(async (event) => {
@@ -81,7 +77,7 @@ export default defineEventHandler(async (event) => {
   let date: string;
   let path: string;
   let title: string;
-  let url: string
+  let url: string;
   for (const doc of docs) {
     maybe_date = get_date(doc);
     if (!maybe_date || !doc._path || !doc.title) {
@@ -90,7 +86,7 @@ export default defineEventHandler(async (event) => {
     date = maybe_date;
     path = doc._path;
     title = doc.title;
-    url = add_prefix_and_suffix(path)
+    url = add_prefix(path);
     feed.item({
       title,
       url: add_base_url(url),
