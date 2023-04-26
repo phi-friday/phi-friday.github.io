@@ -4,82 +4,82 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 25 Apr 2023 14:25:04 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Apr 2023 13:00:13 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[requests vs httpx vs aiohttp, 뭐가 더 빠를까]]></title>
             <description><![CDATA[그냥 편한거 쓰는게 제일 나은거 같은데?]]></description>
-            <link>https://phi-friday.github.io/@post/python/http_client_vs/</link>
-            <guid isPermaLink="false">/@post/python/http_client_vs/</guid>
+            <link>https://phi-friday.github.io/@post/python/http_client_vs</link>
+            <guid isPermaLink="false">/@post/python/http_client_vs</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[gitea에서 ci/cd를 위한 action 사용하기]]></title>
             <description><![CDATA[gihub action와 거의 비슷하다]]></description>
-            <link>https://phi-friday.github.io/@post/other/gitea-action/</link>
-            <guid isPermaLink="false">/@post/other/gitea-action/</guid>
+            <link>https://phi-friday.github.io/@post/other/gitea-action</link>
+            <guid isPermaLink="false">/@post/other/gitea-action</guid>
             <pubDate>Fri, 21 Apr 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[나중에는 pandas를 대체할지도 모르는 polars]]></title>
             <description><![CDATA[rust로 python의 한계를 넘어서자]]></description>
-            <link>https://phi-friday.github.io/@post/python/polars/</link>
-            <guid isPermaLink="false">/@post/python/polars/</guid>
+            <link>https://phi-friday.github.io/@post/python/polars</link>
+            <guid isPermaLink="false">/@post/python/polars</guid>
             <pubDate>Mon, 17 Apr 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[nextjs에서 nuxtjs로 변경]]></title>
             <description><![CDATA[쓰기 쉬운 nuxt content]]></description>
-            <link>https://phi-friday.github.io/@post/js/nextjs-nuxtjs/</link>
-            <guid isPermaLink="false">/@post/js/nextjs-nuxtjs/</guid>
+            <link>https://phi-friday.github.io/@post/js/nextjs-nuxtjs</link>
+            <guid isPermaLink="false">/@post/js/nextjs-nuxtjs</guid>
             <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[[코드를 깔끔하게] ruff - 4]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
-            <link>https://phi-friday.github.io/@post/python/type_hint_4/</link>
-            <guid isPermaLink="false">/@post/python/type_hint_4/</guid>
+            <link>https://phi-friday.github.io/@post/python/type_hint_4</link>
+            <guid isPermaLink="false">/@post/python/type_hint_4</guid>
             <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[sqlalchemy2.0는 무엇이 달라졌고, 왜 써야할까.]]></title>
             <description><![CDATA[더 빠르고 정확해진 orm]]></description>
-            <link>https://phi-friday.github.io/@post/python/why_sqlachemy2/</link>
-            <guid isPermaLink="false">/@post/python/why_sqlachemy2/</guid>
+            <link>https://phi-friday.github.io/@post/python/why_sqlachemy2</link>
+            <guid isPermaLink="false">/@post/python/why_sqlachemy2</guid>
             <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[[코드를 깔끔하게] isort - 3]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
-            <link>https://phi-friday.github.io/@post/python/type_hint_3/</link>
-            <guid isPermaLink="false">/@post/python/type_hint_3/</guid>
+            <link>https://phi-friday.github.io/@post/python/type_hint_3</link>
+            <guid isPermaLink="false">/@post/python/type_hint_3</guid>
             <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[[코드를 깔끔하게] black - 2]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
-            <link>https://phi-friday.github.io/@post/python/type_hint_2/</link>
-            <guid isPermaLink="false">/@post/python/type_hint_2/</guid>
+            <link>https://phi-friday.github.io/@post/python/type_hint_2</link>
+            <guid isPermaLink="false">/@post/python/type_hint_2</guid>
             <pubDate>Tue, 21 Feb 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[[코드를 깔끔하게] type hint - 1]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
-            <link>https://phi-friday.github.io/@post/python/type_hint_1/</link>
-            <guid isPermaLink="false">/@post/python/type_hint_1/</guid>
+            <link>https://phi-friday.github.io/@post/python/type_hint_1</link>
+            <guid isPermaLink="false">/@post/python/type_hint_1</guid>
             <pubDate>Mon, 13 Feb 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[[Vim] Normal모드에서 영문 키보드로 자동 전환하기 (Windows)]]></title>
             <description><![CDATA[esc를 누르면 자동으로 영문 키보드가 된다.]]></description>
-            <link>https://phi-friday.github.io/@post/other/vim/</link>
-            <guid isPermaLink="false">/@post/other/vim/</guid>
+            <link>https://phi-friday.github.io/@post/other/vim</link>
+            <guid isPermaLink="false">/@post/other/vim</guid>
             <pubDate>Sat, 06 Aug 2022 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[velog에서 git page로 블로그 이전]]></title>
-            <link>https://phi-friday.github.io/@post/js/velog-git-page/</link>
-            <guid isPermaLink="false">/@post/js/velog-git-page/</guid>
+            <link>https://phi-friday.github.io/@post/js/velog-git-page</link>
+            <guid isPermaLink="false">/@post/js/velog-git-page</guid>
             <pubDate>Sun, 12 Jun 2022 00:00:00 GMT</pubDate>
         </item>
     </channel>
