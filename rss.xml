@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 26 Apr 2023 13:39:48 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 17 May 2023 14:49:18 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[python보다 3만배 빠른 mojo?]]></title>
+            <description><![CDATA[정말 슈퍼셋이라면 기대해볼만 하다]]></description>
+            <link>https://phi-friday.github.io/@post/python/mojo</link>
+            <guid isPermaLink="false">/@post/python/mojo</guid>
+            <pubDate>Wed, 17 May 2023 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[requests vs httpx vs aiohttp, 뭐가 더 빠를까]]></title>
             <description><![CDATA[그냥 편한거 쓰는게 제일 나은거 같은데?]]></description>
