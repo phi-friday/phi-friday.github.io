@@ -4,7 +4,7 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 22 Jul 2023 19:34:21 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Jul 2023 20:15:39 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[더 편한 타입 힌트를 위한 PEP695]]></title>
