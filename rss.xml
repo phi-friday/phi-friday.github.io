@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 17 May 2023 14:49:18 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Jul 2023 19:34:21 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[더 편한 타입 힌트를 위한 PEP695]]></title>
+            <description><![CDATA[python 3.12에 새롭게 추가/변경되는 문법]]></description>
+            <link>https://phi-friday.github.io/@post/python/pep_695</link>
+            <guid isPermaLink="false">/@post/python/pep_695</guid>
+            <pubDate>Sat, 22 Jul 2023 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[python보다 3만배 빠른 mojo?]]></title>
             <description><![CDATA[정말 슈퍼셋이라면 기대해볼만 하다]]></description>
