@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fpep_695"}},prerenderedAt:1690056939412}
+export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fasync"}},prerenderedAt:1690910408600}
