@@ -3,7 +3,7 @@
     <ul class="flex list-none">
       <li>
         <NuxtLink
-          :to="{ path: route.path, query: { page: prev_page } }"
+          :to="{ path: add_trailing_slash(route.path), query: { page: prev_page } }"
           class="botton-text"
           :class="{ active: prev_active, inactive: !prev_active }"
           >Previous</NuxtLink
@@ -11,7 +11,7 @@
       </li>
       <li v-for="num in page_list" :key="num">
         <NuxtLink
-          :to="{ path: route.path, query: { page: num } }"
+          :to="{ path: add_trailing_slash(route.path), query: { page: num } }"
           class="botton-text"
           :class="{
             active: num !== here_page_remainder + page_min - 1,
@@ -22,7 +22,7 @@
       </li>
       <li>
         <NuxtLink
-          :to="{ path: route.path, query: { page: next_page } }"
+          :to="{ path: add_trailing_slash(route.path), query: { page: next_page } }"
           class="botton-text"
           :class="{ active: next_active, inactive: !next_active }"
           >Next</NuxtLink

@@ -13,14 +13,14 @@
             <div class="col-span-1 col-start-1">
               <div class="grid justify-between grid-cols-2">
                 <ul class="col-span-1 col-start-1 row-auto mr-2">
-                  <NuxtLink :to="config.public.tag_prefix" class="no-underline">
+                  <NuxtLink :to="add_trailing_slash(config.public.tag_prefix)" class="no-underline">
                     <figure class="pt-1 text-lg site-logo">
                       <h1>Tags</h1>
                     </figure>
                   </NuxtLink>
                 </ul>
                 <ul class="col-span-1 col-start-2 row-auto links">
-                  <NuxtLink :to="config.public.page_prefix" class="no-underline">
+                  <NuxtLink :to="add_trailing_slash(config.public.page_prefix)" class="no-underline">
                     <figure class="pt-1 text-lg site-logo">
                       <h1>Pages</h1>
                     </figure>

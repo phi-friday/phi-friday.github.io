@@ -8,7 +8,13 @@
 <script setup lang="ts">
 import type { ArticleMeta, Article } from '~~/utils/article';
 
+const config = useRuntimeConfig();
 let { path } = useRoute();
+
+if (path === config.public.post_prefix || path === config.public.post_prefix + '/') {
+  throw createError({ statusCode: 404, statusMessage: 'Post not found' });
+}
+
 const prefix = '/' + (path.split('/').at(1) ?? '');
 path = '/' + path.split('/').slice(2).join('/');
 if (path.endsWith('/')) {
@@ -26,10 +32,10 @@ const { data } = await useAsyncData(`selected_data_with_surround_${path}`, async
     surround: await surround,
   };
 });
-let prev: ArticleMeta | undefined = undefined
-let next: ArticleMeta | undefined = undefined
+let prev: ArticleMeta | undefined = undefined;
+let next: ArticleMeta | undefined = undefined;
 if (data.value?.surround) {
-  [prev, next] = data.value?.surround as ArticleMeta[]
+  [prev, next] = data.value?.surround as ArticleMeta[];
 }
-const article = data.value?.article as Article
+const article = data.value?.article as Article;
 </script>

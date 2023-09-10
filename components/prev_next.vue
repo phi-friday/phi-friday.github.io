@@ -1,13 +1,13 @@
 <template>
   <ul class="prev-next-cont">
     <li class="link-item prev">
-      <NuxtLink v-if="prev" :to="prev_path">
+      <NuxtLink v-if="prev" :to="add_trailing_slash(prev_path)">
         <ArrowLeftIcon class="icon stroke" />
         <span> {{ prev.title }} </span>
       </NuxtLink>
     </li>
     <li class="link-item next">
-      <NuxtLink v-if="next" :to="next_path">
+      <NuxtLink v-if="next" :to="add_trailing_slash(next_path)">
         <span> {{ next.title }} </span>
         <ArrowRightIcon class="icon stroke" />
       </NuxtLink>
@@ -30,6 +30,10 @@ const add_prefix = (
 ) => {
   if (!path) {
     return '';
+  }
+
+  if (!path.endsWith('/')) {
+    path = path + '/';
   }
 
   if (!prefix) {

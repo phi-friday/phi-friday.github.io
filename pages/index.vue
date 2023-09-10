@@ -48,7 +48,7 @@ const path = computed(() => {
   if (!article.value._path.startsWith('/')) {
     _path += '/';
   }
-  return _path + article.value._path;
+  return add_trailing_slash(_path + article.value._path);
 });
 </script>
 <style scoped lang="css">

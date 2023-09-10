@@ -34,9 +34,12 @@ const toggle_tag = () => {
 };
 let path: { path: string; query?: { select?: string } };
 if (props.do_select ?? false) {
-  path = { path: config.public.tag_prefix, query: { select: props.tag } };
+  path = {
+    path: add_trailing_slash(config.public.tag_prefix),
+    query: { select: props.tag },
+  };
 } else {
-  path = { path: config.public.tag_prefix };
+  path = { path: add_trailing_slash(config.public.tag_prefix) };
 }
 const tag = props.count ?? 0 > 0 ? `${props.tag} [${props.count}]` : props.tag;
 </script>

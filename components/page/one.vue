@@ -34,9 +34,12 @@ const toggle_page = () => {
 };
 let path: { path: string; query?: { select?: string } };
 if (props.do_select ?? false) {
-  path = { path: config.public.page_prefix, query: { select: props.page } };
+  path = {
+    path: add_trailing_slash(config.public.page_prefix),
+    query: { select: props.page },
+  };
 } else {
-  path = { path: config.public.page_prefix };
+  path = { path: add_trailing_slash(config.public.page_prefix) };
 }
 const page = props.count ?? 0 > 0 ? `${props.page} [${props.count}]` : props.page;
 </script>

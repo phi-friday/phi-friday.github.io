@@ -55,12 +55,12 @@ const add_prefix = (
   }
 
   if (!path || !_prefix) {
-    return path ?? undefined;
+    return add_trailing_slash(path ?? undefined);
   }
 
   if (path.startsWith('/')) {
-    return _prefix + path;
+    return add_trailing_slash(_prefix + path);
   }
-  return _prefix + '/' + path;
+  return add_trailing_slash(_prefix + '/' + path);
 };
 </script>

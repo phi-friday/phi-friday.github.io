@@ -19,7 +19,10 @@ function add_prefix(path: string | undefined) {
     return undefined;
   }
   if (!path) {
-    return path;
+    return '/';
+  }
+  if (!path.endsWith('/')) {
+    path = path + '/';
   }
   if (path.startsWith('/')) {
     return POST_PREFIX + '/' + path.slice(1);

@@ -2,7 +2,7 @@
   <div class="mb-2">
     <div class="flex row-span-1 row-start-1 gap-x-2">
       <div class="cta w-icon" @click="reset_tag">
-        <NuxtLink :to="`${config.public.tag_prefix}`">
+        <NuxtLink :to="`${add_trailing_slash(config.public.tag_prefix)}`">
           <ArrowPathRoundedSquareIcon class="icon solid" />
           <span> Reset</span>
         </NuxtLink>
