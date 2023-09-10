@@ -1,0 +1,1 @@
+import{ah as n,ai as o,F as i,a1 as a}from"./entry.d29e196b.js";const c=n({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),e={},f=o(c,e);function t(){const p=i();return p._appConfig||(p._appConfig=a(f)),p._appConfig}export{t as u};
