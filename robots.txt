@@ -1,9 +1,10 @@
 User-agent: *
 
+Sitemap: https://phi-friday.github.io/sitemap.xml
+
 Disallow: /@post
 Allow: /@post/*
 Allow: /@tag
 Allow: /@tag/*
 Allow: /@page
 Allow: /@page/*
-Sitemap: https://phi-friday.github.io/sitemap.xml
