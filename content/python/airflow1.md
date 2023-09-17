@@ -1,5 +1,5 @@
 ---
-title: 새로운 문법으로 airflow로 dag 생성하기
+title: 새로운 문법으로 Airflow DAG 생성하기
 tags:
   - python
   - airflow
