@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 10 Sep 2023 07:48:34 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 17 Sep 2023 13:11:17 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[새로운 문법으로 airflow로 dag 생성하기]]></title>
+            <description><![CDATA[TaskFlow API를 사용하자]]></description>
+            <link>https://phi-friday.github.io/@post/python/airflow1/</link>
+            <guid isPermaLink="false">/@post/python/airflow1/</guid>
+            <pubDate>Sun, 17 Sep 2023 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[python의 비동기에 대한 얕은 이해]]></title>
             <description><![CDATA[코드 중심으로 알아보는 비동기]]></description>
