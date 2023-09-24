@@ -10,6 +10,11 @@ date: '2023-02-28'
 publish: true
 ---
 
+::alert{type=warning}
+이제 `isort`를 따로 사용하지 않습니다.
+[`ruff`](/@post/python/type_hint_4)만 사용해도 동일한 작동을 보장합니다.
+::
+
 ## 1. 왜 `isort`를 사용해야 하는가
 
 `black`만 쓰더라도 충분히 일관성 있는 코드 컨벤션을 지킬 수 있다. 하지만 `black`의 규칙에서 `import` 순서는 지정되어 있지 않다. 따라서 다음의 두 코드는 `black`을 사용해도 수정되지 않는다.

@@ -13,6 +13,12 @@ publish: true
 ## 1. 왜 `ruff`를 사용해야 하는가
 
 `black`과 `isort`만 쓰러다도 충분히 일관성 있는 코드 컨벤션을 지킬 수 있다. 하지만 그 코드가 바람직한 형태가 아닐 수 있다. 다음 코드는 `black`과 `isort`를 통과했지만, 그리 좋은 코드가 아니다.
+
+::alert{type=warning}
+이제 `isort`를 따로 사용하지 않습니다.
+[`ruff`](https://docs.astral.sh/ruff/)만 사용해도 동일한 작동을 보장합니다.
+::
+
 ```python
 def test() -> None:
     a = True
