@@ -1,1 +1,1 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fairflow1"}},prerenderedAt:1694962612990}
+export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fairflow1"}},prerenderedAt:1695571818592}
