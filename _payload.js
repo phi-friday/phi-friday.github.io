@@ -1,1 +1,0 @@
-export default {data:{"last-article-only-path":{_path:"\u002Fpython\u002Fuse_rye"}},prerenderedAt:1709367414489}
