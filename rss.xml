@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 29 Oct 2023 10:13:05 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 Mar 2024 08:16:56 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[poetry 대신 rye를 사용하자]]></title>
+            <description><![CDATA[생산성 향상을 위해]]></description>
+            <link>https://phi-friday.github.io/@post/python/use_rye/</link>
+            <guid isPermaLink="false">/@post/python/use_rye/</guid>
+            <pubDate>Sat, 02 Mar 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[[코드를 깔끔하게] ruff - 5]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
