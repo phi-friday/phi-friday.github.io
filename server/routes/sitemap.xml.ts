@@ -1,7 +1,7 @@
 import { SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap';
 import { dirname, resolve } from 'path';
 
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { serverQueryContent } from '#content/server';
@@ -31,6 +31,9 @@ function add_prefix(path: string | undefined) {
 }
 
 const get_date = (doc: ParsedContent) => {
+  if (doc.date instanceof Date) {
+    doc.date = doc.date.toISOString();
+  }
   if (!doc.date || !re_date.test(doc.date)) {
     return undefined;
   }

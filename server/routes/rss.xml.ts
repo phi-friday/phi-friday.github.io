@@ -1,4 +1,4 @@
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import RSS from 'rss';
 import { serverQueryContent } from '#content/server';
 
@@ -24,8 +24,11 @@ function add_prefix(path: string | undefined) {
     return POST_PREFIX + '/' + path.slice(1);
   }
   return POST_PREFIX + '/' + path;
-};
+}
 const get_date = (doc: ParsedContent) => {
+  if (doc.date instanceof Date) {
+    doc.date = doc.date.toISOString();
+  }
   if (!doc.date || !re_date.test(doc.date)) {
     return undefined;
   }
