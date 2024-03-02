@@ -6,7 +6,7 @@ tags:
 page: null
 description: gihub action와 거의 비슷하다
 date: '2023-04-21T23:33:09.854+09:00'
-publish: true
+publish: false
 ---
 
 ## `gitea`란

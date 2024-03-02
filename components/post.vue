@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import type { Article, ArticleMeta } from '~~/utils/article';
-import { TocLink, MarkdownNode } from '@nuxt/content/dist/runtime/types';
+import type { TocLink, MarkdownNode } from '@nuxt/content/dist/runtime/types';
 const props = defineProps<{
   article?: Article | null;
   prev?: ArticleMeta | null;

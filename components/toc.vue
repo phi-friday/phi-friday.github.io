@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { TocLink } from '@nuxt/content/dist/runtime/types';
+import type { TocLink } from '@nuxt/content/dist/runtime/types';
 const props = defineProps<{ links: TocLink[]; active_toc_id?: string[] }>();
 
 const current_toc_id = ref<Set<string>>(new Set());
