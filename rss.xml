@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 02 Mar 2024 09:03:11 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Jul 2024 08:34:06 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[pandas를 대체하는 polars의 첫 major 업데이트]]></title>
+            <description><![CDATA[api 변경점이 많아서 고칠게 많지만 그래도 좋다]]></description>
+            <link>https://phi-friday.github.io/@post/python/polars_v1/</link>
+            <guid isPermaLink="false">/@post/python/polars_v1/</guid>
+            <pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[poetry 대신 rye를 사용하자]]></title>
             <description><![CDATA[생산성 향상을 위해]]></description>
