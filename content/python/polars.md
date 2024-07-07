@@ -4,6 +4,7 @@ tags:
   - python
   - rust
   - js
+  - polars
   - dateframe
 description: 'rust로 python의 한계를 넘어서자'
 date: 2023-04-17T20:57:17.459+09:00 

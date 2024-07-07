@@ -2,7 +2,7 @@
 title: 'pandas를 대체하는 polars의 첫 major 업데이트'
 tags:
   - python
-  - rust
+  - polars
   - dateframe
 description: 'api 변경점이 많아서 고칠게 많지만 그래도 좋다'
 date: 2024-07-05T16:59:05.827+09:00
