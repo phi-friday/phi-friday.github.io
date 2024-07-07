@@ -1,1 +1,0 @@
-import{_ as s,o,c as t,J as c}from"./entry.CxfL3lSb.js";const r={},n={class:"prose-em"};function a(e,d){return o(),t("em",n,[c(e.$slots,"default",{},void 0,!0)])}const f=s(r,[["render",a],["__scopeId","data-v-bddc49f6"]]);export{f as default};

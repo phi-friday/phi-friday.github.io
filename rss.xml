@@ -4,7 +4,7 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 05 Jul 2024 08:34:06 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 Jul 2024 10:12:12 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[pandas를 대체하는 polars의 첫 major 업데이트]]></title>

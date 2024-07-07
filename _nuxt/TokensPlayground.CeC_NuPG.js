@@ -1,1 +1,0 @@
-import{a}from"./runtime.CB3GfADb.js";import{g as n,o as t,c as o,a as s,t as r,q as c}from"./entry.CxfL3lSb.js";const _=n({__name:"TokensPlayground",setup(l){const{theme:e}=a();return(u,i)=>(t(),o("div",null,[s("pre",null,r(JSON.stringify(c(e),null,2)),1)]))}});export{_ as default};
