@@ -1,1 +1,0 @@
-import{_ as c,o as e,c as o}from"./entry.DNsKrQxi.js";const r={},s={class:"prose-hr"};function t(_,a){return e(),o("hr",s)}const d=c(r,[["render",t],["__scopeId","data-v-2030c92c"]]);export{d as default};

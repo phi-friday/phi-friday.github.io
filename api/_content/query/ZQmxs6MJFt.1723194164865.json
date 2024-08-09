@@ -1,0 +1,1 @@
+[{"_path":"/python/airflow2","title":"airflow에서 간단하게 Task를 스킵하는 방법","description":"TaskFlow API를 사용한다면, `skip_if`와 `run_if`를 사용하자"},{"_path":"/python/use_rye","title":"poetry 대신 rye를 사용하자","description":"생산성 향상을 위해"}]

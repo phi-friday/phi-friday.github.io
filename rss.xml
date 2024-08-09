@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 07 Jul 2024 10:12:12 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 09 Aug 2024 09:03:11 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[airflow에서 간단하게 Task를 스킵하는 방법]]></title>
+            <description><![CDATA[TaskFlow API를 사용한다면, `skip_if`와 `run_if`를 사용하자]]></description>
+            <link>https://phi-friday.github.io/@post/python/airflow2/</link>
+            <guid isPermaLink="false">/@post/python/airflow2/</guid>
+            <pubDate>Fri, 09 Aug 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[pandas를 대체하는 polars의 첫 major 업데이트]]></title>
             <description><![CDATA[api 변경점이 많아서 고칠게 많지만 그래도 좋다]]></description>
