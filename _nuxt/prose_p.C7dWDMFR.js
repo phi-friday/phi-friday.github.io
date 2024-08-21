@@ -1,0 +1,1 @@
+import{_ as t,o as c,c as n,J as o}from"./entry.YPFaddfY.js";const s={},_={class:"leading-7"};function a(e,r){return c(),n("p",_,[o(e.$slots,"default",{},void 0,!0)])}const l=t(s,[["render",a],["__scopeId","data-v-d2c8b0ec"]]);export{l as default};

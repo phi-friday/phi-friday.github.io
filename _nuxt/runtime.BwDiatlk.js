@@ -1,0 +1,1 @@
+import{ao as t}from"./entry.YPFaddfY.js";function i(e,n,u){return t("pinceauRuntime")(e,n,u)}function c(){return t("pinceauTheme")}function r(e,n=!1){return{type:[String,Object],default:e,required:n}}export{c as a,r as c,i as u};
