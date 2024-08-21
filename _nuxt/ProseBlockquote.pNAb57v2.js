@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as s,J as c}from"./entry.fx_LfC0g.js";const r={},n={class:"prose-blockquote"};function a(e,_){return t(),s("blockquote",n,[c(e.$slots,"default",{},void 0,!0)])}const l=o(r,[["render",a],["__scopeId","data-v-3d119438"]]);export{l as default};
