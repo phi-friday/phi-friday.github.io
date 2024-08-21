@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 21 Aug 2024 14:34:27 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Aug 2024 14:41:27 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[전세보증금을 반환받기 위한 1년간의 여정 - 0]]></title>
+            <description><![CDATA[좋게 좋게 가고싶었는데]]></description>
+            <link>https://phi-friday.github.io/@post/other/0/</link>
+            <guid isPermaLink="false">/@post/other/0/</guid>
+            <pubDate>Wed, 21 Aug 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[airflow에서 간단하게 Task를 스킵하는 방법]]></title>
             <description><![CDATA[TaskFlow API를 사용한다면, `skip_if`와 `run_if`를 사용하자]]></description>
