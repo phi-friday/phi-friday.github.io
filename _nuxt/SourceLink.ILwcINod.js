@@ -1,0 +1,1 @@
+import o from"./prose_p.C50RAM4p.js";import{g as r,o as t,V as n}from"./entry.Cjh_-4e3.js";const m=r({__name:"SourceLink",props:{source:{type:String,required:!0}},setup(_){return(c,p)=>{const e=o;return t(),n(e)}}});export{m as default};

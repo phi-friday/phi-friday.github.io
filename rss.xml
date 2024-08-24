@@ -4,7 +4,7 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 21 Aug 2024 15:37:12 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 24 Aug 2024 15:35:03 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[airflow에서 간단하게 Task를 스킵하는 방법]]></title>
