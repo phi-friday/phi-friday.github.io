@@ -111,13 +111,17 @@ export default defineEventHandler(async (event) => {
   }
 
   sitemap_index_stream.end();
-  await Promise.all(
-    [...xml_files].map((xml_file) => {
-      return fs.promises.rename(origin_xml_path(xml_file), new_xml_path(xml_file));
-    })
+  sitemap_index_stream.addListener('resume', () =>
+    Promise.all([...xml_files].map(rename_xml_path))
   );
   return streamToPromise(sitemap_index_stream);
 });
+
+const rename_xml_path = async (xml_file: string): Promise<void> => {
+  const origin_path = origin_xml_path(xml_file);
+  const new_path = new_xml_path(xml_file);
+  return await fs.promises.rename(origin_path, new_path);
+};
 
 const origin_xml_path = (xml_file: string) => {
   const filename = xml_file.split('/').at(-1);
