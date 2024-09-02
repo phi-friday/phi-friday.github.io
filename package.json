@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -7,22 +8,21 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@heroicons/vue": "^2.1.1",
+    "@heroicons/vue": "^2.1.5",
     "@nuxt-themes/elements": "^0.9.5",
     "@nuxt-themes/tokens": "^2.1.1",
     "@nuxt-themes/typography": "^1.0.1",
-    "@nuxt/content": "^2.12.0",
-    "@nuxt/image-edge": "1.3.0-28479476.921d3b7",
-    "@nuxtjs/color-mode": "^3.2.2",
-    "@nuxtjs/robots": "^3.0.0",
-    "@nuxtjs/tailwindcss": "^6.11.4",
-    "@tailwindcss/typography": "^0.5.10",
-    "@types/rss": "^0.0.30",
+    "@nuxt/content": "^2.13.2",
+    "@nuxt/image": "^1.8.0",
+    "@nuxtjs/color-mode": "^3.4.4",
+    "@nuxtjs/robots": "^4.1.6",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/rss": "^0.0.32",
     "@vueuse/nuxt": "^10.9.0",
-    "nuxt": "^3.10.3",
-    "nuxt-gtag": "^2.0.4",
+    "nuxt": "^3.13.0",
+    "nuxt-gtag": "^3.0.1",
     "rss": "^1.2.2",
-    "sitemap": "^7.1.1"
-  },
-  "dependencies": {}
+    "sitemap": "^8.0.0"
+  }
 }

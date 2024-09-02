@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/robots',
     '@nuxtjs/color-mode',
-    '@nuxt/image-edge',
+    '@nuxt/image',
     '@nuxt-themes/tokens',
     'nuxt-gtag',
   ],
@@ -57,7 +57,6 @@ export default defineNuxtConfig({
 
   gtag: {
     id: process.env.GTAG_ID ?? '',
-    initialConsent: true,
     loadingStrategy: 'async',
     config: {
       page_title: process.env.NUXT_HOST_TITLE ?? '',
@@ -119,15 +118,17 @@ export default defineNuxtConfig({
   },
 
   robots: {
-    configPath: '~/robots.config.js',
+    enabled: true,
+    disallow: ['/@post'],
+    allow: ['/@post/*', '/@tag', '/@tag/*', '/@page', '/@page/*'],
+    sitemap: [`${process.env.NUXT_HOSTNAME}/sitemap.xml`],
+    credits: false,
   },
-
   colorMode: {
     preference: 'system',
     fallback: 'light',
     storageKey: 'nuxt-color-schema',
     classSuffix: '',
   },
-
   compatibilityDate: '2024-09-02',
 });
