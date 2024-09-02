@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 02 Sep 2024 06:29:30 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Sep 2024 07:02:44 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[poetry, rye 대신 uv를 사용하자]]></title>
+            <description><![CDATA[rye 개발진이 넘어가래요]]></description>
+            <link>https://phi-friday.github.io/@post/python/use_uv/</link>
+            <guid isPermaLink="false">/@post/python/use_uv/</guid>
+            <pubDate>Mon, 02 Sep 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Github Action과 Trusted Publisher를 사용한 파이썬 패키지 배포 자동화]]></title>
             <description><![CDATA[배포 자동화를 조금 더 안전하게]]></description>
