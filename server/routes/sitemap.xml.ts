@@ -1,7 +1,7 @@
 import { SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap';
 import { dirname, resolve } from 'path';
 
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { serverQueryContent } from '#content/server';

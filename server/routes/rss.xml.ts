@@ -1,4 +1,4 @@
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content';
 import RSS from 'rss';
 import { serverQueryContent } from '#content/server';
 

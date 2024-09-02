@@ -1,4 +1,4 @@
-import { QueryBuilderParams } from '@nuxt/content/dist/runtime/types';
+import type { QueryBuilderParams } from '@nuxt/content';
 
 const get_default_query = () => {
   const default_query: QueryBuilderParams = {

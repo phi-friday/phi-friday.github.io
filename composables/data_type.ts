@@ -1,4 +1,4 @@
-import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import type { ParsedContent } from '@nuxt/content'
 
 function remove_pick_from_ref<T = ParsedContent>(
   value: Ref<Pick<T, any>[] | null> | Ref<Pick<T, any>[]>
