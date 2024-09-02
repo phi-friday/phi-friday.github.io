@@ -1,0 +1,1 @@
+import{_ as s,o,c as t,J as r}from"./C2y3-RzO.js";const c={},n={class:"prose-em"};function a(e,_){return o(),t("em",n,[r(e.$slots,"default",{},void 0,!0)])}const f=s(c,[["render",a],["__scopeId","data-v-f897e054"]]);export{f as default};
