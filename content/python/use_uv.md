@@ -2,6 +2,9 @@
 title: poetry, rye 대신 uv를 사용하자
 tags:
   - python
+  - poetry
+  - rye
+  - uv
 description: rye 개발진이 넘어가래요
 date: 2024-09-02T15:32:59.499+09:00
 publish: true

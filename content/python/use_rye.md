@@ -2,6 +2,9 @@
 title: 'poetry 대신 rye를 사용하자'
 tags:
   - python
+  - poetry
+  - rye
+  - uv
 description: 생산성 향상을 위해
 date: 2024-03-02T16:07:14.156+09:00
 publish: true
