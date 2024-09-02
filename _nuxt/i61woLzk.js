@@ -1,0 +1,1 @@
+import{at as p,au as o,Y as i,T as t}from"./DFAQJBFD.js";const c=p({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),e={nuxt:{}},a=o(c,e);function s(){const n=i();return n._appConfig||(n._appConfig=t(a)),n._appConfig}export{s as u};

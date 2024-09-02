@@ -1,0 +1,1 @@
+import{_ as o,o as t,c as s,J as c}from"./DFAQJBFD.js";const r={},a={class:"prose-blockquote"};function n(e,_){return t(),s("blockquote",a,[c(e.$slots,"default",{},void 0,!0)])}const d=o(r,[["render",n],["__scopeId","data-v-69991a06"]]);export{d as default};

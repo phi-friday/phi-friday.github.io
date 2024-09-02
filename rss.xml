@@ -4,8 +4,15 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 24 Aug 2024 15:35:03 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Sep 2024 06:26:30 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Github Action과 Trusted Publisher를 사용한 파이썬 패키지 배포 자동화]]></title>
+            <description><![CDATA[배포 자동화를 조금 더 안전하게]]></description>
+            <link>https://phi-friday.github.io/@post/other/pypi-trusted-publisher/</link>
+            <guid isPermaLink="false">/@post/other/pypi-trusted-publisher/</guid>
+            <pubDate>Mon, 02 Sep 2024 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[airflow에서 간단하게 Task를 스킵하는 방법]]></title>
             <description><![CDATA[TaskFlow API를 사용한다면, `skip_if`와 `run_if`를 사용하자]]></description>
