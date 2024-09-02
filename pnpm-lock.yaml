@@ -56,6 +56,9 @@ importers:
       sitemap:
         specifier: ^8.0.0
         version: 8.0.0
+      vite:
+        specifier: ^5.4.2
+        version: 5.4.2(@types/node@22.5.2)(terser@5.31.6)
 
 packages:
 
