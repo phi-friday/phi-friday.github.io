@@ -14,8 +14,8 @@ publish: true
 `pyproject.toml`에 적합한 메타 데이터만 잘 입력되어 있다면,
 다음 명령어로 빌드와 배포를 할 수 있다.
 ```bash
-$ python -m build
-$ python -m twine upload dist/* --non-interactive --username __token__ --password <pypi 토큰>
+python -m build
+python -m twine upload dist/* --non-interactive --username __token__ --password <pypi 토큰>
 ```
 
 하지만 보안상 아쉬운 부분이 있는데, 바로 토큰 발행과 보관이다.
