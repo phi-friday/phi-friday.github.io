@@ -4,6 +4,7 @@ const { resolve } = createResolver(import.meta.url);
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   extends: ['@nuxt-themes/typography'],
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
@@ -13,10 +14,13 @@ export default defineNuxtConfig({
     '@nuxt-themes/tokens',
     'nuxt-gtag',
   ],
+
   build: {
     transpile: ['/image-edge/'],
   },
+
   router: { options: { strict: true } },
+
   components: [
     {
       path: resolve('components'),
@@ -50,6 +54,7 @@ export default defineNuxtConfig({
       prefix: '',
     },
   ],
+
   gtag: {
     id: process.env.GTAG_ID ?? '',
     initialConsent: true,
@@ -58,6 +63,7 @@ export default defineNuxtConfig({
       page_title: process.env.NUXT_HOST_TITLE ?? '',
     },
   },
+
   content: {
     // https://content.nuxtjs.org/api/configuration
     highlight: {
@@ -76,9 +82,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
   },
+
   runtimeConfig: {
     public: {
       name: process.env.NUXT_HOST_TITLE,
@@ -103,18 +111,23 @@ export default defineNuxtConfig({
       },
     },
   },
+
   nitro: {
     prerender: {
       routes: ['/sitemap.xml', '/rss.xml'],
     },
   },
+
   robots: {
     configPath: '~/robots.config.js',
   },
+
   colorMode: {
     preference: 'system',
     fallback: 'light',
     storageKey: 'nuxt-color-schema',
     classSuffix: '',
   },
+
+  compatibilityDate: '2024-09-02',
 });
