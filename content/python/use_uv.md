@@ -8,7 +8,7 @@ publish: true
 ---
 
 ## 그동안 `rye`를 잘 써왔는데..
-[이전 글]("python/use_rye.md")에서 `poetry` 대신 `rye`를 사용하자고 얘기했다.
+[이전 글](/@post/python/use_rye/)에서 `poetry` 대신 `rye`를 사용하자고 얘기했다.
 그때 `rye`가 내부적으로 `uv`를 사용하여 빠른 속도를 제공한다고 소개했다.
 
 그런데 `astral`이 `rye`를 관리하고 난 뒤로, `uv`가 `rye`를 잡아먹었다.
