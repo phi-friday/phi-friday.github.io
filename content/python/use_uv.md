@@ -53,7 +53,7 @@ uvx twine upload dist/* --username __token__ --password <pypi token>
 복잡해보이지만 결국 하는 일은 `python -m twine upload ...`이다.
 
 ### tool.rye.virtual
-`pyproject.toml`의 `build-system`항목을 입력하지 않으면 된다.
+`tool.uv.package` 값을 `false`로 지정하면 된다.
 
 ### requirements-dev.lock
 원래 불가능했지만, `uv export` 기능이 추가되면서 해결됐다.
