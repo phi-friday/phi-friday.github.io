@@ -1,3 +1,4 @@
+# START nuxt-robots (indexable)
 User-agent: *
 Allow: /@post/*
 Allow: /@tag
@@ -7,3 +8,4 @@ Allow: /@page/*
 Disallow: /@post
 
 Sitemap: https://phi-friday.github.io/sitemap.xml
+# END nuxt-robots

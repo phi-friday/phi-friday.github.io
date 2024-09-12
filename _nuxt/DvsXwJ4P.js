@@ -1,1 +1,0 @@
-import{au as p,av as o,Y as i,T as c}from"./C2y3-RzO.js";const e=p({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),t={nuxt:{}},a=o(e,t);function s(){const n=i();return n._appConfig||(n._appConfig=c(a)),n._appConfig}export{s as u};
