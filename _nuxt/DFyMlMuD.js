@@ -1,1 +1,0 @@
-import{_ as o,o as s,c as t,p as r}from"./CeI5KMoo.js";const n={},a={class:"prose-strong"};function c(e,_){return s(),t("strong",a,[r(e.$slots,"default",{},void 0,!0)])}const f=o(n,[["render",c],["__scopeId","data-v-d8538aba"]]);export{f as default};
