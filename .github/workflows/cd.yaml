@@ -1,15 +1,15 @@
 name: cd
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
 
 env:
   NUXT_HOST_TITLE: "phi.log"
   NUXT_HOSTNAME: "https://phi-friday.github.io"
   POST_PREFIX: /@post
   TAG_PREFIX: /@tag
-  PAGE_PREFIX: /@page
   GTAG_ID: ${{ secrets.GTAG_ID }}
-  
 
 jobs:
   cd:
@@ -32,10 +32,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile 
+        run: pnpm install --frozen-lockfile
 
       - name: Generate
         run: GITHUB_TOKEN=${{ secrets.P_GITHUB_TOKEN }} pnpm generate

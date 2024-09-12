@@ -1,0 +1,5 @@
+root = true
+
+[*.{js,ts,vue,jsx,tsx,yml,yaml,json}]
+indent_style = space
+indent_size = 2

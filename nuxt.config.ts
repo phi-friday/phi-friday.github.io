@@ -1,134 +1,102 @@
-import { createResolver } from '@nuxt/kit';
-const { resolve } = createResolver(import.meta.url);
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt-themes/typography'],
-
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/robots',
-    '@nuxtjs/color-mode',
-    '@nuxt/image',
-    '@nuxt-themes/tokens',
-    'nuxt-gtag',
-  ],
-
+  extends: "@nuxt-themes/typography",
+  devtools: {
+    enabled: false,
+  },
   build: {
-    transpile: ['/image-edge/'],
+    transpile: ["/image-edge/"],
   },
-
-  router: { options: { strict: true } },
-
-  components: [
-    {
-      path: resolve('components'),
-      global: true,
-      prefix: '',
-    },
-    {
-      path: resolve('node_modules/@nuxt-themes/elements/components/globals'),
-      global: true,
-      prefix: '',
-      ignore: ['NuxtImg.vue', 'NuxtImg'],
-    },
-    {
-      path: resolve('node_modules/@nuxt-themes/elements/components/icons'),
-      global: true,
-      prefix: '',
-    },
-    {
-      path: resolve('node_modules/@nuxt-themes/elements/components/landing'),
-      global: true,
-      prefix: '',
-    },
-    {
-      path: resolve('node_modules/@nuxt-themes/elements/components/volta'),
-      global: true,
-      prefix: '',
-    },
-    {
-      path: resolve('node_modules/@nuxt-themes/elements/components/meta'),
-      global: true,
-      prefix: '',
-    },
+  modules: [
+    "@nuxt/content",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/robots",
+    "@nuxt-themes/tokens",
+    "@nuxt/image",
+    "@nuxt/eslint",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/mdc",
   ],
-
-  gtag: {
-    id: process.env.GTAG_ID ?? '',
-    loadingStrategy: 'async',
-    config: {
-      page_title: process.env.NUXT_HOST_TITLE ?? '',
-    },
-  },
-
+  router: { options: { strict: true } },
   content: {
     // https://content.nuxtjs.org/api/configuration
     highlight: {
       theme: {
         // Default theme (same as single string)
-        default: 'github-light',
+        default: "github-light",
         // Theme used if `html.dark`
-        dark: 'github-dark',
+        dark: "github-dark",
       },
-      preload: ['diff', 'json', 'js', 'ts', 'shell', 'html', 'md', 'yaml', 'python'],
+      preload: [
+        "diff",
+        "json",
+        "js",
+        "ts",
+        "shell",
+        "html",
+        "md",
+        "yaml",
+        "python",
+      ],
     },
     markdown: {
       toc: {
         depth: 5,
         searchDepth: 5,
       },
+      mdc: true,
     },
   },
-
-  tailwindcss: {
-    cssPath: '~/assets/css/main.css',
+  routeRules: {
+    "/": { prerender: true },
+    "/rss.xml": { prerender: true },
+    "/sitemap.xml": { prerender: true },
   },
-
+  srcDir: "src/",
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        semi: true,
+        blockSpacing: true,
+        commaDangle: "always-multiline",
+        arrowParens: true,
+        braceStyle: "1tbs",
+        flat: true,
+        quotes: "double",
+        quoteProps: "as-needed",
+      },
+      typescript: true,
+    },
+  },
+  tailwindcss: {},
   runtimeConfig: {
     public: {
       name: process.env.NUXT_HOST_TITLE,
-      description: 'phi.log',
+      description: "phi.log",
       hostname: process.env.NUXT_HOSTNAME,
       post_prefix: process.env.POST_PREFIX,
       tag_prefix: process.env.TAG_PREFIX,
-      page_prefix: process.env.PAGE_PREFIX,
-      default_skip: 0,
       default_limit: 5,
       pagination_size: 5,
       comment: {
-        src: 'https://utteranc.es/client.js',
-        repo: 'phi-friday/phi-friday.github.io',
-        issue_term: 'pathname',
-        crossorigin: 'anonymous',
+        src: "https://utteranc.es/client.js",
+        repo: "phi-friday/phi-friday.github.io",
+        issue_term: "pathname",
+        crossorigin: "anonymous",
         async: true,
       },
       google: {
-        search: 'https://cse.google.com/cse.js?cx=b368175c2b370414c',
-        seo: 'lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw',
+        search: "https://cse.google.com/cse.js?cx=b368175c2b370414c",
+        seo: "lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw",
       },
     },
   },
-
-  nitro: {
-    prerender: {
-      routes: ['/sitemap.xml', '/rss.xml'],
-    },
-  },
-
   robots: {
-    enabled: true,
-    disallow: ['/@post'],
-    allow: ['/@post/*', '/@tag', '/@tag/*', '/@page', '/@page/*'],
-    sitemap: [`${process.env.NUXT_HOSTNAME}/sitemap.xml`],
-    credits: false,
+    mergeWithRobotsTxtPath: "src/assets/robots.txt",
+    header: true,
   },
-  colorMode: {
-    preference: 'system',
-    fallback: 'light',
-    storageKey: 'nuxt-color-schema',
-    classSuffix: '',
-  },
-  compatibilityDate: '2024-09-02',
+  compatibilityDate: "2024-09-10",
 });
