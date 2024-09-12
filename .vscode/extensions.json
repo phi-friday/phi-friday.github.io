@@ -1,7 +1,7 @@
 {
     "recommendations": [
-        "vue.vscode-typescript-vue-plugin",
         "heybourn.headwind",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "vue.volar"
     ]
 }
