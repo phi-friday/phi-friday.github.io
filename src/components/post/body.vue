@@ -4,8 +4,9 @@
       <PostSide class="toc" />
     </aside>
     <article class="article page">
-      <ContentRenderer class="nuxt-content" :value="current_article.article">
+      <ContentRenderer :value="current_article.article">
         <ContentRendererMarkdown
+          class="nuxt-content"
           :value="current_article.article"
           :components="components"
         />
