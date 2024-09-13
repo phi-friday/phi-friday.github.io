@@ -23,7 +23,7 @@
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/mdc": "^0.8.3",
-    "@nuxtjs/robots": "^4.1.6",
+    "@nuxtjs/robots": "^4.1.7",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.4",
     "@stylistic/eslint-plugin-ts": "^2.8.0",
