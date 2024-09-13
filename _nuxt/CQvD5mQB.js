@@ -1,0 +1,1 @@
+import{an as p,ao as o,J as i,j as c}from"./C_Gp5trQ.js";const e=p({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),t={nuxt:{}},a=o(e,t);function s(){const n=i();return n._appConfig||(n._appConfig=c(a)),n._appConfig}export{s as u};
