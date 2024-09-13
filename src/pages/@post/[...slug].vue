@@ -1,22 +1,26 @@
 <template>
   <main id="main">
-    <div class="article-main">
-      <PostHeader />
-      <hr />
-      <PostBody />
-      <PostFooter />
+    <div v-if="!error">
+      <div class="article-main">
+        <PostHeader />
+        <hr />
+        <PostBody />
+        <PostFooter />
+      </div>
+      <PostComment />
     </div>
-    <PostComment />
   </main>
 </template>
 
 <script setup lang="ts">
+import type { NuxtError } from "#app";
 import { useCurrentArticleStore } from "@/utils/store/article";
 import { useCurrentUrlStore } from "@/utils/store/url";
 
 const config = useRuntimeConfig();
 const current_article = useCurrentArticleStore();
 const current_url = useCurrentUrlStore();
+const error: Ref<NuxtError> = useError();
 
 current_url.sync_route();
 current_url.validate_url(config.public.post_prefix);
@@ -42,6 +46,12 @@ const { data } = await useAsyncData(
 
 current_article.sync_article(data.value);
 current_article.sync_surround(data.value);
+if (!data.value) {
+  throw createError({
+    statusCode: 404,
+    message: "Article not found",
+  });
+}
 
 useHead({
   title: `${config.public.name} - ${current_article.title}`,

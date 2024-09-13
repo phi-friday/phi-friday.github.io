@@ -9,10 +9,10 @@
         </NuxtLink>
 
         <nav class="site-nav">
-          <div class="grid justify-between grid-cols-2">
+          <div class="justify-between grid grid-cols-2">
             <div class="col-span-1 col-start-1">
-              <div class="grid justify-between grid-cols-1">
-                <ul class="col-span-1 col-start-1 row-auto mr-2">
+              <div class="justify-between grid grid-cols-1">
+                <ul class="mr-2 col-span-1 col-start-1 row-auto">
                   <NuxtLink
                     :to="add_trailing_slash(config.public.tag_prefix)"
                     class="no-underline"

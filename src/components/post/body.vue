@@ -5,11 +5,16 @@
     </aside>
     <article class="article page">
       <ContentRenderer :value="current_article.article">
-        <ContentRendererMarkdown
-          class="nuxt-content"
-          :value="current_article.article"
-          :components="components"
-        />
+        <template #empty>
+          <p>Article not found</p>
+        </template>
+        <template #default="{ value }">
+          <ContentRendererMarkdown
+            class="nuxt-content"
+            :value="value"
+            :components="components"
+          />
+        </template>
       </ContentRenderer>
     </article>
   </section>

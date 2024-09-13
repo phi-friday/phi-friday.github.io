@@ -9,7 +9,6 @@ const validate_date = (date: string): void => {
 };
 
 const parse_date_only = (date: string): string => {
-  validate_date(date);
   return (date = date.match(re_date)?.at(0) as string);
 };
 

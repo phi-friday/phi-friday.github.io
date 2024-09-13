@@ -33,13 +33,22 @@ export type {
   TaggedArticle,
 };
 
-function validate_article<T extends OnlyPathArticle>(article: T): T;
-function validate_article(article?: null): void;
-function validate_article<T extends OnlyPathArticle>(article?: T | null): T;
-function validate_article<T extends OnlyPathArticle>(article?: T | null): T {
+function validate_article<T extends OnlyPathArticle>(
+  article: T,
+  status_code?: number
+): T;
+function validate_article(article?: null, status_code?: number): void;
+function validate_article<T extends OnlyPathArticle>(
+  article?: T | null,
+  status_code?: number
+): T;
+function validate_article<T extends OnlyPathArticle>(
+  article?: T | null,
+  status_code: number = 500
+): T {
   if (!article) {
     throw createError({
-      statusCode: 500,
+      statusCode: Math.floor(status_code),
       statusMessage: `invaild article type: ${typeof article}`,
     });
   }

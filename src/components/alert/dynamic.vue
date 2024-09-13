@@ -10,7 +10,7 @@
       >
         <path :d="icon_paths[props.type]"></path>
       </svg>
-      <span class="font-bold text-base">{{ props.type.toUpperCase() }}</span>
+      <span class="text-base font-bold">{{ props.type.toUpperCase() }}</span>
     </p>
     <slot />
   </div>
