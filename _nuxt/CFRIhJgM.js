@@ -1,1 +1,0 @@
-import{ap as n,aq as o,H as i,k as c}from"./DCEPRsov.js";const e=n({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),t={nuxt:{}},a=o(e,t);function s(){const p=i();return p._appConfig||(p._appConfig=c(a)),p._appConfig}export{s as u};
