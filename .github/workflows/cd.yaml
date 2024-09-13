@@ -25,7 +25,6 @@ jobs:
   cd:
     runs-on: ubuntu-latest
     env:
-      pnpm-version: 9.10.0
       node-version: 22
 
     steps:
@@ -34,9 +33,6 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
-        with:
-          version: ${{ env.pnpm-version }}
-          run_install: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
