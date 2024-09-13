@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as t,p as c}from"./DCEPRsov.js";const r={},a={class:"prose-ol"};function n(e,_){return s(),t("ol",a,[c(e.$slots,"default",{},void 0,!0)])}const l=o(r,[["render",n],["__scopeId","data-v-1a9d24ce"]]);export{l as default};
