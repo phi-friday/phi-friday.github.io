@@ -15,8 +15,8 @@ jobs:
   cd:
     runs-on: ubuntu-latest
     env:
-      pnpm-version: 9
-      node-version: 20
+      pnpm-version: 9.10.0
+      node-version: 22
 
     steps:
       - name: Checkout

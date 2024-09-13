@@ -1,15 +1,16 @@
 {
-    "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
-    "files.associations": {
-        "*.css": "tailwindcss"
-    },
-    "editor.tabSize": 2,
-    "css.lint.unknownAtRules": "ignore",
-    "eslint.useFlatConfig": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "explicit"
-    },
-    "editor.formatOnSave": true,
-    "git.ignoreLimitWarning": true
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.tabSize": 2,
+  "css.lint.unknownAtRules": "ignore",
+  "eslint.useFlatConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
 }
