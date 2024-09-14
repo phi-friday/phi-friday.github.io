@@ -1,1 +1,0 @@
-import{_ as o,o as s,b as c,m as n}from"./C_Gp5trQ.js";const t={},r={class:"prose-code-inline"};function a(e,d){return s(),c("code",r,[n(e.$slots,"default",{},void 0,!0)])}const l=o(t,[["render",a],["__scopeId","data-v-83cc2503"]]);export{l as default};

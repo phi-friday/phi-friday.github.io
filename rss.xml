@@ -4,7 +4,7 @@
         <description><![CDATA[phi.log]]></description>
         <link>https://phi-friday.github.io/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 13 Sep 2024 09:21:59 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 14 Sep 2024 12:48:10 GMT</lastBuildDate>
         <atom:link href="https://phi-friday.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[poetry, rye 대신 uv를 사용하자]]></title>

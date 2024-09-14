@@ -1,1 +1,0 @@
-import{_ as o,o as s,b as t,m as r}from"./C_Gp5trQ.js";const c={},n={class:"prose-tbody"};function a(e,_){return s(),t("tbody",n,[r(e.$slots,"default")])}const l=o(c,[["render",a]]);export{l as default};
