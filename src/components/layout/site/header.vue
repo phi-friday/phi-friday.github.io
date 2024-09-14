@@ -30,20 +30,16 @@
           </div>
         </nav>
       </div>
-      <div class="flex items-center text-black">
-        <div class="gcse-searchbox-only"></div>
-      </div>
+      <ClientOnly>
+        <LazySearchGoogle />
+      </ClientOnly>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
 import { add_trailing_slash } from "@/utils/url";
-
 const config = useRuntimeConfig();
-useHead({
-  script: [{ async: true, src: config.public.google.search }],
-});
 </script>
 
 <style scoped lang="css">

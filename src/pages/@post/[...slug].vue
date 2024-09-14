@@ -1,26 +1,24 @@
 <template>
   <main id="main">
-    <div v-if="!error">
-      <div class="article-main">
-        <PostHeader />
-        <hr />
-        <PostBody />
-        <PostFooter />
-      </div>
-      <PostComment />
+    <div class="article-main">
+      <PostHeader />
+      <hr />
+      <PostBody />
+      <PostFooter />
     </div>
+    <ClientOnly>
+      <PostComment />
+    </ClientOnly>
   </main>
 </template>
 
 <script setup lang="ts">
-import type { NuxtError } from "#app";
 import { useCurrentArticleStore } from "@/utils/store/article";
 import { useCurrentUrlStore } from "@/utils/store/url";
 
 const config = useRuntimeConfig();
 const current_article = useCurrentArticleStore();
 const current_url = useCurrentUrlStore();
-const error: Ref<NuxtError> = useError();
 
 current_url.sync_route();
 current_url.validate_url(config.public.post_prefix);
