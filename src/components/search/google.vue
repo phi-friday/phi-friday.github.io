@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
 useHead({
-  script: [{ async: true, src: config.public.google.search }],
+  script: [{ defer: true, src: config.public.google.search }],
 });
 </script>
 

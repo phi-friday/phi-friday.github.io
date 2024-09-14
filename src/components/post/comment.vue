@@ -1,6 +1,18 @@
 <template>
   <div>
-    <section ref="self" class="w-full"></section>
+    <section class="w-full">
+      <ClientOnly>
+        <component
+          is="script"
+          defer
+          :src="config.public.comment.src"
+          :repo="config.public.comment.repo"
+          :issue-term="config.public.comment.issue_term"
+          :crossorigin="config.public.comment.crossorigin"
+          :theme="comment_theme"
+        />
+      </ClientOnly>
+    </section>
   </div>
 </template>
 
@@ -8,28 +20,11 @@
 import { useColorSchemaStore } from "@/utils/store/color";
 
 const config = useRuntimeConfig();
-const self = ref<HTMLElement>();
 
 const color_mode = useColorSchemaStore();
 const comment_theme = computed(() =>
   color_mode.safe_color_schema === "dark" ? "github-dark" : "github-light"
 );
-onMounted(() => {
-  const script_element = document.createElement("script");
-  const comment = config.public.comment;
-  for (const key in comment) {
-    script_element.setAttribute(
-      key.replace("_", "-"),
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      String(comment[key])
-    );
-  }
-  script_element.setAttribute("theme", comment_theme.value);
-  if (self.value) {
-    self.value.appendChild(script_element);
-  }
-});
 
 watch(
   () => color_mode.color_schema,
