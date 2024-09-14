@@ -1,24 +1,29 @@
 <template>
   <main id="main">
-    <div class="article-main">
-      <PostHeader />
-      <hr />
-      <PostBody />
-      <PostFooter />
+    <LazyCommonError v-if="error" :error="error" :path="current_url.path" />
+    <div v-else>
+      <div class="article-main">
+        <PostHeader />
+        <hr />
+        <PostBody />
+        <PostFooter />
+      </div>
+      <ClientOnly>
+        <PostComment />
+      </ClientOnly>
     </div>
-    <ClientOnly>
-      <PostComment />
-    </ClientOnly>
   </main>
 </template>
 
 <script setup lang="ts">
+import type { NuxtError } from "#app";
 import { useCurrentArticleStore } from "@/utils/store/article";
 import { useCurrentUrlStore } from "@/utils/store/url";
 
 const config = useRuntimeConfig();
 const current_article = useCurrentArticleStore();
 const current_url = useCurrentUrlStore();
+const error = ref<NuxtError | null>(null);
 
 current_url.sync_route();
 current_url.validate_url(config.public.post_prefix);
@@ -42,14 +47,15 @@ const { data } = await useAsyncData(
   }
 );
 
-current_article.sync_article(data.value);
-current_article.sync_surround(data.value);
 if (!data.value) {
-  throw createError({
+  console.error("Article not found, path: %s", current_url.path);
+  error.value = createError({
     statusCode: 404,
-    message: "Article not found",
   });
 }
+
+current_article.sync_article(data.value);
+current_article.sync_surround(data.value);
 
 useHead({
   title: `${config.public.name} - ${current_article.title}`,

@@ -1,5 +1,5 @@
 <template>
-  <section class="article-section">
+  <section class="article-section" v-if="current_article.nullable_article">
     <aside class="aside">
       <PostSide class="toc" />
     </aside>
