@@ -1,1 +1,0 @@
-import{_ as s,o,b as t,m as r}from"./lzQ-8W9p.js";const c={},n={class:"prose-p"};function a(e,_){return o(),t("p",n,[r(e.$slots,"default",{},void 0,!0)])}const f=s(c,[["render",a],["__scopeId","data-v-51e6f8d2"]]);export{f as default};

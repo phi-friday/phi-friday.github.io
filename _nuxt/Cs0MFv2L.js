@@ -1,1 +1,0 @@
-import{ao as n,ap as o,L as i,j as c}from"./lzQ-8W9p.js";const e=n({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),t={nuxt:{}},a=o(e,t);function s(){const p=i();return p._appConfig||(p._appConfig=c(a)),p._appConfig}export{s as u};
