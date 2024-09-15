@@ -9,10 +9,11 @@
         <PostFooter />
       </div>
       <ClientOnly>
-        <PostComment />
+        <PostComment v-if="comment_lock" />
       </ClientOnly>
     </div>
   </main>
+  <div ref="comment_flag"></div>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +25,18 @@ const config = useRuntimeConfig();
 const current_article = useCurrentArticleStore();
 const current_url = useCurrentUrlStore();
 const error = ref<NuxtError | null>(null);
+const comment_flag = ref<HTMLDivElement | null>(null);
+const comment_visibility = useElementVisibility(comment_flag, {
+  threshold: 0.1,
+});
+const comment_lock = ref<boolean>(false);
+watch(comment_visibility, (state) => {
+  console.info("show: %s, lock: %s", state, comment_lock.value);
+  if (comment_lock.value) {
+    return;
+  }
+  comment_lock.value = state;
+});
 
 current_url.sync_route();
 current_url.validate_url(config.public.post_prefix);
