@@ -31,7 +31,6 @@ const comment_visibility = useElementVisibility(comment_flag, {
 });
 const comment_lock = ref<boolean>(false);
 watch(comment_visibility, (state) => {
-  console.info("show: %s, lock: %s", state, comment_lock.value);
   if (comment_lock.value) {
     return;
   }
