@@ -1,1 +1,0 @@
-import{a as o,x as t,o as a,b as c,e as n,s as r,_ as l}from"./C6TWbWVM.js";const _={class:"flex items-center text-black"},i=o({__name:"google",setup(p){const s=r();return t({script:[{async:!0,src:s.public.google.search}]}),(d,e)=>(a(),c("div",_,e[0]||(e[0]=[n("div",{class:"gcse-searchbox-only"},null,-1)])))}}),f=l(i,[["__scopeId","data-v-8d0f5836"]]);export{f as default};

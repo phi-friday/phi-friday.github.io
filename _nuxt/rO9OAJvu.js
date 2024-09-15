@@ -1,0 +1,1 @@
+import{_ as r,o as s,b as t,m as o}from"./DO3Dxyu_.js";const c={},n={class:"prose-tr"};function a(e,_){return s(),t("tr",n,[o(e.$slots,"default",{},void 0,!0)])}const f=r(c,[["render",a],["__scopeId","data-v-43e90b6f"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{a as o,y as t,o as a,b as c,e as n,v as r,_ as l}from"./DO3Dxyu_.js";const _={class:"flex items-center text-black"},i=o({__name:"google",setup(p){const s=r();return t({script:[{defer:!0,src:s.public.google.search}]}),(d,e)=>(a(),c("div",_,e[0]||(e[0]=[n("div",{class:"gcse-searchbox-only"},null,-1)])))}}),u=l(i,[["__scopeId","data-v-b8a49f2e"]]);export{u as default};
