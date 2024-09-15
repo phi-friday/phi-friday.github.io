@@ -1,0 +1,1 @@
+import{p as o,o as s,f as t,K as r}from"./C0cm_az9.js";const c={},n={class:"prose-tbody"};function a(e,d){return s(),t("tbody",n,[r(e.$slots,"default")])}const f=o(c,[["render",a]]);export{f as default};

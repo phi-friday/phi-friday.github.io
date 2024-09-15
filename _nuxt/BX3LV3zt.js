@@ -1,1 +1,0 @@
-import{p as s,o as t,f as o,K as r}from"./uTLqwt7-.js";const c={},n={class:"prose-td"};function a(e,d){return t(),o("td",n,[r(e.$slots,"default",{},void 0,!0)])}const f=s(c,[["render",a],["__scopeId","data-v-0bc9f102"]]);export{f as default};
