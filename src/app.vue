@@ -8,6 +8,8 @@
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
+const font_css =
+  "https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@1,800,500,100,700,400,300,200,900&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap";
 
 useHead({
   title: config.public.name,
@@ -57,6 +59,13 @@ useHead({
       href: "/favicon-16x16.png",
     },
     { rel: "manifest", href: "/site.webmanifest" },
+    {
+      rel: "preload",
+      href: font_css,
+      as: "style",
+      onload: "this.onload=null;this.rel='stylesheet'",
+    },
   ],
+  noscript: [{ innerHTML: `<link rel="stylesheet" href="${font_css}" />` }],
 });
 </script>
