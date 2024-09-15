@@ -1,1 +1,0 @@
-import{_ as s,o as t,b as a,e as o,m as r}from"./DO3Dxyu_.js";const c={},n={class:"prose-table"};function l(e,d){return t(),a("div",n,[o("table",null,[r(e.$slots,"default",{},void 0,!0)])])}const f=s(c,[["render",l],["__scopeId","data-v-3f785250"]]);export{f as default};
