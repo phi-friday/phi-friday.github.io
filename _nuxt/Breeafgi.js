@@ -1,1 +1,0 @@
-import{u as t}from"./BJ4G-K88.js";import{a,o,f as r,g as e,af as n,h as c}from"./CLwVkRoh.js";const _={class:"page-heading"},p={class:"wrapper"},d={class:"text-5xl font-extrabold"},g=a({__name:"header",setup(l){const s=t();return(i,f)=>(o(),r("header",_,[e("div",p,[e("h1",d," All tagged posts: "+n(c(s).selected_posts[0]),1)])]))}});export{g as default};
