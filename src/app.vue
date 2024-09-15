@@ -68,4 +68,8 @@ useHead({
   ],
   noscript: [{ innerHTML: `<link rel="stylesheet" href="${font_css}" />` }],
 });
+
+onMounted(() => {
+  console.info("sha: `%s`", config.public.sha);
+});
 </script>
