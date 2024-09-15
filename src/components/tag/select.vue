@@ -23,7 +23,7 @@
   >
     <ul ref="tag_ref" class="flex flex-wrap article-tags">
       <div v-for="([tag, count], n) in current_tags.sorted_by_count" :key="n">
-        <TagOne
+        <LazyTagOne
           class="font-semibold"
           :tag="tag"
           :count="count"

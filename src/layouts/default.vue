@@ -1,9 +1,9 @@
 <template>
   <div>
-    <LayoutSiteHeader />
+    <LazyLayoutSiteHeader />
     <slot />
-    <LayoutSiteFooter />
-    <LayoutScroll />
+    <LazyLayoutSiteFooter />
+    <LazyLayoutScroll />
   </div>
 </template>
 

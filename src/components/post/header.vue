@@ -7,7 +7,7 @@
     <ul v-if="current_article.tags.length" class="flex-wrap pb-0 article-tags">
       <p class="pt-1 font-mono text-sm font-thin text-slate-400">tags:</p>
       <div v-for="(tag, n) in current_article.tags" :key="n">
-        <TagOne :tag="tag" :do_select="true" :use_link="true" />
+        <LazyTagOne :tag="tag" :do_select="true" :use_link="true" />
       </div>
     </ul>
     <p class="font-mono text-sm font-thin text-slate-400">

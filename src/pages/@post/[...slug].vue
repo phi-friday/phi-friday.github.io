@@ -3,13 +3,13 @@
     <LazyCommonError v-if="error" :error="error" :path="current_url.path" />
     <div v-else>
       <div class="article-main">
-        <PostHeader />
+        <LazyPostHeader />
         <hr />
-        <PostBody />
-        <PostFooter />
+        <LazyPostBody />
+        <LazyPostFooter />
       </div>
       <ClientOnly>
-        <PostComment v-if="comment_lock" />
+        <LazyPostComment v-if="comment_lock" />
       </ClientOnly>
     </div>
   </main>

@@ -7,7 +7,11 @@
           <p>{{ article.description }}</p>
           <ul class="flex-wrap article-tags">
             <div v-for="(tag, n) in article_tags" :key="n">
-              <TagOne :tag="tag" :add_tag="props.add_tag" :use_link="false" />
+              <LazyTagOne
+                :tag="tag"
+                :add_tag="props.add_tag"
+                :use_link="false"
+              />
             </div>
           </ul>
           <p class="font-mono text-sm font-thin text-slate-400">
