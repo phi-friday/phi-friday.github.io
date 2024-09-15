@@ -30,12 +30,7 @@ const comment_visibility = useElementVisibility(comment_flag, {
   threshold: 0.1,
 });
 const comment_lock = ref<boolean>(false);
-watch(comment_visibility, (state) => {
-  if (comment_lock.value) {
-    return;
-  }
-  comment_lock.value = state;
-});
+const route = useRoute();
 
 current_url.sync_route();
 current_url.validate_url(config.public.post_prefix);
@@ -68,6 +63,19 @@ if (!data.value) {
 
 current_article.sync_article(data.value);
 current_article.sync_surround(data.value);
+
+watch(comment_visibility, (state) => {
+  if (comment_lock.value) {
+    return;
+  }
+  comment_lock.value = state;
+});
+watch(
+  () => route.path,
+  () => {
+    comment_lock.value = false;
+  }
+);
 
 useHead({
   title: `${config.public.name} - ${current_article.title}`,
