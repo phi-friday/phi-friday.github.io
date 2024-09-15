@@ -1,1 +1,0 @@
-import{p as s,o,f as t,K as r}from"./C0cm_az9.js";const c={},n={class:"prose-li"};function a(e,d){return o(),t("li",n,[r(e.$slots,"default",{},void 0,!0)])}const l=s(c,[["render",a],["__scopeId","data-v-5392d429"]]);export{l as default};

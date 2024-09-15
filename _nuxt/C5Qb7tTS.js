@@ -1,0 +1,1 @@
+import{q as s,o as t,g as o,K as r}from"./AkLkSB23.js";const c={},n={class:"prose-th"};function a(e,_){return t(),o("th",n,[r(e.$slots,"default",{},void 0,!0)])}const f=s(c,[["render",a],["__scopeId","data-v-68f66180"]]);export{f as default};
