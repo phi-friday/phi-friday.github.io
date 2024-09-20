@@ -10,6 +10,11 @@ date: 2024-03-02T16:07:14.156+09:00
 publish: true
 ---
 
+::important
+이제 `rye` 대신 [`uv`](https://github.com/astral-sh/uv)를 사용하세요.
+자세한 내용은 [이곳](https://github.com/astral-sh/rye/discussions/1342)을 확인하세요.
+::
+
 ## `poetry`도 충분히 좋은 도구다. 하지만
 지난 3년간 poetry는 내가 수행하고자 하는 바를 대부분 충족시켰다.
 가상환경 관리를 포함한 의존성 관리 및, 파이썬 프로젝트 관리에 있어서 대부분 만족스러웠다.
