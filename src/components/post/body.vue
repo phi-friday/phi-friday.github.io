@@ -1,21 +1,21 @@
 <template>
   <section class="article-section" v-if="current_article.nullable_article">
     <aside class="aside">
-      <PostSide class="toc" />
+      <LazyPostSide class="toc" />
     </aside>
     <article class="article page">
-      <ContentRenderer :value="current_article.article">
+      <LazyContentRenderer :value="current_article.article">
         <template #empty>
           <p>Article not found</p>
         </template>
         <template #default="{ value }">
-          <ContentRendererMarkdown
+          <LazyContentRendererMarkdown
             class="nuxt-content"
             :value="value"
             :components="components"
           />
         </template>
-      </ContentRenderer>
+      </LazyContentRenderer>
     </article>
   </section>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <TagsHeader />
-    <TagsBody />
-    <TagsFooter />
+    <LazyTagsHeader />
+    <LazyTagsBody />
+    <LazyTagsFooter />
   </div>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
-  <div class="flex items-center text-black">
-    <div class="gcse-searchbox-only"></div>
-  </div>
+  <KeepAlive>
+    <div class="flex items-center text-black">
+      <div class="gcse-searchbox-only"></div>
+    </div>
+  </KeepAlive>
 </template>
 
 <script setup lang="ts">

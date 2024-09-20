@@ -1,13 +1,13 @@
 <template>
   <section class="page-section">
-    <TagSelect />
+    <LazyTagSelect />
     <ul v-if="current_tags.tagged_posts.length > 0" class="article-list">
       <li
         v-for="article in current_tags.selected_posts[1]"
         :key="article._path"
         class="article-item"
       >
-        <TagItem
+        <LazyTagItem
           :article="article"
           :post_prefix="config.public.post_prefix"
           :tag_prefix="config.public.tag_prefix"

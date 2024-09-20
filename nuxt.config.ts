@@ -79,6 +79,7 @@ export default defineNuxtConfig({
       hostname: process.env.NUXT_HOSTNAME,
       post_prefix: process.env.POST_PREFIX,
       tag_prefix: process.env.TAG_PREFIX,
+      sha: process.env.GITHUB_SHA,
       default_limit: 5,
       pagination_size: 5,
       comment: {

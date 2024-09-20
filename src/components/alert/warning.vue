@@ -1,5 +1,5 @@
 <template>
-  <AlertDynamic type="warning">
+  <LazyAlertDynamic type="warning">
     <slot />
-  </AlertDynamic>
+  </LazyAlertDynamic>
 </template>
