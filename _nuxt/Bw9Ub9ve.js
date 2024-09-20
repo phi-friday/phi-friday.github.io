@@ -1,0 +1,1 @@
+import{q as o,o as s,g as t,K as r}from"./DZQYN8J_.js";const c={},n={class:"prose-tbody"};function a(e,d){return s(),t("tbody",n,[r(e.$slots,"default")])}const l=o(c,[["render",a]]);export{l as default};
