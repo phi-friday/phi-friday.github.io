@@ -34,15 +34,18 @@ publish: true
 
 
 ## 자체 해결 가능한 문제
-### build
-기존에 `rye build`로 간단하게 해결됐던 명령어가 다소 복잡해졌다.
+### ~~build~~
+> 기존에 `rye build`로 간단하게 해결됐던 명령어가 다소 복잡해졌다.
+> ```bash
+> uvx --from build pyproject-build --installer uv
+> ```
+> 복잡해보이지만 결국 하는 일은 `python -m build ...`이다.
+> 
+::important
+`uv>=0.4.5`부터 다음과 같이 `build` 명령어를 사용할 수 있다.
 ```bash
-uvx --from build pyproject-build --installer uv
+uv build
 ```
-복잡해보이지만 결국 하는 일은 `python -m build ...`이다.
-
-::note
-곧 지원될 [예정](https://github.com/astral-sh/uv/pull/6895)이다.
 ::
 
 ### publish
