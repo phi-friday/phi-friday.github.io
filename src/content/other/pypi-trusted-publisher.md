@@ -59,3 +59,38 @@ jobs:
 빌드 결과물은 `dist/*` 하위 경로에 있어야 한다.
 
 이 설정만으로 토큰 발행부터 배포, 토큰 말소까지 자동으로 진행된다.
+
+### 3. 사용 예시
+현재 사용중인 [워크플로우 파일](https://github.com/phi-friday/airflow-serde-polars/blob/b0c4bb126c683f985160ef247eaea200cda14c97/.github/workflows/publish.yaml)을 예시로 글을 마무리 한다.
+```yaml
+name: Publish Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: "Publish library"
+    environment: publish
+    permissions: 
+      id-token: write
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          fetch-depth: 0
+
+      - name: Set up uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish package distributions to PyPI
+        id: publish-pypi
+        uses: pypa/gh-action-pypi-publish@release/v1
+```
