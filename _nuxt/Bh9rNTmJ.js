@@ -1,1 +1,0 @@
-import{m as r,o as s,e as t,J as o}from"./CzTmpAoU.js";const c={},n={class:"prose-tr"};function a(e,d){return s(),t("tr",n,[o(e.$slots,"default",{},void 0,!0)])}const _=r(c,[["render",a],["__scopeId","data-v-468dfcff"]]);export{_ as default};
