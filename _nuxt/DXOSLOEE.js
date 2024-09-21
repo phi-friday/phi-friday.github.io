@@ -1,0 +1,1 @@
+import{m as s,o,e as t,J as r}from"./Del70XzR.js";const c={},n={class:"prose-p"};function a(e,d){return o(),t("p",n,[r(e.$slots,"default",{},void 0,!0)])}const f=s(c,[["render",a],["__scopeId","data-v-35f4dde4"]]);export{f as default};
