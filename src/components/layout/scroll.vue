@@ -5,7 +5,7 @@
         ref="top_button"
         type="button"
         class="go-button bottom-20 right-5"
-        :class="{ dark: color_mode.safe_color_schema === 'dark' }"
+        :class="{ dark: is_dark }"
         @click="go_top"
       >
         <ArrowUpIcon class="font-medium text-white icon" />
@@ -14,7 +14,7 @@
         ref="bottom_button"
         type="button"
         class="go-button bottom-5 right-5"
-        :class="{ dark: color_mode.safe_color_schema === 'dark' }"
+        :class="{ dark: is_dark }"
         @click="go_bottom"
       >
         <ArrowDownIcon class="font-medium text-white icon" />
@@ -24,19 +24,19 @@
 </template>
 
 <script setup lang="ts">
+import { get_color_schema } from "@/utils/color";
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/vue/24/solid";
-
-import { useColorSchemaStore } from "@/utils/store/color";
 
 const props = defineProps<{
   display_bound?: number;
 }>();
 
-const color_mode = useColorSchemaStore();
+const color_mode = computed(get_color_schema);
 const top_button = ref<HTMLElement>();
 const bottom_button = ref<HTMLElement>();
 const { y: scroll_y } = useWindowScroll({ behavior: "auto" });
 const display_bound = computed(() => props.display_bound ?? 0);
+const is_dark = computed(() => color_mode.value === "dark");
 
 const go_top = () => {
   scroll_y.value = 0;

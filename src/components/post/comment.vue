@@ -18,22 +18,21 @@
 </template>
 
 <script setup lang="ts">
-import { useColorSchemaStore } from "@/utils/store/color";
-
+import { get_color_schema } from "@/utils/color";
 const config = useRuntimeConfig();
 
-const color_mode = useColorSchemaStore();
+const color_mode = computed(get_color_schema);
 const comment_lock = ref<boolean>(false);
 const section_ref = ref<HTMLElement | null>(null);
 const section_view = useElementVisibility(section_ref);
 const comment_theme = computed(() =>
-  color_mode.safe_color_schema === "dark" ? "github-dark" : "github-light"
+  color_mode.value === "dark" ? "github-dark" : "github-light"
 );
 const comment_once = ref<boolean>(false);
 const comment_flag = computed(() => comment_once.value && comment_lock.value);
 
 watch(
-  () => color_mode.color_schema,
+  () => color_mode,
   () => {
     const msg = {
       type: "set-theme",
