@@ -31,17 +31,14 @@ const comment_theme = computed(() =>
 const comment_once = ref<boolean>(false);
 const comment_flag = computed(() => comment_once.value && comment_lock.value);
 
-watch(
-  () => color_mode,
-  () => {
-    const msg = {
-      type: "set-theme",
-      theme: comment_theme.value,
-    };
-    const utterances = document.querySelector("iframe")?.contentWindow;
-    utterances?.postMessage(msg, "https://utteranc.es");
-  }
-);
+watch(color_mode, () => {
+  const msg = {
+    type: "set-theme",
+    theme: comment_theme.value,
+  };
+  const utterances = document.querySelector("iframe")?.contentWindow;
+  utterances?.postMessage(msg, "https://utteranc.es");
+});
 watch(section_view, () => {
   if (section_view.value) {
     comment_once.value = true;

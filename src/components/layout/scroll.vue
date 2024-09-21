@@ -56,27 +56,24 @@ const set_none = (el: Ref<HTMLElement | undefined>) => {
   }
 };
 
-watch(
-  () => scroll_y.value,
-  () => {
-    if (display_bound.value <= 0) {
-      set_block(top_button);
-      set_block(bottom_button);
-      return;
-    }
-
-    if (
-      document.body.scrollTop > display_bound.value ||
-      document.documentElement.scrollTop > display_bound.value
-    ) {
-      set_block(top_button);
-      set_block(bottom_button);
-    } else {
-      set_none(top_button);
-      set_none(bottom_button);
-    }
+watch(scroll_y, () => {
+  if (display_bound.value <= 0) {
+    set_block(top_button);
+    set_block(bottom_button);
+    return;
   }
-);
+
+  if (
+    document.body.scrollTop > display_bound.value ||
+    document.documentElement.scrollTop > display_bound.value
+  ) {
+    set_block(top_button);
+    set_block(bottom_button);
+  } else {
+    set_none(top_button);
+    set_none(bottom_button);
+  }
+});
 </script>
 
 <style scoped lang="css">
