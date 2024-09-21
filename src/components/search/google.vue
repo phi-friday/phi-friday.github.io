@@ -1,6 +1,6 @@
 <template>
   <KeepAlive>
-    <div class="flex items-center text-black">
+    <div id="google-searchbox-container" class="flex items-center text-black">
       <div class="gcse-searchbox-only"></div>
     </div>
   </KeepAlive>

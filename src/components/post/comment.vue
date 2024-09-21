@@ -29,7 +29,8 @@ const section_view = useElementVisibility(section_ref);
 const comment_theme = computed(() =>
   color_mode.safe_color_schema === "dark" ? "github-dark" : "github-light"
 );
-const comment_flag = computed(() => section_view.value && comment_lock.value);
+const comment_once = ref<boolean>(false);
+const comment_flag = computed(() => comment_once.value && comment_lock.value);
 
 watch(
   () => color_mode.color_schema,
@@ -42,6 +43,11 @@ watch(
     utterances?.postMessage(msg, "https://utteranc.es");
   }
 );
+watch(section_view, () => {
+  if (section_view.value) {
+    comment_once.value = true;
+  }
+});
 
 onMounted(() => {
   setTimeout(() => {
@@ -50,5 +56,6 @@ onMounted(() => {
 });
 onUnmounted(() => {
   comment_lock.value = false;
+  comment_once.value = false;
 });
 </script>

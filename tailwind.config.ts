@@ -14,6 +14,10 @@ export default {
         themeBackground: "var(--background)",
         themeText: "var(--text)",
       },
+      screens: {
+        minima0: "390px",
+        minima: "430px",
+      },
     },
   },
   plugins: [typographyPlugin],
