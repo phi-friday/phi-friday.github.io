@@ -2,7 +2,7 @@
   <div>
     <section class="w-full" ref="section_ref">
       <div
-        v-show="!current_article.nullable_article || has_textarea"
+        v-show="!current_article.nullable_article || !has_textarea"
         class="my-4"
       >
         <SkeletonComment />
