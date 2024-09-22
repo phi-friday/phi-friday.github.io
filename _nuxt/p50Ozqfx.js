@@ -1,0 +1,1 @@
+import{ag as p,ah as o,D as i,ai as a}from"./DrPG4TNQ.js";const c=p({prose:{copyButton:{iconCopy:"ph:copy",iconCopied:"ph:check"},headings:{icon:"ph:link"}}}),e={nuxt:{}},t=o(c,e);function s(){const n=i();return n._appConfig||(n._appConfig=a(t)),n._appConfig}export{s as u};

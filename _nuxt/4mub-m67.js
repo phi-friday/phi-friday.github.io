@@ -1,0 +1,1 @@
+import{m as a,o as s,e as t,h as o,J as r}from"./DrPG4TNQ.js";const c={},n={class:"prose-table"};function d(e,l){return s(),t("div",n,[o("table",null,[r(e.$slots,"default",{},void 0,!0)])])}const f=a(c,[["render",d],["__scopeId","data-v-af0ededa"]]);export{f as default};
