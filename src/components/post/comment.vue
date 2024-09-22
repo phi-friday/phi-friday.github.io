@@ -2,7 +2,7 @@
   <div>
     <section class="w-full" ref="section_ref">
       <div
-        v-show="!current_article.nullable_article || !has_textarea"
+        v-show="!current_article.nullable_article || !has_frame"
         class="my-4"
       >
         <SkeletonComment />
@@ -42,10 +42,7 @@ const comment_flag = computed(
   () =>
     current_article.nullable_article && comment_once.value && comment_lock.value
 );
-const has_textarea = computed(
-  () =>
-    (utterances_frame.value?.getElementsByTagName("textarea").length ?? 0) > 0
-);
+const has_frame = computed(() => utterances_frame.value !== null);
 
 const frame_observer = new MutationObserver(() => {
   refresh_utterances_frame();
