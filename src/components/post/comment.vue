@@ -1,7 +1,10 @@
 <template>
   <div>
     <section class="w-full" ref="section_ref">
-      <div v-show="show_skleton" class="my-4">
+      <div
+        v-show="!current_article.nullable_article || has_textarea"
+        class="my-4"
+      >
         <SkeletonComment />
       </div>
       <ClientOnly>
@@ -23,9 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import { get_color_schema } from "@/utils/color";
+import { useCurrentArticleStore } from "@/utils/store/article";
 const config = useRuntimeConfig();
 
+const current_article = useCurrentArticleStore();
 const color_mode = computed(get_color_schema);
 const comment_lock = ref<boolean>(false);
 const section_ref = ref<HTMLElement | null>(null);
@@ -34,15 +38,21 @@ const comment_theme = computed(() =>
   color_mode.value === "dark" ? "github-dark" : "github-light"
 );
 const comment_once = ref<boolean>(false);
-const comment_flag = computed(() => comment_once.value && comment_lock.value);
+const comment_flag = computed(
+  () =>
+    current_article.nullable_article && comment_once.value && comment_lock.value
+);
+const has_textarea = computed(
+  () =>
+    (utterances_frame.value?.getElementsByTagName("textarea").length ?? 0) > 0
+);
 
-const observer = new MutationObserver((mutations) => {
-  for (const mutation of mutations) {
-    if (mutation.type === "childList") {
-      refresh_utterances_frame();
-      return;
-    }
+const frame_observer = new MutationObserver(() => {
+  refresh_utterances_frame();
+  if (utterances_frame.value) {
+    frame_observer.disconnect();
   }
+  return;
 });
 
 const utterances_frame = ref<HTMLIFrameElement | null>(null);
@@ -52,8 +62,6 @@ const refresh_utterances_frame = () => {
     .getElementsByClassName("utterances-frame")
     .item(0);
 };
-
-const show_skleton = ref<boolean>(true);
 
 watch(color_mode, () => {
   const msg = {
@@ -70,23 +78,22 @@ watch(section_view, () => {
     comment_once.value = true;
   }
 });
-watch(utterances_frame, () => {
-  show_skleton.value = utterances_frame.value === null;
-});
-watch(show_skleton, () => {
-  if (show_skleton.value) {
-    observer.disconnect();
-  }
-});
 
 onMounted(async () => {
   await nextTick();
   const target = document.getElementById("utterance-container");
   // @ts-ignore
-  observer.observe(target, { childList: true });
-  setTimeout(() => {
-    comment_lock.value = true;
-  }, 1000);
+  frame_observer.observe(target, { childList: true });
+
+  let interval: NodeJS.Timeout;
+  const setup_interval = () => {
+    interval = setTimeout(setup_interval, 1000);
+    if (current_article.nullable_article) {
+      clearInterval(interval);
+      comment_lock.value = true;
+    }
+  };
+  setTimeout(setup_interval, 1000);
 });
 onUnmounted(() => {
   comment_lock.value = false;
