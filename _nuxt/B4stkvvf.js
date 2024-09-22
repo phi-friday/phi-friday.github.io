@@ -1,1 +1,0 @@
-import{m as o,o as s,e as t,J as r}from"./DrPG4TNQ.js";const n={},a={class:"prose-strong"};function c(e,d){return s(),t("strong",a,[r(e.$slots,"default",{},void 0,!0)])}const f=o(n,[["render",c],["__scopeId","data-v-dacaf5dd"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{P as r}from"./tX7FzPKt.js";const c=()=>r("color-mode").value,l="light",a=()=>new Set(["light","dark"]),s=e=>a().has(e),n=()=>{const e=c();return e.unknown||e.preference==="system"||!s(e.value)?l:e.value},o=e=>{const t=c();s(e)&&(t.preference=e)},h=()=>{const e=n();o(e==="light"?"dark":"light")};export{n as g,h as t};
