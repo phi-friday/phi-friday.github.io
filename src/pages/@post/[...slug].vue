@@ -65,6 +65,11 @@ useHead({
       name: "description",
       content: current_article.description,
     },
+    {
+      hid: "keywords",
+      name: "keywords",
+      content: current_article.tags.join(","),
+    },
   ],
 });
 </script>
