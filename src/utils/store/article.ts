@@ -69,6 +69,28 @@ export const useCurrentArticleStore = defineStore({
     article: (state): Article => validate_article(state.nullable_article),
     date: (state): string =>
       parse_date_only(state.nullable_article?.date || ""),
+    datetime: (state): string =>
+      parse_any_date_only(state.nullable_article?.date || ""),
+    utc_datetime: (state): string => {
+      if (!state.nullable_article?.date) {
+        return "";
+      }
+      const datetime = parse_any_date_only(state.nullable_article.date);
+      if (!datetime) {
+        return "";
+      }
+      return to_utc_date(datetime);
+    },
+    kst_datetime: (state): string => {
+      if (!state.nullable_article?.date) {
+        return "";
+      }
+      const datetime = parse_any_date_only(state.nullable_article.date);
+      if (!datetime) {
+        return "";
+      }
+      return to_kst_date(datetime);
+    },
     title: (state): string => state.nullable_article?.title || "",
     tags: (state): string[] => state.nullable_article?.tags || [],
     description: (state): string => state.nullable_article?.description || "",

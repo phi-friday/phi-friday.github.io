@@ -10,8 +10,9 @@
         <LazyTagOne :tag="tag" :do_select="true" :use_link="true" />
       </div>
     </ul>
-    <p class="font-mono text-sm font-thin text-slate-400">
-      created at: {{ current_article.date }}
+    <p class="font-mono text-sm text-slate-400">
+      <span class="font-thin">created at: </span>
+      <span class="font-normal">{{ local_date }}</span>
     </p>
   </header>
 </template>
@@ -20,6 +21,10 @@
 import { useCurrentArticleStore } from "~/utils/store/article";
 
 const current_article = useCurrentArticleStore();
+const local_date = ref("...");
+onBeforeMount(() => {
+  local_date.value = new Date(current_article.utc_datetime).toLocaleString();
+});
 </script>
 
 <style scoped lang="css">
