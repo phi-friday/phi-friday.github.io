@@ -1,14 +1,17 @@
-import type { ParsedContent } from "@nuxt/content";
-import fs from "fs";
 import { dirname, resolve } from "path";
 import { SitemapAndIndexStream, SitemapStream, streamToPromise } from "sitemap";
-import { fileURLToPath } from "url";
 
 import { serverQueryContent } from "#content/server";
+import type { ParsedContent } from "@nuxt/content";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 const BASE_URL = process.env.NUXT_HOSTNAME;
 const POST_PREFIX = process.env.POST_PREFIX as string;
-const re_date = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
+const RE_DATE = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
+const RE_DATETIME = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}/;
+const RE_DATETIME_WITH_TIMEZONE =
+  /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}/;
 
 function add_prefix(path: undefined): undefined;
 function add_prefix(path: string): string;
@@ -34,10 +37,17 @@ const get_date = (doc: ParsedContent) => {
   if (doc.date instanceof Date) {
     doc.date = doc.date.toISOString();
   }
-  if (!doc.date || !re_date.test(doc.date)) {
+  if (typeof doc.date !== "string" || !doc.date) {
     return undefined;
   }
-  return (doc.date as string).match(re_date)?.at(0) as string;
+
+  for (const re of [RE_DATETIME_WITH_TIMEZONE, RE_DATETIME, RE_DATE]) {
+    if (re.test(doc.date)) {
+      return (doc.date as string).match(re)?.at(0) as string;
+    }
+  }
+
+  return undefined;
 };
 
 const get_static_endpoints = (): string[] => {
