@@ -29,8 +29,10 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentArticleStore } from "@/utils/store/article";
 import { withBase } from "ufo";
 
+const current_article = useCurrentArticleStore();
 const expanded = ref(false);
 const expandable_style = {
   position: "fixed",
@@ -83,13 +85,15 @@ const props = defineProps({
 
 const refinedSrc = computed(() => {
   let src: string = props.src;
-  if (src.startsWith("../../public/")) {
-    src = src.replace("../../public/", "/");
-  }
   if (src.startsWith("/") && !src.startsWith("//")) {
     return withBase(src, useRuntimeConfig().app.baseURL);
   }
-  return src;
+  if (!src.startsWith(".")) {
+    return src;
+  }
+
+  const dir = get_dirname(current_article.src_path);
+  return remove_public_path(join_path(dir, src));
 });
 </script>
 

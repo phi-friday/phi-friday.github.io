@@ -92,6 +92,13 @@ export const useCurrentArticleStore = defineStore({
     active_toc_ids_array: (state): string[] => [...state.active_toc_ids],
     flatten_toc_links: (): ((links: TocLink[]) => TocLink[]) =>
       flatten_toc_links,
+    src_path: (state): string => {
+      let path = state.nullable_article?._path || "";
+      if (path.startsWith("/")) {
+        path = path.slice(1);
+      }
+      return path ? "src/content/" + path : "src/content";
+    },
   },
   actions: {
     set_article(article?: Article | null) {
