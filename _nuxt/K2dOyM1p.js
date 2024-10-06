@@ -1,1 +1,0 @@
-import{k as s,o,a as t,J as r}from"./BySKBGP4.js";const a={},c={class:"prose-li"};function n(e,_){return o(),t("li",c,[r(e.$slots,"default",{},void 0,!0)])}const l=s(a,[["render",n],["__scopeId","data-v-20b2b928"]]);export{l as default};

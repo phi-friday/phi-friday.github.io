@@ -1,1 +1,0 @@
-import{k as o,o as s,a as n,J as c}from"./BySKBGP4.js";const t={},r={class:"prose-code-inline"};function a(e,d){return s(),n("code",r,[c(e.$slots,"default",{},void 0,!0)])}const l=o(t,[["render",a],["__scopeId","data-v-c7007829"]]);export{l as default};

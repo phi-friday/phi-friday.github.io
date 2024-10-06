@@ -1,1 +1,0 @@
-import{k as a,o as s,a as t,f as o,J as r}from"./BySKBGP4.js";const c={},n={class:"prose-table"};function d(e,l){return s(),t("div",n,[o("table",null,[r(e.$slots,"default",{},void 0,!0)])])}const f=a(c,[["render",d],["__scopeId","data-v-af0ededa"]]);export{f as default};

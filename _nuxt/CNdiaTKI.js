@@ -1,0 +1,1 @@
+import{k as s,o,a as t,J as r}from"./CsUWno4I.js";const a={},c={class:"prose-ul"};function n(e,l){return o(),t("ul",c,[r(e.$slots,"default",{},void 0,!0)])}const d=s(a,[["render",n],["__scopeId","data-v-c3f135a1"]]);export{d as default};
