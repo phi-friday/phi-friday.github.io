@@ -1,0 +1,1 @@
+import{k as s,o as t,a,J as o}from"./BySKBGP4.js";const r={},c={class:"prose-thead"};function n(e,d){return t(),a("thead",c,[o(e.$slots,"default",{},void 0,!0)])}const f=s(r,[["render",n],["__scopeId","data-v-55fcfa85"]]);export{f as default};
