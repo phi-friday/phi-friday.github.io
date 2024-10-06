@@ -1,13 +1,13 @@
+import { serverQueryContent } from "#content/server";
 import type { ParsedContent } from "@nuxt/content";
 import RSS from "rss";
-import { serverQueryContent } from "#content/server";
 
 const BASE_URL = process.env.NUXT_HOSTNAME as string;
 const POST_PREFIX = process.env.POST_PREFIX as string;
 const RE_DATE = /\d{4}-[01]{1}\d{1}-[0-3]{1}\d{1}/;
 const RE_DATETIME = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}/;
 const RE_DATETIME_WITH_TIMEZONE =
-  /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}/;
+  /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}([+-]\d{2}:\d{2}|Z)/;
 
 function add_prefix(path: undefined): undefined;
 function add_prefix(path: string): string;
