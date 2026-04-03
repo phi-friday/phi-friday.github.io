@@ -9,6 +9,7 @@ interface ImportMetaEnv {
   readonly APP_AUTHOR_URL: string;
   readonly GOOGLE_SEARCH: string;
   readonly GOOGLE_SEO: string;
+  readonly GOOGLE_GTAG: string;
   readonly UTTERANCE_SRC: string;
   readonly UTTERANCE_REPO: string;
   readonly UTTERANCE_ISSUE_TERM: string;

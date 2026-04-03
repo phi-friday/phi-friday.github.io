@@ -9,7 +9,8 @@
   "description": "phi.log",
   "google": {
     "search": "https://cse.google.com/cse.js?cx=b368175c2b370414c",
-    "seo": "lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw"
+    "seo": "lW107Dj5ageygd67UUzTm-kGls5d-THy9jJQZqLoauw",
+    "gtag": "G-XJF2S7MP0D"
   },
   "utterance": {
     "src": "https://utteranc.es/client.js",

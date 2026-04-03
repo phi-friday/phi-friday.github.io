@@ -2,6 +2,8 @@
   // oxlint-disable-next-line import/no-relative-parent-imports
   import "../app.css";
 
+  import { tick } from "svelte";
+
   import { asset, resolve } from "$app/paths";
 
   import Header from "$lib/components/Header.svelte";
@@ -9,6 +11,14 @@
   import FuseSearchResults from "$lib/components/search/FuseSearchResults.svelte";
 
   let { children } = $props();
+  let LazyGtag: Promise<typeof import("$lib/components/Gtag.svelte")> | null = $state(null);
+
+  $effect(() => {
+    (async function () {
+      await tick();
+      LazyGtag = import("$lib/components/Gtag.svelte");
+    })();
+  });
 </script>
 
 <svelte:head>
@@ -32,3 +42,8 @@
 <FuseSearchResults />
 {@render children()}
 <ScrollButtons />
+{#if LazyGtag}
+  {#await LazyGtag then { default: Gtag }}
+    <Gtag />
+  {/await}
+{/if}

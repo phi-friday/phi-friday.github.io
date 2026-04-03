@@ -20,6 +20,7 @@ const config: UserConfigFnObject = defineConfig(({ command }) => {
   process.env.APP_AUTHOR_URL ||= packgeJson.author.url || "";
   process.env.GOOGLE_SEARCH = packgeJson.google?.search || "";
   process.env.GOOGLE_SEO = packgeJson.google?.seo || "";
+  process.env.GOOGLE_GTAG = packgeJson.google?.gtag || "";
   process.env.UTTERANCE_SRC = packgeJson.utterance?.src || "";
   process.env.UTTERANCE_REPO = packgeJson.utterance?.repo || "";
   process.env.UTTERANCE_ISSUE_TERM = packgeJson.utterance?.issue_term || "pathname";
@@ -36,6 +37,7 @@ const config: UserConfigFnObject = defineConfig(({ command }) => {
       "import.meta.env.APP_AUTHOR_URL": JSON.stringify(process.env.APP_AUTHOR_URL),
       "import.meta.env.GOOGLE_SEARCH": JSON.stringify(process.env.GOOGLE_SEARCH),
       "import.meta.env.GOOGLE_SEO": JSON.stringify(process.env.GOOGLE_SEO),
+      "import.meta.env.GOOGLE_GTAG": JSON.stringify(process.env.GOOGLE_GTAG),
       "import.meta.env.UTTERANCE_SRC": JSON.stringify(process.env.UTTERANCE_SRC),
       "import.meta.env.UTTERANCE_REPO": JSON.stringify(process.env.UTTERANCE_REPO),
       "import.meta.env.UTTERANCE_ISSUE_TERM": JSON.stringify(process.env.UTTERANCE_ISSUE_TERM),
