@@ -1,40 +1,142 @@
 <script lang="ts">
-  import { search_store } from "$lib/stores/search.svelte";
+  import { resolve } from "$app/paths";
 
-  // 다이얼로그가 열릴 때만 렌더링
-  const open = $derived(search_store.dialog_open);
-  const results = $derived(search_store.results);
-  const is_loading = $derived(search_store.is_loading);
-  const query = $derived(search_store.last_query);
+  import SearchIcon from "@lucide/svelte/icons/search";
+  import XIcon from "@lucide/svelte/icons/x";
+
+  import { search_store } from "$lib/stores/search.svelte";
+  import { formatDate } from "$lib/utils/date";
+  import { cn } from "$lib/utils/ui";
+
+  import TagBadge from "$lib/components/tag/TagBadge.svelte";
+  import { Button } from "$lib/components/ui/button";
+  import * as Dialog from "$lib/components/ui/dialog";
+  import { Input } from "$lib/components/ui/input";
+  import * as Item from "$lib/components/ui/item";
+  import { Spinner } from "$lib/components/ui/spinner";
+
+  // eslint-disable-next-line svelte/prefer-writable-derived
+  let dialog_search = $state(search_store.last_query);
+
+  $effect(() => {
+    dialog_search = search_store.last_query;
+  });
+
+  const handleDialogSearch = (event: SubmitEvent): void => {
+    event.preventDefault();
+    const trimmed = dialog_search.trim();
+    if (!trimmed) return;
+    search_store.startSearch(trimmed);
+  };
 </script>
 
-{#if open}
-  <!-- 기존 Google 다이얼로그와 같은 shadcn Dialog 구조 사용 -->
-  <dialog>
-    <header>
-      <span>"{query}" 검색 결과</span>
-      <button type="button" onclick={() => search_store.closeDialog()}>닫기</button>
-    </header>
-    {#if is_loading}
-      <p>검색 중...</p>
-    {:else if results.length === 0}
-      <p>결과가 없습니다.</p>
-    {:else}
-      <ul>
-        {#each results as { item } (item.slug)}
-          <li>
-            <a href="/{item.slug}" onclick={() => search_store.closeDialog()}>
-              <strong>{item.title}</strong>
-              {#if item.description}
-                <p>{item.description}</p>
-              {/if}
-              {#if item.tags.length > 0}
-                <span>{item.tags.join(", ")}</span>
-              {/if}
-            </a>
-          </li>
-        {/each}
-      </ul>
-    {/if}
-  </dialog>
-{/if}
+<Dialog.Root
+  open={search_store.dialog_open}
+  onOpenChange={v => {
+    if (!v) search_store.closeDialog();
+  }}
+>
+  <Dialog.Content
+    class="top-16 flex max-h-[calc(100dvh-5rem)] w-[calc(100%-2rem)] max-w-4xl translate-y-0 flex-col gap-0 overflow-hidden p-0 sm:top-20 sm:max-h-[calc(100dvh-6rem)] sm:max-w-5xl"
+    showCloseButton={false}
+  >
+    <div
+      class="flex flex-wrap items-center gap-3 border-b px-4 py-3 sm:grid sm:grid-cols-[auto_1fr_auto]"
+    >
+      <Dialog.Header class="sr-only">
+        <Dialog.Title>Search Results</Dialog.Title>
+        {#if search_store.last_query}
+          <Dialog.Description>"{search_store.last_query}"</Dialog.Description>
+        {/if}
+      </Dialog.Header>
+      <span class="shrink-0 text-sm font-semibold">Search</span>
+      <form
+        class="order-last flex w-full items-center gap-2 sm:order-2 sm:w-full sm:max-w-sm sm:justify-self-center"
+        onsubmit={handleDialogSearch}
+      >
+        <div class="relative min-w-0 flex-1">
+          <Input
+            type="text"
+            bind:value={dialog_search}
+            placeholder="검색어 입력..."
+            class={cn("h-8 w-full text-sm", dialog_search && "pr-8")}
+          />
+          {#if dialog_search}
+            <button
+              type="button"
+              class="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              onclick={() => (dialog_search = "")}
+              aria-label="검색어 지우기"
+            >
+              <XIcon class="size-3.5" />
+            </button>
+          {/if}
+        </div>
+        <Button type="submit" variant="outline" size="icon" class="h-8 w-8 shrink-0">
+          <SearchIcon class="size-4" />
+          <span class="sr-only">Search</span>
+        </Button>
+      </form>
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        class="order-2 ml-auto shrink-0 sm:order-3 sm:ml-0"
+        onclick={() => search_store.closeDialog()}
+      >
+        <XIcon />
+        <span class="sr-only">Close</span>
+      </Button>
+    </div>
+    <div class="relative min-h-0 flex-1 overflow-y-auto p-4">
+      {#if search_store.is_loading}
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/80 backdrop-blur-sm"
+        >
+          <Spinner class="size-8" />
+          <p class="text-sm text-muted-foreground">검색 중...</p>
+        </div>
+      {:else if search_store.results.length === 0}
+        <div class="flex h-32 items-center justify-center">
+          <p class="text-sm text-muted-foreground">
+            {search_store.last_query
+              ? `"${search_store.last_query}"에 대한 결과가 없습니다.`
+              : "검색어를 입력하세요."}
+          </p>
+        </div>
+      {:else}
+        <ul class="space-y-2">
+          {#each search_store.results as { item } (item.slug)}
+            {@const { display, datetime } = formatDate(item.date)}
+            <li>
+              <Item.Root variant="outline">
+                {#snippet child({ props })}
+                  <a
+                    {...props}
+                    href={resolve("/(app)/@post/[...slug]", { slug: item.slug })}
+                    onclick={() => search_store.closeDialog()}
+                  >
+                    <Item.Content>
+                      <Item.Title>{item.title}</Item.Title>
+                      <time {datetime} class="text-xs text-muted-foreground">{display}</time>
+                      {#if item.description}
+                        <Item.Description>{item.description}</Item.Description>
+                      {/if}
+                    </Item.Content>
+                    {#if item.tags.length > 0}
+                      <Item.Footer class="justify-start">
+                        {#each item.tags as tag (tag)}
+                          <TagBadge>{tag}</TagBadge>
+                        {/each}
+                      </Item.Footer>
+                    {/if}
+                  </a>
+                {/snippet}
+              </Item.Root>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
+  </Dialog.Content>
+</Dialog.Root>
