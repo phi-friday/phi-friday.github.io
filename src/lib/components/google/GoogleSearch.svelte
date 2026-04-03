@@ -31,7 +31,6 @@
     }
 
     search_store.startSearch(trimmed);
-    google_ref?.getGoogleElement()?.execute(trimmed);
   };
 
   $effect(() => {

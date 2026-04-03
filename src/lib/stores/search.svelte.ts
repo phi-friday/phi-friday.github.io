@@ -5,6 +5,7 @@ class SearchStore {
 
   openDialog(): void {
     this.dialog_open = true;
+    if (this.last_query) this.is_loading = true;
   }
 
   closeDialog(): void {
