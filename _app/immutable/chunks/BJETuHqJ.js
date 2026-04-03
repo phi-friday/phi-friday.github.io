@@ -1,0 +1,1 @@
+import{Ct as e}from"./BiIVMiSe.js";e();
