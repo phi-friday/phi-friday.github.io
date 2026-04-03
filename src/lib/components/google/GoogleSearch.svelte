@@ -3,6 +3,7 @@
 
   import SearchIcon from "@lucide/svelte/icons/search";
 
+  import { search_store } from "$lib/stores/search.svelte";
   import { cn } from "$lib/utils/ui";
 
   import Google from "$lib/components/google/Google.svelte";
@@ -11,6 +12,7 @@
 
   let search = $state("");
   let google_ref = $state<Google>();
+
   const handleKeydown = (event: KeyboardEvent): void => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -19,7 +21,17 @@
   };
   const handleClick = (event?: MouseEvent): void => {
     event?.preventDefault();
-    google_ref?.getGoogleElement()?.execute(search);
+    const trimmed = search.trim();
+    if (!trimmed) return;
+
+    // 동일 키워드 재검색: 새 요청 없이 dialog만 열기
+    if (trimmed === search_store.last_query) {
+      search_store.openDialog();
+      return;
+    }
+
+    search_store.startSearch(trimmed);
+    google_ref?.getGoogleElement()?.execute(trimmed);
   };
 
   $effect(() => {

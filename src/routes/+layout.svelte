@@ -2,12 +2,28 @@
   // oxlint-disable-next-line import/no-relative-parent-imports
   import "../app.css";
 
+  import { tick } from "svelte";
+
   import { asset, resolve } from "$app/paths";
 
   import Header from "$lib/components/Header.svelte";
   import ScrollButtons from "$lib/components/ScrollButtons.svelte";
 
   let { children } = $props();
+
+  let LazyGoogleSearchResults: Promise<
+    typeof import("$lib/components/google/GoogleSearchResults.svelte")
+  > | null = $state(null);
+
+  $effect(() => {
+    (async function () {
+      await tick();
+      requestAnimationFrame(() => {
+        // oxlint-disable-next-line unicorn/prefer-top-level-await
+        LazyGoogleSearchResults = import("$lib/components/google/GoogleSearchResults.svelte");
+      });
+    })();
+  });
 </script>
 
 <svelte:head>
@@ -28,5 +44,10 @@
 </svelte:head>
 
 <Header />
+{#if LazyGoogleSearchResults}
+  {#await LazyGoogleSearchResults then { default: GoogleSearchResults }}
+    <GoogleSearchResults />
+  {/await}
+{/if}
 {@render children()}
 <ScrollButtons />
