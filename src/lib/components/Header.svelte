@@ -9,25 +9,13 @@
   import { toc_store } from "$lib/stores/toc.svelte";
 
   import ColorMode from "$lib/components/ColorMode.svelte";
+  import GoogleSearch from "$lib/components/google/GoogleSearch.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Separator } from "$lib/components/ui/separator";
-
-  let LazyGoogleSearch: Promise<
-    typeof import("$lib/components/google/GoogleSearch.svelte")
-  > | null = $state(null);
 
   // 헤더 높이를 CSS 변수로 노출 — .anchor의 scroll-margin-top 계산에 사용
   $effect(() => {
     document.documentElement.style.setProperty("--header-height", `${toc_store.header_height}px`);
-  });
-  $effect(() => {
-    (async function () {
-      await tick();
-      requestAnimationFrame(() => {
-        // oxlint-disable-next-line unicorn/prefer-top-level-await
-        LazyGoogleSearch = import("$lib/components/google/GoogleSearch.svelte");
-      });
-    })();
   });
 </script>
 
@@ -52,11 +40,7 @@
       </nav>
 
       <div class="flex w-full items-center justify-end gap-2 sm:w-auto">
-        {#if LazyGoogleSearch}
-          {#await LazyGoogleSearch then { default: GoogleSearch }}
-            <GoogleSearch class="w-full sm:w-64" />
-          {/await}
-        {/if}
+        <GoogleSearch class="w-full sm:w-64" />
         <ColorMode />
       </div>
     </div>

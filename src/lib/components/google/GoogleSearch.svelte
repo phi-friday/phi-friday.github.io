@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tick } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
 
   import SearchIcon from "@lucide/svelte/icons/search";
@@ -12,6 +13,9 @@
 
   let search = $state("");
   let google_ref = $state<Google>();
+  let LazyGoogle: Promise<typeof import("$lib/components/google/Google.svelte")> | null =
+    $state(null);
+  let { class: _class, ...rest }: HTMLAttributes<HTMLFormElement> = $props();
 
   const handleKeydown = (event: KeyboardEvent): void => {
     if (event.key === "Enter") {
@@ -36,8 +40,12 @@
   $effect(() => {
     google_ref?.getGoogleElement()?.prefillQuery(search);
   });
-
-  let { class: _class, ...rest }: HTMLAttributes<HTMLFormElement> = $props();
+  $effect(() => {
+    (async function () {
+      await tick();
+      LazyGoogle = import("$lib/components/google/Google.svelte");
+    })();
+  });
 </script>
 
 <form class={cn("mx-auto flex w-64 items-center gap-2", _class)} {...rest}>
@@ -56,4 +64,8 @@
     <span class="sr-only">Search</span>
   </Button>
 </form>
-<Google bind:this={google_ref} id="google-searchbox-container" class="hidden" />
+{#if LazyGoogle}
+  {#await LazyGoogle then { default: Google }}
+    <Google bind:this={google_ref} id="google-searchbox-container" class="hidden" />
+  {/await}
+{/if}
