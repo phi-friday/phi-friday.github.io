@@ -1,11 +1,3 @@
-# START nuxt-robots (indexable)
+# allow crawling everything by default
 User-agent: *
-Allow: /@post/*
-Allow: /@tag
-Allow: /@tag/*
-Allow: /@page
-Allow: /@page/*
-Disallow: /@post
-
-Sitemap: https://phi-friday.github.io/sitemap.xml
-# END nuxt-robots
+Disallow:
