@@ -18,10 +18,17 @@ on:
 jobs:
   cd:
     runs-on: ubuntu-latest
+    env:
+      node-version: 24
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
