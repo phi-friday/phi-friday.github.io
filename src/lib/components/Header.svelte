@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { tick } from "svelte";
+
   import { resolve } from "$app/paths";
 
   import HomeIcon from "@lucide/svelte/icons/home";
@@ -7,13 +9,35 @@
   import { toc_store } from "$lib/stores/toc.svelte";
 
   import ColorMode from "$lib/components/ColorMode.svelte";
-  import GoogleSearch from "$lib/components/google/GoogleSearch.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Separator } from "$lib/components/ui/separator";
+
+  let LazyGoogleSearch: Promise<
+    typeof import("$lib/components/google/GoogleSearch.svelte").default | null
+  > | null = $state(null);
 
   // 헤더 높이를 CSS 변수로 노출 — .anchor의 scroll-margin-top 계산에 사용
   $effect(() => {
     document.documentElement.style.setProperty("--header-height", `${toc_store.header_height}px`);
+  });
+  $effect(() => {
+    tick()
+      .then(() => {
+        requestAnimationFrame(() => {
+          // oxlint-disable-next-line unicorn/prefer-top-level-await
+          LazyGoogleSearch = import("$lib/components/google/GoogleSearch.svelte")
+            .then(mod => mod.default)
+            .catch(() => {
+              // oxlint-disable-next-line no-console
+              console.error("Failed to load GoogleSearch component");
+              return null;
+            });
+        });
+      })
+      .catch(() => {
+        // oxlint-disable-next-line no-console
+        console.error("Failed to load GoogleSearch component");
+      });
   });
 </script>
 
@@ -38,7 +62,13 @@
       </nav>
 
       <div class="flex w-full items-center justify-end gap-2 sm:w-auto">
-        <GoogleSearch class="w-full sm:w-64" />
+        {#if LazyGoogleSearch}
+          {#await LazyGoogleSearch then GoogleSearch}
+            {#if GoogleSearch}
+              <GoogleSearch class="w-full sm:w-64" />
+            {/if}
+          {/await}
+        {/if}
         <ColorMode />
       </div>
     </div>
