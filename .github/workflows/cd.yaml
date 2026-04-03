@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - "src/**/*"
-      - "eslint.config.mjs"
-      - "nuxt.config.ts"
+      - "eslint.config.ts"
+      - "oxlint.config.ts"
+      - ".oxlintrc.json"
+      - "prettier.config.ts"
+      - "svelte.config.ts"
       - "package.json"
-      - "pnpm-lock.yaml"
-      - "tailwind.config.ts"
+      - "bun.lock"
       - "tsconfig.json"
       - ".github/workflows/cd.yaml"
 
