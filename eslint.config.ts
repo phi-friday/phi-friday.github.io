@@ -27,6 +27,7 @@ const config: Config[] = defineConfig(
     ".agents/**",
     "vite-env.d",
     "vite-env.d.ts",
+    "static/js/gtag.js",
   ]),
   includeIgnoreFile(gitignorePath),
   prettierConfig,

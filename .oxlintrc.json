@@ -7,7 +7,16 @@
   "options": {
     "typeAware": true
   },
-  "plugins": ["eslint", "unicorn", "typescript", "oxc", "import", "jsdoc", "promise", "node"],
+  "plugins": [
+    "eslint",
+    "unicorn",
+    "typescript",
+    "oxc",
+    "import",
+    "jsdoc",
+    "promise",
+    "node"
+  ],
   "jsPlugins": [
     {
       "name": "simple-import-sort",
@@ -32,7 +41,8 @@
     "src/lib/hooks/**",
     "src/lib/utils/ui.ts",
     ".agents/**",
-    "vite-env.d.ts"
+    "vite-env.d.ts",
+    "static/js/gtag.js"
   ],
   "rules": {
     "oxc/no-async-await": "off",
@@ -43,7 +53,11 @@
     "import/no-unassigned-import": [
       "error",
       {
-        "allow": ["**/*.css", "**/*.scss", "core-js/stable/**"]
+        "allow": [
+          "**/*.css",
+          "**/*.scss",
+          "core-js/stable/**"
+        ]
       }
     ],
     "import/no-named-as-default": "off",
@@ -145,17 +159,42 @@
       "error",
       {
         "groups": [
-          ["^\\u0000"],
-          ["^node:"],
-          ["^svelte$", "^svelte/"],
-          ["^\\$app"],
-          ["^@", "^"],
-          ["^\\$(?!lib|assets)"],
-          ["^\\$lib", "^\\$lib/(?!components)"],
-          ["^\\$lib/components"],
-          ["^\\$assets"],
-          ["^\\."],
-          ["^.+\\.(gif|png|svg|jpg)$"]
+          [
+            "^\\u0000"
+          ],
+          [
+            "^node:"
+          ],
+          [
+            "^svelte$",
+            "^svelte/"
+          ],
+          [
+            "^\\$app"
+          ],
+          [
+            "^@",
+            "^"
+          ],
+          [
+            "^\\$(?!lib|assets)"
+          ],
+          [
+            "^\\$lib",
+            "^\\$lib/(?!components)"
+          ],
+          [
+            "^\\$lib/components"
+          ],
+          [
+            "^\\$assets"
+          ],
+          [
+            "^\\."
+          ],
+          [
+            "^.+\\.(gif|png|svg|jpg)$"
+          ]
         ]
       }
     ],
@@ -179,7 +218,11 @@
   },
   "overrides": [
     {
-      "files": ["**/*.svelte", "**/*.svelte.ts", "**/*.svelte.js"],
+      "files": [
+        "**/*.svelte",
+        "**/*.svelte.ts",
+        "**/*.svelte.js"
+      ],
       "rules": {
         "import/unambiguous": "off",
         "require-await": "off",
@@ -203,7 +246,9 @@
       }
     },
     {
-      "files": ["src/**/*.test.ts"],
+      "files": [
+        "src/**/*.test.ts"
+      ],
       "rules": {
         "no-process-env": "off",
         "eslint/max-lines-per-function": "off",
@@ -212,7 +257,10 @@
       }
     },
     {
-      "files": [".claude/skills/**/scripts/*.ts", ".agents/skills/**/scripts/*.ts"],
+      "files": [
+        ".claude/skills/**/scripts/*.ts",
+        ".agents/skills/**/scripts/*.ts"
+      ],
       "rules": {
         "eslint/no-console": "off",
         "eslint/max-lines": "off",

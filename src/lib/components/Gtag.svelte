@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { asset } from "$app/paths";
+
   $effect.pre(() => {
     // @ts-expect-error: gtag
     window._gtag = import.meta.env.GOOGLE_GTAG;
@@ -7,22 +9,6 @@
 
 <svelte:head>
   {#if import.meta.env.GOOGLE_GTAG}
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id={import.meta.env.GOOGLE_GTAG}"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      try {
-        gtag("config", window._gtag);
-      } finally {
-        delete window._gtag;
-      }
-    </script>
+    <script async src={asset("/js/gtag.js")}></script>
   {/if}
 </svelte:head>
