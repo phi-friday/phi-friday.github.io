@@ -15,40 +15,25 @@ on:
       - "tsconfig.json"
       - ".github/workflows/cd.yaml"
 
-env:
-  NUXT_HOST_TITLE: "phi.log"
-  NUXT_HOSTNAME: "https://phi-friday.github.io"
-  POST_PREFIX: /@post
-  TAG_PREFIX: /@tag
-  GTAG_ID: ${{ secrets.GTAG_ID }}
-
 jobs:
   cd:
     runs-on: ubuntu-latest
-    env:
-      node-version: 22
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.node-version }}
-          cache: "pnpm"
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
-      - name: Generate
-        run: GITHUB_TOKEN=${{ secrets.P_GITHUB_TOKEN }} pnpm generate
+      - name: Build
+        run: bun run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build
