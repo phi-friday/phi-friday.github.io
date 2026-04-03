@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { tick } from "svelte";
-
   import { resolve } from "$app/paths";
 
   import HomeIcon from "@lucide/svelte/icons/home";

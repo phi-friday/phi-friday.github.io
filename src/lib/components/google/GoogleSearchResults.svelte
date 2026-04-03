@@ -12,6 +12,7 @@
   let results_div = $state<HTMLDivElement>();
   let cse_registered = $state(false);
   let active_gname = $state("");
+  // eslint-disable-next-line svelte/prefer-writable-derived
   let dialog_search = $state(search_store.last_query);
 
   // 외부(GoogleSearch)에서 검색이 시작되면 입력창도 동기화
