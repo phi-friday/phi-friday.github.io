@@ -1,11 +1,29 @@
 node_modules
-*.log*
-.nuxt
-.nitro
-.cache
+.node-version
+
+# Output
 .output
-.data
-.env
-dist
-.tool-versions
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+/static/sitemap-*.xml
+
+.eslintcache
+/.serena

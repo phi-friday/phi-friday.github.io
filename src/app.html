@@ -1,0 +1,43 @@
+<!doctype html>
+<html amp lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="phi.friday@gmail.com, phi" />
+    <meta name="robots" content="index,follow,noarchive" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@1,800,500,100,700,400,300,200,900&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@1,800,500,100,700,400,300,200,900&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap"
+    />
+    <script>
+      (function () {
+        try {
+          let theme = localStorage.getItem("mode-watcher-mode");
+          if (!theme || theme === "system") {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+              theme = "dark";
+            } else {
+              theme = "light";
+            }
+          }
+          const root = document.documentElement;
+          root.classList.remove("light", "dark");
+          root.classList.add(theme);
+        } catch (e) {}
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body class="bg-white dark:bg-black" data-sveltekit-preload-data="hover">
+    <div class="contents">%sveltekit.body%</div>
+  </body>
+</html>

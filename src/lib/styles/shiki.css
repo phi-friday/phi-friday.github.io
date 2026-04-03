@@ -1,0 +1,141 @@
+/* Shiki dual-theme: light/dark mode switching via CSS variables */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+/*
+ * Light mode: github-light theme uses #fff which is identical to the page background.
+ * Override with the theme's muted surface + border to visually separate code blocks.
+ * !important is needed because Shiki sets background-color via inline style CSS variables.
+ */
+.prose :where(pre.shiki) {
+  background-color: var(--muted) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.prose :where(pre.shiki) span {
+  background-color: transparent !important;
+}
+
+.dark .prose :where(pre.shiki) {
+  background-color: var(--shiki-dark-bg) !important;
+  border-color: var(--border);
+}
+
+.dark .prose :where(pre.shiki) span {
+  background-color: transparent !important;
+}
+
+/* Shiki inline code: span wrapper that replaces <code> */
+.prose :where(span.shiki) {
+  padding: 0.125rem 0.3125rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875em;
+  font-weight: 600;
+  background-color: var(--muted) !important;
+  border: 1px solid var(--border);
+}
+
+.dark .prose :where(span.shiki) {
+  background-color: var(--shiki-dark-bg) !important;
+  border-color: var(--border);
+}
+
+/* ── Code block wrapper: language badge (top-left) + copy button (top-right) ── */
+
+.code-block-wrapper {
+  position: relative;
+}
+
+/* Extra top padding makes room for the overlaid badge/button row */
+.prose :where(.code-block-wrapper pre.shiki) {
+  padding-top: 2.5rem !important;
+}
+
+.code-lang-badge {
+  position: absolute;
+  top: 0.55rem;
+  left: 1rem;
+  z-index: 1;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  color: var(--muted-foreground);
+  text-transform: lowercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.code-copy-btn:hover {
+  color: var(--foreground);
+  background-color: color-mix(in srgb, var(--border) 60%, transparent);
+  border-color: var(--border);
+}
+
+.code-copy-btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.code-copy-btn.copied {
+  color: oklch(0.6 0.2 142);
+}
+
+.dark .code-copy-btn.copied {
+  color: oklch(0.72 0.2 142);
+}
+
+/* Icon toggle: show copy icon by default, switch to check icon when copied */
+.code-copy-btn .icon-check {
+  display: none;
+}
+
+.code-copy-btn .icon-copy {
+  display: block;
+}
+
+.code-copy-btn.copied .icon-check {
+  display: block;
+}
+
+.code-copy-btn.copied .icon-copy {
+  display: none;
+}

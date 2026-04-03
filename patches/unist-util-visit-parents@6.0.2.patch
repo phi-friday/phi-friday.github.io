@@ -1,0 +1,13 @@
+diff --git a/lib/index.js b/lib/index.js
+index 713595d4bd8c45f10f87c428c84c49c312b9c9b3..3285098472a85624ddacd18d43aacc140fff7f60 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -351,7 +351,7 @@ export function visitParents(tree, test, visitor, reverse) {
+         }
+       }
+ 
+-      if ('children' in node && node.children) {
++      if (node != null && typeof node === 'object' && 'children' in node && node.children) {
+         const nodeAsParent = /** @type {UnistParent} */ (node)
+ 
+         if (nodeAsParent.children && result[0] !== SKIP) {

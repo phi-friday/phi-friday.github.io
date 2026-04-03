@@ -1,0 +1,99 @@
+/*
+ * Prose overrides — align @tailwindcss/typography with shadcn design system
+ * Reference: https://www.shadcn-svelte.com/docs/components/typography
+ */
+
+/* ── Color tokens ────────────────────────────────────────────── */
+.prose {
+  --tw-prose-links: var(--primary);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-hr: var(--border);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+  /* invert variants used by prose-invert */
+  --tw-prose-invert-links: var(--primary);
+  --tw-prose-invert-bullets: var(--muted-foreground);
+  --tw-prose-invert-counters: var(--muted-foreground);
+  --tw-prose-invert-quotes: var(--foreground);
+  --tw-prose-invert-quote-borders: var(--border);
+  --tw-prose-invert-hr: var(--border);
+  --tw-prose-invert-captions: var(--muted-foreground);
+  --tw-prose-invert-th-borders: var(--border);
+  --tw-prose-invert-td-borders: var(--border);
+}
+
+/* ── Headings ────────────────────────────────────────────────── */
+.prose h1 {
+  scroll-margin-top: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* h2: signature shadcn bottom-border treatment */
+.prose h2 {
+  scroll-margin-top: 5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+  transition: color 150ms;
+}
+
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* ── Blockquote ──────────────────────────────────────────────── */
+/* Replace default left-border with logical inline-start 2px border */
+.prose blockquote {
+  border-left: none;
+  border-inline-start: 2px solid var(--border);
+  padding-left: 0;
+  padding-inline-start: 1.5rem;
+  font-style: italic;
+}
+
+/* Remove the default curly-quote characters Typography adds */
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none;
+}
+
+/* ── Links ───────────────────────────────────────────────────── */
+.prose a {
+  text-underline-offset: 4px;
+}
+
+/* ── Inline code ─────────────────────────────────────────────── */
+/* Non-shiki inline code (<code> not inside <pre>) */
+.prose :not(pre) > code {
+  background-color: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.3125rem;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Remove the default backtick characters Typography adds */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+/* ── Tables ──────────────────────────────────────────────────── */
+/* Alternating row background — shadcn even:bg-muted pattern */
+.prose tbody tr:nth-child(even) {
+  background-color: var(--muted);
+}
+
+.prose th {
+  text-align: start;
+}

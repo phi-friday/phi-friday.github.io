@@ -1,0 +1,32 @@
+{
+  "note": {
+    "scope": "markdown",
+    "prefix": "note",
+    "body": ["> [!NOTE]", "> $1"],
+    "description": "Insert a note block",
+  },
+  "tip": {
+    "scope": "markdown",
+    "prefix": "tip",
+    "body": ["> [!TIP]", "> $1"],
+    "description": "Insert a tip block",
+  },
+  "important": {
+    "scope": "markdown",
+    "prefix": "important",
+    "body": ["> [!IMPORTANT]", "> $1"],
+    "description": "Insert an important block",
+  },
+  "warning": {
+    "scope": "markdown",
+    "prefix": "warning",
+    "body": ["> [!WARNING]", "> $1"],
+    "description": "Insert a warning block",
+  },
+  "caution": {
+    "scope": "markdown",
+    "prefix": "caution",
+    "body": ["> [!CAUTION]", "> $1"],
+    "description": "Insert a caution block",
+  },
+}
