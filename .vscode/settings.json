@@ -28,5 +28,12 @@
     "https://models.dev/model-schema.json": true,
     "https://shadcn-svelte.com/schema.json": true
   },
-  "tailwindCSS.classFunctions": ["cn", "clsx", "cva"]
+  "tailwindCSS.classFunctions": [
+    "cn",
+    "clsx",
+    "cva"
+  ],
+  "github.copilot.enable": {
+    "markdown": true
+  }
 }
