@@ -52,7 +52,9 @@
     {/if}
   </CardHeader>
 
-  <CardFooter class="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
+  <CardFooter
+    class="flex flex-col items-start gap-4 rounded-none sm:flex-row sm:items-end sm:justify-between"
+  >
     <div class="flex flex-wrap gap-2">
       {#each sorted_tags as t (t)}
         <TagBadge>{t}</TagBadge>

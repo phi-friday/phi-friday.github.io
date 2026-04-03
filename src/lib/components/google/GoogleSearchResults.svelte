@@ -1,4 +1,6 @@
 <script lang="ts">
+  import "$lib/styles/google-cse.css";
+
   import SearchIcon from "@lucide/svelte/icons/search";
   import XIcon from "@lucide/svelte/icons/x";
 
@@ -159,17 +161,3 @@
     </div>
   </Dialog.Content>
 </Dialog.Root>
-
-<style>
-  :global(.gsc-control-cse),
-  :global(.gsc-control-wrapper-cse) {
-    background: transparent !important;
-    border: 0 !important;
-    padding: 0 !important;
-  }
-
-  :global(.gsc-adBlock),
-  :global(.gcsc-find-more-on-google) {
-    display: none !important;
-  }
-</style>
