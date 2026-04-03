@@ -7,7 +7,7 @@
   import { toc_store } from "$lib/stores/toc.svelte";
 
   import ColorMode from "$lib/components/ColorMode.svelte";
-  import GoogleSearch from "$lib/components/google/GoogleSearch.svelte";
+  import FuseSearch from "$lib/components/search/FuseSearch.svelte";
   import { Button } from "$lib/components/ui/button";
   import { Separator } from "$lib/components/ui/separator";
 
@@ -38,7 +38,7 @@
       </nav>
 
       <div class="flex w-full items-center justify-end gap-2 sm:w-auto">
-        <GoogleSearch class="w-full sm:w-64" />
+        <FuseSearch class="w-full sm:w-64" />
         <ColorMode />
       </div>
     </div>
