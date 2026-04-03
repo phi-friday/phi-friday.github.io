@@ -6,7 +6,7 @@ export type TocItem = {
 
 class TocStore {
   items = $state<TocItem[]>([]);
-  active_id = $state<string>("");
+  active_id = $state("");
   header_height = $state(0);
   popup_open = $state(false);
 

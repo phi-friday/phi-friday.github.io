@@ -136,20 +136,31 @@ const config: Config = {
     /** @type {import('svelte/compiler').PreprocessorGroup} */ mdsvex({
       extensions: [".svx", ".md"],
       highlight: {
-        highlighter: (code, lang) => {
+        highlighter: (code, lang, meta) => {
           const active_lang =
             lang && highlighter.getLoadedLanguages().includes(lang) ? lang : "text";
 
           const pre_html = highlighter.codeToHtml(code, { ...SHIKI_OPTIONS, lang: active_lang });
 
-          const badge_html =
+          // Parse filename from meta, e.g. "[test_httpx.py]" → "test_httpx.py"
+          const filename_match = meta?.match(/\[([^\]]+)\]/);
+          const filename = filename_match ? filename_match[1] : null;
+
+          const lang_badge =
             active_lang === "text" ? "" : `<span class="code-lang-badge">${active_lang}</span>`;
+          const filename_badge = filename
+            ? `<span class="code-filename-badge">${filename}</span>`
+            : "";
+          const header_inner = lang_badge + filename_badge;
+          const header_html = header_inner
+            ? `<div class="code-block-header">${header_inner}</div>`
+            : "";
 
           const btn_html =
             `<button type="button" class="code-copy-btn" aria-label="Copy code">` +
             `${COPY_SVG}${CHECK_SVG}</button>`;
 
-          const wrapper = `<div class="code-block-wrapper">${badge_html}${btn_html}${pre_html}</div>`;
+          const wrapper = `<div class="code-block-wrapper">${header_html}${btn_html}${pre_html}</div>`;
 
           return `{@html \`${escapeSvelte(wrapper)}\`}`;
         },
