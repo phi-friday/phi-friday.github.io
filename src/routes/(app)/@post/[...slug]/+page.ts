@@ -10,8 +10,6 @@ const slugs = globContentSlugs();
 export const entries: EntryGenerator = () => {
   return Object.keys(slugs).map(slug => ({ slug }));
 };
-export const csr = true;
-export const ssr = true;
 
 export const load: PageLoad = async ({ params }) => {
   const slug = params.slug.replace(TRIM_SLASHES, "");

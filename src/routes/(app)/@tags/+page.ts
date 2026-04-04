@@ -2,9 +2,6 @@ import { loadContentMetadatas } from "$lib/utils/contents";
 
 import type { PageLoad } from "./$types";
 
-export const csr = true;
-export const ssr = true;
-
 export const load: PageLoad = async () => {
   const metadatas = await loadContentMetadatas();
   const counts: Record<string, number> = {};

@@ -2,8 +2,6 @@ import { createSitemap } from "$lib/utils/sitemap";
 
 import type { RequestHandler } from "./$types";
 
-export const prerender = true;
-
 export const GET: RequestHandler = async () => {
   const [sitemap, xml_files] = await createSitemap();
   // oxlint-disable-next-line no-console: FIXME
