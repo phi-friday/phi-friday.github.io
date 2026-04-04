@@ -3,8 +3,11 @@
   import "../app.css";
 
   import { tick } from "svelte";
+  import { on } from "svelte/events";
 
   import { asset, resolve } from "$app/paths";
+
+  import { search_store } from "$lib/stores/search.svelte";
 
   import Footer from "$lib/components/Footer.svelte";
   import Header from "$lib/components/Header.svelte";
@@ -19,6 +22,14 @@
       await tick();
       LazyGtag = import("$lib/components/Gtag.svelte");
     })();
+  });
+  $effect(() => {
+    return on(window, "keydown", e => {
+      if (e.key === "/") {
+        e.preventDefault();
+        search_store.openDialog();
+      }
+    });
   });
 </script>
 
