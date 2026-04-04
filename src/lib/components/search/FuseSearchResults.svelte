@@ -6,8 +6,10 @@
 
   import { search_store } from "$lib/stores/search.svelte";
   import { formatDate } from "$lib/utils/date";
+  import { buildQueryHighlightSegments, buildQuerySnippetSegments } from "$lib/utils/search";
   import { cn } from "$lib/utils/ui";
 
+  import HighlightText from "$lib/components/search/HighlightText.svelte";
   import TagBadge from "$lib/components/tag/TagBadge.svelte";
   import { Button } from "$lib/components/ui/button";
   import * as Dialog from "$lib/components/ui/dialog";
@@ -107,7 +109,9 @@
       {:else}
         <ul class="space-y-2">
           {#each search_store.results as { item } (item.slug)}
+            {@const query = search_store.last_query}
             {@const { display, datetime } = formatDate(item.date)}
+            {@const snippet_segs = buildQuerySnippetSegments(item.content, query)}
             <li>
               <Item.Root variant="outline">
                 {#snippet child({ props })}
@@ -117,10 +121,25 @@
                     onclick={() => search_store.closeDialog()}
                   >
                     <Item.Content>
-                      <Item.Title>{item.title}</Item.Title>
+                      <Item.Title>
+                        <span>
+                          <HighlightText
+                            segments={buildQueryHighlightSegments(item.title, query)}
+                          />
+                        </span>
+                      </Item.Title>
                       <time {datetime} class="text-xs text-muted-foreground">{display}</time>
                       {#if item.description}
-                        <Item.Description>{item.description}</Item.Description>
+                        <Item.Description>
+                          <HighlightText
+                            segments={buildQueryHighlightSegments(item.description, query)}
+                          />
+                        </Item.Description>
+                      {/if}
+                      {#if snippet_segs.length > 0}
+                        <p class="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                          <HighlightText segments={snippet_segs} />
+                        </p>
                       {/if}
                     </Item.Content>
                     {#if item.tags.length > 0}

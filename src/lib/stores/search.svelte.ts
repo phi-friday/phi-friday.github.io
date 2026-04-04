@@ -23,8 +23,9 @@ class SearchStore {
     this.#fuse = new Fuse(posts, {
       keys: [
         { name: "title", weight: 0.5 },
-        { name: "tags", weight: 0.3 },
-        { name: "description", weight: 0.2 },
+        { name: "tags", weight: 0.25 },
+        { name: "description", weight: 0.15 },
+        { name: "content", weight: 0.1 },
       ],
       includeScore: true,
       threshold: 0.35,
