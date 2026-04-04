@@ -8,6 +8,7 @@ class TocStore {
   items = $state<TocItem[]>([]);
   active_id = $state("");
   header_height = $state(0);
+  footer_el = $state<HTMLElement | null>(null);
   popup_open = $state(false);
 
   get min_level(): number {

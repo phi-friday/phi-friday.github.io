@@ -6,6 +6,7 @@
 
   import { asset, resolve } from "$app/paths";
 
+  import Footer from "$lib/components/Footer.svelte";
   import Header from "$lib/components/Header.svelte";
   import ScrollButtons from "$lib/components/ScrollButtons.svelte";
   import FuseSearchResults from "$lib/components/search/FuseSearchResults.svelte";
@@ -41,6 +42,7 @@
 <Header />
 <FuseSearchResults />
 {@render children()}
+<Footer />
 <ScrollButtons />
 {#if LazyGtag}
   {#await LazyGtag then { default: Gtag }}

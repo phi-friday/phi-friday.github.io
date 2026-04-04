@@ -38,20 +38,38 @@
   // separator 하단 위치와 헤더 높이 중 큰 값으로 유지
   // 헤더에 stuck 상태일 때는 헤더와 TOC 사이에 여백을 둠
   const SIDEBAR_GAP = 16; // px — 헤더와 TOC 사이 여백
+  const BOTTOM_GAP = 24; // px — footer / 뷰포트 하단과 TOC 사이 여백
+  const TOC_MAX_HEIGHT = 480; // px — 항목이 많아도 약 12~15개 분량으로 제한
   let toc_top = $state(0);
+  let toc_header_height = $state(0);
+  let toc_max_height = $state(0);
 
   function updateTocTop(): void {
     if (!_anchor_el) {
       _anchor_el = document.querySelector<HTMLElement>("[data-toc-anchor]");
     }
-    if (!_anchor_el) {
+    if (_anchor_el) {
+      const bottom = _anchor_el.getBoundingClientRect().bottom;
+      // separator가 헤더 위로 올라간 경우: header 아래 GAP 만큼 여백을 두고 고정
+      // separator가 아직 헤더 아래에 있는 경우: separator 하단에 맞춤 (여백 없음)
+      toc_top = bottom <= toc_store.header_height ? toc_store.header_height + SIDEBAR_GAP : bottom;
+    } else {
       toc_top = toc_store.header_height + SIDEBAR_GAP;
-      return;
     }
-    const bottom = _anchor_el.getBoundingClientRect().bottom;
-    // separator가 헤더 위로 올라간 경우: header 아래 GAP 만큼 여백을 두고 고정
-    // separator가 아직 헤더 아래에 있는 경우: separator 하단에 맞춤 (여백 없음)
-    toc_top = bottom <= toc_store.header_height ? toc_store.header_height + SIDEBAR_GAP : bottom;
+
+    // footer가 뷰포트에 들어올 때 TOC가 침범하지 않도록 bottom 경계 계산
+    const footer = toc_store.footer_el;
+    const viewport_bottom = window.innerHeight - BOTTOM_GAP;
+    const footer_boundary = footer
+      ? Math.min(viewport_bottom, footer.getBoundingClientRect().top - BOTTOM_GAP)
+      : viewport_bottom;
+
+    // TOC 헤더(sticky title bar) 실측 높이를 제외한 스크롤 영역 최대 높이
+    // footer/뷰포트 하단 경계와 TOC_MAX_HEIGHT 중 작은 값으로 제한
+    toc_max_height = Math.max(
+      0,
+      Math.min(footer_boundary - toc_top - toc_header_height, TOC_MAX_HEIGHT)
+    );
   }
 
   // rehype-github-heading 구조에서 heading 정보 추출
@@ -223,12 +241,15 @@
       style:top="{toc_top}px"
       class="fixed left-[calc(50%+29rem)] z-30 w-60 overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm"
     >
-      <div class="sticky top-0 z-10 border-b border-border/60 bg-card px-3 py-2.5">
+      <div
+        bind:offsetHeight={toc_header_height}
+        class="sticky top-0 z-10 border-b border-border/60 bg-card px-3 py-2.5"
+      >
         <p class="text-xs font-semibold tracking-wider text-muted-foreground uppercase select-none">
           목차
         </p>
       </div>
-      <div style="max-height: calc(100vh - {toc_top}px - 44px)" class="overflow-y-auto p-2">
+      <div style="max-height: {toc_max_height}px" class="overflow-y-auto p-2">
         <TocList />
       </div>
     </nav>
