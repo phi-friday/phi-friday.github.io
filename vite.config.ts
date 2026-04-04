@@ -2,6 +2,7 @@ import { sveltekit } from "@sveltejs/kit/vite";
 import tailwindcss from "@tailwindcss/vite";
 import type { UserConfigFnObject } from "vite";
 import { defineConfig } from "vite";
+import { imagetools } from "vite-imagetools";
 import devtoolsJson from "vite-plugin-devtools-json";
 
 import packgeJson from "./package.json";
@@ -27,7 +28,7 @@ const config: UserConfigFnObject = defineConfig(({ command }) => {
   process.env.UTTERANCE_CROSSORIGIN = packgeJson.utterance?.crossorigin || "anonymous";
 
   return {
-    plugins: [tailwindcss(), sveltekit(), devtoolsJson()],
+    plugins: [tailwindcss(), imagetools(), sveltekit(), devtoolsJson()],
     define: {
       "import.meta.env.APP_NAME": JSON.stringify(process.env.APP_NAME),
       "import.meta.env.APP_HOSTNAME": JSON.stringify(process.env.APP_HOSTNAME),

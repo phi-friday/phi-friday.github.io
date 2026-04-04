@@ -4,9 +4,31 @@
 
   import { Portal } from "bits-ui";
 
-  let { src: _src, class: _class, ...data }: HTMLImgAttributes = $props();
+  import type { Variant } from "$lib/utils/image";
+  import { getImageVariants } from "$lib/utils/image";
+  import { cn } from "$lib/utils/ui";
+
+  let { src: _src, class: _class, sizes, loading, alt, ...data }: HTMLImgAttributes = $props();
   let expanded = $state(false);
   let src = $derived(_src && _src.startsWith("/static/") ? _src.replace("/static/", "/") : _src);
+  const variants = $derived.by(() => {
+    if (!src) return null;
+    try {
+      return getImageVariants(src);
+    } catch {
+      return null;
+    }
+  });
+  const avif = $derived(variants?.filter(v => v.format === "avif"));
+  const webp = $derived(variants?.filter(v => v.format === "webp"));
+  const fallback = $derived(variants?.find(v => v.format === "png") ?? variants?.[0]);
+  const toSrcset = (items: Variant[]): string =>
+    items
+      .slice()
+      .sort((a, b) => a.width - b.width)
+      .map(v => `${v.src} ${v.width}w`)
+      .join(", ");
+
   const handleKeydown = (e: KeyboardEvent): void => {
     if (e.key === "Escape") {
       expanded = false;
@@ -19,6 +41,30 @@
   });
 </script>
 
+{#snippet picture(props: { class?: string | null; onClick?: (e: MouseEvent) => void })}
+  <picture>
+    {#if avif?.length}
+      <source type="image/avif" srcset={toSrcset(avif)} {sizes} />
+    {/if}
+    {#if webp?.length}
+      <source type="image/webp" srcset={toSrcset(webp)} {sizes} />
+    {/if}
+    {#if fallback}
+      <img
+        class={cn(_class ?? "", props.class)}
+        src={fallback.src}
+        {sizes}
+        {alt}
+        {loading}
+        width={fallback.width}
+        height={fallback.height}
+        {...data}
+        onclick={e => props.onClick?.(e)}
+      />
+    {/if}
+  </picture>
+{/snippet}
+
 <Portal>
   {#if expanded}
     <div
@@ -28,8 +74,12 @@
       tabindex="0"
       role="button"
     >
-      <img class="{_class ?? ''} max-h-full max-w-full object-contain" {src} {...data} />
+      {@render picture({
+        class: "max-h-full max-w-full object-contain",
+      })}
     </div>
   {/if}
 </Portal>
-<img class={_class} {src} {...data} onclick={() => (expanded = true)} />
+{@render picture({
+  onClick: () => (expanded = true),
+})}
