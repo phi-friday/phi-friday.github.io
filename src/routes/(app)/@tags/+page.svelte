@@ -3,6 +3,7 @@
 
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
+  import { page } from "$app/state";
 
   import SearchXIcon from "@lucide/svelte/icons/search-x";
   import { watch } from "runed";
@@ -85,6 +86,12 @@
     };
   });
 </script>
+
+<svelte:head>
+  {#if page.url.searchParams.has("select")}
+    <meta name="robots" content="noindex,follow" />
+  {/if}
+</svelte:head>
 
 <div>
   <!-- Page header -->
