@@ -9,7 +9,7 @@ on:
       - "oxlint.config.ts"
       - ".oxlintrc.json"
       - "prettier.config.ts"
-      - "svelte.config.ts"
+      - "svelte.config.js"
       - "package.json"
       - "bun.lock"
       - "tsconfig.json"
