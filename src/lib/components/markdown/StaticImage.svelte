@@ -8,8 +8,20 @@
   import { getImageVariants } from "$lib/utils/image";
   import { cn } from "$lib/utils/ui";
 
-  let { src: _src, class: _class, sizes, loading, alt, ...data }: HTMLImgAttributes = $props();
+  import { Skeleton } from "$lib/components/ui/skeleton";
+
+  let {
+    src: _src,
+    class: _class,
+    sizes,
+    loading,
+    alt,
+    onload,
+    onclick,
+    ...data
+  }: HTMLImgAttributes = $props();
   let expanded = $state(false);
+  let loaded = $state(false);
   let src = $derived(_src && _src.startsWith("/static/") ? _src.replace("/static/", "/") : _src);
   const variants = $derived.by(() => {
     if (!src) return null;
@@ -41,7 +53,11 @@
   });
 </script>
 
-{#snippet picture(props: { class?: string | null; onClick?: (e: MouseEvent) => void })}
+{#snippet picture(props: {
+  class?: string | null;
+  onClick?: (e: MouseEvent) => void;
+  onLoad?: (e: Event) => void;
+})}
   <picture>
     {#if avif?.length}
       <source type="image/avif" srcset={toSrcset(avif)} {sizes} />
@@ -60,6 +76,7 @@
         height={fallback.height}
         {...data}
         onclick={e => props.onClick?.(e)}
+        onload={e => props.onLoad?.(e)}
       />
     {/if}
   </picture>
@@ -80,6 +97,21 @@
     </div>
   {/if}
 </Portal>
-{@render picture({
-  onClick: () => (expanded = true),
-})}
+<div class="relative">
+  {#if !loaded && fallback}
+    <Skeleton class="absolute inset-0" />
+  {/if}
+  {@render picture({
+    class: cn(!loaded && "opacity-0", "transition-opacity duration-300"),
+    onClick: e => {
+      // @ts-expect-error
+      onclick?.(e);
+      expanded = true;
+    },
+    onLoad: e => {
+      // @ts-expect-error
+      onload?.(e);
+      loaded = true;
+    },
+  })}
+</div>
