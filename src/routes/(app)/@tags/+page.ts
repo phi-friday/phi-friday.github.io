@@ -2,7 +2,7 @@ import { loadContentMetadatas } from "$lib/utils/contents";
 
 import type { PageLoad } from "./$types";
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ url }) => {
   const metadatas = await loadContentMetadatas();
   const counts: Record<string, number> = {};
   for (const meta of Object.values(metadatas)) {
@@ -17,5 +17,5 @@ export const load: PageLoad = async () => {
     if (_left > _right) return 1;
     return 0;
   });
-  return { metadatas, counts, tags };
+  return { metadatas, counts, tags, selected: url.searchParams.getAll("select") };
 };

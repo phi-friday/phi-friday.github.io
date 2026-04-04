@@ -18,7 +18,7 @@
   interface Props {
     tags: string[];
     counts: Record<string, number>;
-    selected: string[];
+    selected?: string[] | null;
   }
 
   let { tags, counts, selected = $bindable([]) }: Props = $props();
@@ -55,7 +55,7 @@
       {/snippet}
     </CollapsibleTrigger>
 
-    {#if selected.length > 0}
+    {#if selected?.length}
       <Button
         variant="ghost"
         size="sm"
@@ -84,7 +84,7 @@
   <CollapsibleContent class="mt-2">
     <ToggleGroup
       type="multiple"
-      bind:value={selected}
+      bind:value={() => selected ?? [], v => (selected = v)}
       variant="outline"
       size="sm"
       spacing={1.5}
@@ -93,9 +93,12 @@
       {#each sorted_tags as tag (tag)}
         <span animate:flip={{ duration: 250 }} class="inline-flex">
           <ToggleGroupItem value={tag}>
-            {tag}{#if counts[tag] !== undefined}<span class="text-[0.75em] opacity-60">
+            <span>{tag}</span>
+            {#if counts[tag] !== undefined}
+              <span class="text-[0.75em] opacity-60">
                 ({counts[tag]})
-              </span>{/if}
+              </span>
+            {/if}
           </ToggleGroupItem>
         </span>
       {/each}

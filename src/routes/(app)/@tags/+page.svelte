@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { untrack } from "svelte";
   import { SvelteURLSearchParams } from "svelte/reactivity";
 
-  import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
-  import { page } from "$app/state";
 
   import SearchXIcon from "@lucide/svelte/icons/search-x";
-  import { Debounced, watch } from "runed";
+  import { watch } from "runed";
 
   import type { ContentMetadata } from "$lib/utils/contents";
 
@@ -25,19 +22,27 @@
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
-  let selected = $state<string[]>([]);
-  const debounced_selected = new Debounced(() => [...selected], 300);
+  let _selected: string[] | null = $state.raw(null);
+  const selected = {
+    get value(): string[] {
+      return _selected ?? data.selected;
+    },
+    set value(v: string[]) {
+      _selected = v;
+    },
+  };
+
   let metadatas: Record<string, ContentMetadata> = $derived(
     Object.fromEntries(
       Object.entries(data.metadatas).filter(([_slug, meta]) => {
-        if (selected.length === 0) return true;
-        return selected.every(tag => meta.tags?.includes(tag));
+        if (selected.value.length === 0) return true;
+        return selected.value.every(tag => meta.tags?.includes(tag));
       })
     )
   );
   const update_params = new SvelteURLSearchParams();
   watch(
-    () => debounced_selected.current,
+    () => selected.value,
     $selected => {
       update_params.delete("select");
       for (const tag of $selected) {
@@ -48,24 +53,16 @@
         keepFocus: true,
         noScroll: true,
       });
-    }
+    },
+    { lazy: true }
   );
-  $effect.pre(() => {
-    if (browser) {
-      untrack(() => {
-        selected = page.url.searchParams.getAll("select");
-      });
-    }
-  });
 
   let display_limit = $state(20);
 
-  watch(
-    () => selected.length,
-    () => {
-      display_limit = 20;
-    }
-  );
+  $effect(() => {
+    void _selected;
+    display_limit = 20;
+  });
 
   const visible_entries = $derived(
     Object.entries(metadatas)
@@ -95,14 +92,14 @@
     <h1 class="text-3xl font-bold">Tags</h1>
     <span class="text-sm text-muted-foreground">
       {Object.keys(metadatas).length} posts
-      {#if selected.length > 0}
-        · {selected.length} tags selected
+      {#if selected.value.length > 0}
+        · {selected.value.length} tags selected
       {/if}
     </span>
   </div>
 
   <!-- Filter panel -->
-  <TagFilterPanel tags={data.tags} counts={data.counts} bind:selected />
+  <TagFilterPanel tags={data.tags} counts={data.counts} bind:selected={selected.value} />
 
   <!-- Posts list -->
   {#if Object.keys(metadatas).length === 0}
