@@ -25,11 +25,7 @@
   let src = $derived(_src && _src.startsWith("/static/") ? _src.replace("/static/", "/") : _src);
   const variants = $derived.by(() => {
     if (!src) return null;
-    try {
-      return getImageVariants(src);
-    } catch {
-      return null;
-    }
+    return getImageVariants(src);
   });
   const avif = $derived(variants?.filter(v => v.format === "avif"));
   const webp = $derived(variants?.filter(v => v.format === "webp"));
@@ -82,36 +78,40 @@
   </picture>
 {/snippet}
 
-<Portal>
-  {#if expanded}
-    <div
-      class="fixed top-0 left-0 z-9999 flex h-full w-full items-center justify-center overflow-hidden bg-black/80 select-none"
-      onclick={() => (expanded = false)}
-      onkeydown={handleKeydown}
-      tabindex="0"
-      role="button"
-    >
-      {@render picture({
-        class: "max-h-full max-w-full object-contain",
-      })}
-    </div>
-  {/if}
-</Portal>
-<div class="relative">
-  {#if !loaded && fallback}
-    <Skeleton class="absolute inset-0" />
-  {/if}
-  {@render picture({
-    class: cn(!loaded && "opacity-0", "transition-opacity duration-300"),
-    onClick: e => {
-      // @ts-expect-error
-      onclick?.(e);
-      expanded = true;
-    },
-    onLoad: e => {
-      // @ts-expect-error
-      onload?.(e);
-      loaded = true;
-    },
-  })}
-</div>
+{#if src}
+  <Portal>
+    {#if expanded}
+      <div
+        class="fixed top-0 left-0 z-9999 flex h-full w-full items-center justify-center overflow-hidden bg-black/80 select-none"
+        onclick={() => (expanded = false)}
+        onkeydown={handleKeydown}
+        tabindex="0"
+        role="button"
+      >
+        {@render picture({
+          class: "max-h-full max-w-full object-contain",
+        })}
+      </div>
+    {/if}
+  </Portal>
+  <div class="relative">
+    {#if !loaded && fallback}
+      <Skeleton class="absolute inset-0" />
+    {/if}
+    {@render picture({
+      class: cn(!loaded && "opacity-0", "transition-opacity duration-300"),
+      onClick: e => {
+        // @ts-expect-error
+        onclick?.(e);
+        expanded = true;
+      },
+      onLoad: e => {
+        // @ts-expect-error
+        onload?.(e);
+        loaded = true;
+      },
+    })}
+  </div>
+{:else}
+  <div class="rounded bg-red-500 p-2 text-white">Image not found</div>
+{/if}
