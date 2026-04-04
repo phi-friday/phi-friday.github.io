@@ -28,8 +28,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --config prettier.config.ts --write .",
     "lint:prettier": "prettier --config prettier.config.ts --check .",
-    "lint:oxlint": "oxlint --config .oxlintrc.json --deny-warnings .",
-    "lint:oxlint:generate": "bun ./oxlint.config.ts",
+    "lint:oxlint": "oxlint --config oxlint.config.ts --deny-warnings .",
     "lint:eslint": "eslint --config eslint.config.ts --cache .",
     "lint": "bun lint:prettier && bun lint:oxlint && bun lint:eslint"
   },

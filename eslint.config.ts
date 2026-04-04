@@ -75,7 +75,7 @@ const config: Config[] = defineConfig(
       "no-useless-assignment": "off",
     },
   },
-  ...oxlint.buildFromOxlintConfigFile(".oxlintrc.json"),
+  ...oxlint.buildFromOxlintConfigFile("oxlint.config.ts"),
   {
     files: ["**/*.svelte"],
     rules: {

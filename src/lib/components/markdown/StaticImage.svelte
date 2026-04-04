@@ -101,12 +101,12 @@
     {@render picture({
       class: cn(!loaded && "opacity-0", "transition-opacity duration-300"),
       onClick: e => {
-        // @ts-expect-error
+        // @ts-expect-error: event target
         onclick?.(e);
         expanded = true;
       },
       onLoad: e => {
-        // @ts-expect-error
+        // @ts-expect-error: event target
         onload?.(e);
         loaded = true;
       },
