@@ -2,7 +2,7 @@ import { error } from "@sveltejs/kit";
 
 import { globContentSlugs, loadContentMetadatas } from "$lib/utils/contents";
 
-import type { EntryGenerator, PageServerLoad } from "./$types";
+import type { EntryGenerator, PageLoad } from "./$types";
 
 const TRIM_SLASHES = /^\/+|\/+$/g;
 const slugs = globContentSlugs();
@@ -11,8 +11,9 @@ export const entries: EntryGenerator = () => {
   return Object.keys(slugs).map(slug => ({ slug }));
 };
 export const csr = true;
+export const ssr = true;
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params }) => {
   const slug = params.slug.replace(TRIM_SLASHES, "");
   if (!(slug in slugs)) {
     error(404, `Page not found: ${params.slug}`);
