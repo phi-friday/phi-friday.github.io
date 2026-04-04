@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { untrack } from "svelte";
   import { SvelteURLSearchParams } from "svelte/reactivity";
 
+  import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
@@ -19,32 +21,27 @@
     EmptyMedia,
     EmptyTitle,
   } from "$lib/components/ui/empty";
+  import { Skeleton } from "$lib/components/ui/skeleton";
 
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
-  let _selected: string[] | null = $state.raw(null);
-  const selected = {
-    get value(): string[] {
-      return _selected ?? data.selected;
-    },
-    set value(v: string[]) {
-      _selected = v;
-    },
-  };
+  let selected: string[] | null = $state.raw(null);
 
   let metadatas: Record<string, ContentMetadata> = $derived(
     Object.fromEntries(
       Object.entries(data.metadatas).filter(([_slug, meta]) => {
-        if (selected.value.length === 0) return true;
-        return selected.value.every(tag => meta.tags?.includes(tag));
+        if (selected === null) return false;
+        if (selected.length === 0) return true;
+        return selected?.every(tag => meta.tags?.includes(tag));
       })
     )
   );
   const update_params = new SvelteURLSearchParams();
   watch(
-    () => selected.value,
-    $selected => {
+    () => selected,
+    ($selected, $prev_selected) => {
+      if ($selected === null || $prev_selected === null) return;
       update_params.delete("select");
       for (const tag of $selected) {
         update_params.append("select", tag);
@@ -57,11 +54,16 @@
     },
     { lazy: true }
   );
+  $effect.pre(() => {
+    if (browser) {
+      selected = untrack(() => page.url.searchParams.getAll("select"));
+    }
+  });
 
   let display_limit = $state(20);
 
   $effect(() => {
-    void _selected;
+    void selected;
     display_limit = 20;
   });
 
@@ -88,7 +90,7 @@
 </script>
 
 <svelte:head>
-  {#if page.url.searchParams.has("select")}
+  {#if selected && selected.length > 0}
     <meta name="robots" content="noindex,follow" />
   {/if}
 </svelte:head>
@@ -99,17 +101,24 @@
     <h1 class="text-3xl font-bold">Tags</h1>
     <span class="text-sm text-muted-foreground">
       {Object.keys(metadatas).length} posts
-      {#if selected.value.length > 0}
-        · {selected.value.length} tags selected
+      {#if selected?.length}
+        · {selected?.length} tags selected
       {/if}
     </span>
   </div>
 
   <!-- Filter panel -->
-  <TagFilterPanel tags={data.tags} counts={data.counts} bind:selected={selected.value} />
+  <TagFilterPanel tags={data.tags} counts={data.counts} bind:selected />
 
   <!-- Posts list -->
-  {#if Object.keys(metadatas).length === 0}
+  {#if selected === null}
+    <div class="flex flex-col gap-y-2.5">
+      <Skeleton class="h-36 w-full rounded-xl" />
+      <Skeleton class="h-36 w-full rounded-xl" />
+      <Skeleton class="h-36 w-full rounded-xl" />
+      <Skeleton class="h-36 w-full rounded-xl" />
+    </div>
+  {:else if Object.keys(metadatas).length === 0}
     <Empty class="border py-12">
       <EmptyMedia variant="icon">
         <SearchXIcon />

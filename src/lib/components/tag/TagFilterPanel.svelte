@@ -55,7 +55,7 @@
       {/snippet}
     </CollapsibleTrigger>
 
-    {#if selected?.length}
+    {#if selected && selected.length > 0}
       <Button
         variant="ghost"
         size="sm"
