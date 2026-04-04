@@ -2,6 +2,8 @@ import { getSitemapShard, getSitemapShardIndices } from "$lib/utils/sitemap";
 
 import type { EntryGenerator, RequestHandler } from "./$types";
 
+export const prerender = true;
+
 export const entries: EntryGenerator = async () => {
   const indices = await getSitemapShardIndices();
   return indices.map(i => ({ index: String(i) }));
