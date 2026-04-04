@@ -1,5 +1,3 @@
-import path from "node:path";
-
 import type { Component } from "svelte";
 
 export interface ContentMetadata {
@@ -42,7 +40,7 @@ export const globContentFiles = (): Record<string, () => Promise<ContentFile>> =
   }
   _files = Object.fromEntries(
     Object.entries(import.meta.glob("../../contents/**/*.{svx,md}", { eager: false })).map(
-      ([file, module]) => [path.relative("../../contents", file), module]
+      ([file, module]) => [file.replace("../../contents/", ""), module]
     )
   ) as Record<string, () => Promise<ContentFile>>;
   return _files;
