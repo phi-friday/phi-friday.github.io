@@ -1,0 +1,1 @@
+import{At as e,Dt as t,I as n,P as r,it as i,w as a}from"../chunks/Va3vgMqd.js";import"../chunks/DUtK71N4.js";var o=e({csr:()=>!0,ssr:()=>!0}),s=n(`<div class="container mx-auto max-w-4xl px-4 py-8"><!></div>`);function c(e,n){var o=s();a(i(o),()=>n.children),t(o),r(e,o)}export{c as component,o as universal};
