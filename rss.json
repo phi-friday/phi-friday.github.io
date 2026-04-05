@@ -1,7 +1,7 @@
 {
     "version": "https://jsonfeed.org/version/1",
     "title": "phi.log",
-    "home_page_url": "http://localhost:5173",
+    "home_page_url": "https://phi-friday.github.io",
     "feed_url": "./rss.json",
     "description": "phi.log",
     "author": {
@@ -12,147 +12,147 @@
         {
             "id": "/@post/js/vue_to_svelte/",
             "content_html": "어쩌다보니 vue에서 svelte로 넘어오게 되었다.",
-            "url": "http://localhost:5173/@post/js/vue_to_svelte/",
+            "url": "https://phi-friday.github.io/@post/js/vue_to_svelte/",
             "title": "vue에서 svelte로",
             "date_modified": "2026-04-03T13:37:15.000Z"
         },
         {
             "id": "/@post/python/use_uv/",
             "content_html": "rye 개발진이 넘어가래요",
-            "url": "http://localhost:5173/@post/python/use_uv/",
+            "url": "https://phi-friday.github.io/@post/python/use_uv/",
             "title": "poetry, rye 대신 uv를 사용하자",
             "date_modified": "2024-09-02T06:32:59.499Z"
         },
         {
             "id": "/@post/other/pypi-trusted-publisher/",
             "content_html": "배포 자동화를 조금 더 안전하게",
-            "url": "http://localhost:5173/@post/other/pypi-trusted-publisher/",
+            "url": "https://phi-friday.github.io/@post/other/pypi-trusted-publisher/",
             "title": "Github Action과 Trusted Publisher를 사용한 파이썬 패키지 배포 자동화",
             "date_modified": "2024-09-02T05:43:47.545Z"
         },
         {
             "id": "/@post/python/airflow2/",
             "content_html": "TaskFlow API를 사용한다면, `skip_if`와 `run_if`를 사용하자",
-            "url": "http://localhost:5173/@post/python/airflow2/",
+            "url": "https://phi-friday.github.io/@post/python/airflow2/",
             "title": "airflow에서 간단하게 Task를 스킵하는 방법",
             "date_modified": "2024-08-09T08:40:32.711Z"
         },
         {
             "id": "/@post/python/polars_v1/",
             "content_html": "api 변경점이 많아서 고칠게 많지만 그래도 좋다",
-            "url": "http://localhost:5173/@post/python/polars_v1/",
+            "url": "https://phi-friday.github.io/@post/python/polars_v1/",
             "title": "pandas를 대체하는 polars의 첫 major 업데이트",
             "date_modified": "2024-07-05T07:59:05.827Z"
         },
         {
             "id": "/@post/python/use_rye/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/use_rye/",
+            "url": "https://phi-friday.github.io/@post/python/use_rye/",
             "title": "poetry 대신 rye를 사용하자",
             "date_modified": "2024-03-02T07:07:14.156Z"
         },
         {
             "id": "/@post/python/type_hint_5/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/type_hint_5/",
+            "url": "https://phi-friday.github.io/@post/python/type_hint_5/",
             "title": "[코드를 깔끔하게] ruff - 5",
             "date_modified": "2023-10-29T09:53:59.652Z"
         },
         {
             "id": "/@post/python/airflow1/",
             "content_html": "TaskFlow API를 사용하자",
-            "url": "http://localhost:5173/@post/python/airflow1/",
+            "url": "https://phi-friday.github.io/@post/python/airflow1/",
             "title": "새로운 문법으로 Airflow DAG 생성하기",
             "date_modified": "2023-09-17T11:53:22.051Z"
         },
         {
             "id": "/@post/python/async/",
             "content_html": "코드 중심으로 알아보는 비동기",
-            "url": "http://localhost:5173/@post/python/async/",
+            "url": "https://phi-friday.github.io/@post/python/async/",
             "title": "python의 비동기에 대한 얕은 이해",
             "date_modified": "2023-07-31T09:51:28.303Z"
         },
         {
             "id": "/@post/python/pep_695/",
             "content_html": "python 3.12에 새롭게 추가/변경되는 문법",
-            "url": "http://localhost:5173/@post/python/pep_695/",
+            "url": "https://phi-friday.github.io/@post/python/pep_695/",
             "title": "더 편한 타입 힌트를 위한 PEP695",
             "date_modified": "2023-07-22T18:48:21.115Z"
         },
         {
             "id": "/@post/python/mojo/",
             "content_html": "정말 슈퍼셋이라면 기대해볼만 하다",
-            "url": "http://localhost:5173/@post/python/mojo/",
+            "url": "https://phi-friday.github.io/@post/python/mojo/",
             "title": "python보다 3만배 빠른 mojo?",
             "date_modified": "2023-05-17T14:03:50.686Z"
         },
         {
             "id": "/@post/python/http_client_vs/",
             "content_html": "그냥 편한거 쓰는게 제일 나은거 같은데?",
-            "url": "http://localhost:5173/@post/python/http_client_vs/",
+            "url": "https://phi-friday.github.io/@post/python/http_client_vs/",
             "title": "requests vs httpx vs aiohttp, 뭐가 더 빠를까",
             "date_modified": "2023-04-24T14:35:48.171Z"
         },
         {
             "id": "/@post/other/gitea-action/",
             "content_html": "gihub action와 거의 비슷하다",
-            "url": "http://localhost:5173/@post/other/gitea-action/",
+            "url": "https://phi-friday.github.io/@post/other/gitea-action/",
             "title": "gitea에서 ci/cd를 위한 action 사용하기",
             "date_modified": "2023-04-21T14:33:09.854Z"
         },
         {
             "id": "/@post/python/polars/",
             "content_html": "rust로 python의 한계를 넘어서자",
-            "url": "http://localhost:5173/@post/python/polars/",
+            "url": "https://phi-friday.github.io/@post/python/polars/",
             "title": "나중에는 pandas를 대체할지도 모르는 polars",
             "date_modified": "2023-04-17T11:57:17.459Z"
         },
         {
             "id": "/@post/python/type_hint_4/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/type_hint_4/",
+            "url": "https://phi-friday.github.io/@post/python/type_hint_4/",
             "title": "[코드를 깔끔하게] ruff - 4",
             "date_modified": "2023-03-18T00:00:00.000Z"
         },
         {
             "id": "/@post/python/why_sqlachemy2/",
             "content_html": "더 빠르고 정확해진 orm",
-            "url": "http://localhost:5173/@post/python/why_sqlachemy2/",
+            "url": "https://phi-friday.github.io/@post/python/why_sqlachemy2/",
             "title": "sqlalchemy2.0는 무엇이 달라졌고, 왜 써야할까.",
             "date_modified": "2023-03-18T00:00:00.000Z"
         },
         {
             "id": "/@post/python/type_hint_3/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/type_hint_3/",
+            "url": "https://phi-friday.github.io/@post/python/type_hint_3/",
             "title": "[코드를 깔끔하게] isort - 3",
             "date_modified": "2023-02-28T00:00:00.000Z"
         },
         {
             "id": "/@post/python/type_hint_2/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/type_hint_2/",
+            "url": "https://phi-friday.github.io/@post/python/type_hint_2/",
             "title": "[코드를 깔끔하게] black - 2",
             "date_modified": "2023-02-21T00:00:00.000Z"
         },
         {
             "id": "/@post/python/type_hint_1/",
             "content_html": "생산성 향상을 위해",
-            "url": "http://localhost:5173/@post/python/type_hint_1/",
+            "url": "https://phi-friday.github.io/@post/python/type_hint_1/",
             "title": "[코드를 깔끔하게] type hint - 1",
             "date_modified": "2023-02-13T00:00:00.000Z"
         },
         {
             "id": "/@post/other/vim_auto_eng/",
             "content_html": "esc를 누르면 자동으로 영문 키보드가 된다.",
-            "url": "http://localhost:5173/@post/other/vim_auto_eng/",
+            "url": "https://phi-friday.github.io/@post/other/vim_auto_eng/",
             "title": "[Vim] Normal모드에서 영문 키보드로 자동 전환하기 (Windows)",
             "date_modified": "2022-08-06T11:00:32.948Z"
         },
         {
             "id": "/@post/js/velog_to_githubio/",
             "content_html": null,
-            "url": "http://localhost:5173/@post/js/velog_to_githubio/",
+            "url": "https://phi-friday.github.io/@post/js/velog_to_githubio/",
             "title": "velog에서 git page로 블로그 이전",
             "date_modified": "2022-06-11T19:27:48.097Z"
         }
