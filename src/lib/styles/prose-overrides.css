@@ -12,8 +12,6 @@
   --tw-prose-quote-borders: var(--border);
   --tw-prose-hr: var(--border);
   --tw-prose-captions: var(--muted-foreground);
-  --tw-prose-th-borders: var(--border);
-  --tw-prose-td-borders: var(--border);
   /* invert variants used by prose-invert */
   --tw-prose-invert-links: var(--primary);
   --tw-prose-invert-bullets: var(--muted-foreground);
@@ -22,8 +20,6 @@
   --tw-prose-invert-quote-borders: var(--border);
   --tw-prose-invert-hr: var(--border);
   --tw-prose-invert-captions: var(--muted-foreground);
-  --tw-prose-invert-th-borders: var(--border);
-  --tw-prose-invert-td-borders: var(--border);
 }
 
 /* ── Headings ────────────────────────────────────────────────── */
@@ -89,11 +85,6 @@
 }
 
 /* ── Tables ──────────────────────────────────────────────────── */
-/* Alternating row background — shadcn even:bg-muted pattern */
-.prose tbody tr:nth-child(even) {
-  background-color: var(--muted);
-}
-
 /* remark-gfm emits align="..." (deprecated HTML attr) instead of style="text-align:...".
    Tailwind CSS v4 typography overrides it with text-align:start via :where(th,td).
    Map the align attribute back to CSS text-align. */

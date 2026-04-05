@@ -1,7 +1,24 @@
 <script lang="ts" module>
   import StaticImage from "$lib/components/markdown/StaticImage.svelte";
-
+  import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "$lib/components/ui/table";
   export { StaticImage as img };
+  export { Table as table };
+  export { TableHeader as thead };
+  export { TableBody as tbody };
+  export { TableRow as tr };
+  export { TableHead as th };
+  export { TableCell as td };
+  export { TableCaption as caption };
+  export { TableFooter as tfoot };
 </script>
 
 <script lang="ts">
