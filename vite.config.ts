@@ -13,7 +13,9 @@ const config: UserConfigFnObject = defineConfig(({ command }) => {
   process.env.APP_HOSTNAME =
     process.env.APP_HOSTNAME && process.env.APP_HOSTNAME !== "localhost"
       ? process.env.APP_HOSTNAME
-      : "http://localhost:5173";
+      : command === "build"
+        ? packgeJson.author.url
+        : "http://localhost:5173";
   process.env.APP_HOSTNAME = process.env.APP_HOSTNAME.replace(/\/$/, "");
   process.env.APP_DESCRIPTION = packgeJson.description || packgeJson.name;
   process.env.APP_AUTHOR_NAME ||= packgeJson.author.name || "";
