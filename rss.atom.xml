@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://phi-friday.github.io</id>
     <title>phi.log</title>
-    <updated>2026-04-05T03:42:33.047Z</updated>
+    <updated>2026-04-05T04:39:40.151Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>phi</name>
@@ -13,6 +13,13 @@
     <link rel="self" href="./rss.atom.xml"/>
     <subtitle>phi.log</subtitle>
     <rights>All rights reserved 2026, phi</rights>
+    <entry>
+        <title type="html"><![CDATA[requests vs httpx vs aiohttp, 다시 해봤다]]></title>
+        <id>/@post/python/http_client_vs_2/</id>
+        <link href="https://phi-friday.github.io/@post/python/http_client_vs_2/"/>
+        <updated>2026-04-05T04:24:54.922Z</updated>
+        <summary type="html"><![CDATA[이번엔 제대로 측정했다]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[vue에서 svelte로]]></title>
         <id>/@post/js/vue_to_svelte/</id>

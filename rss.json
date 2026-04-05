@@ -10,6 +10,13 @@
     },
     "items": [
         {
+            "id": "/@post/python/http_client_vs_2/",
+            "content_html": "이번엔 제대로 측정했다",
+            "url": "https://phi-friday.github.io/@post/python/http_client_vs_2/",
+            "title": "requests vs httpx vs aiohttp, 다시 해봤다",
+            "date_modified": "2026-04-05T04:24:54.922Z"
+        },
+        {
             "id": "/@post/js/vue_to_svelte/",
             "content_html": "어쩌다보니 vue에서 svelte로 넘어오게 되었다.",
             "url": "https://phi-friday.github.io/@post/js/vue_to_svelte/",

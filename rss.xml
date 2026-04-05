@@ -4,10 +4,17 @@
         <title>phi.log</title>
         <link>https://phi-friday.github.io</link>
         <description>phi.log</description>
-        <lastBuildDate>Sun, 05 Apr 2026 03:42:33 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 05 Apr 2026 04:39:40 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>All rights reserved 2026, phi</copyright>
+        <item>
+            <title><![CDATA[requests vs httpx vs aiohttp, 다시 해봤다]]></title>
+            <link>https://phi-friday.github.io/@post/python/http_client_vs_2/</link>
+            <guid isPermaLink="false">/@post/python/http_client_vs_2/</guid>
+            <pubDate>Sun, 05 Apr 2026 04:24:54 GMT</pubDate>
+            <description><![CDATA[이번엔 제대로 측정했다]]></description>
+        </item>
         <item>
             <title><![CDATA[vue에서 svelte로]]></title>
             <link>https://phi-friday.github.io/@post/js/vue_to_svelte/</link>
