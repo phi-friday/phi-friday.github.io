@@ -94,6 +94,17 @@
   background-color: var(--muted);
 }
 
-.prose th {
-  text-align: start;
+/* remark-gfm emits align="..." (deprecated HTML attr) instead of style="text-align:...".
+   Tailwind CSS v4 typography overrides it with text-align:start via :where(th,td).
+   Map the align attribute back to CSS text-align. */
+.prose :where(th, td)[align="left"] {
+  text-align: left;
+}
+
+.prose :where(th, td)[align="center"] {
+  text-align: center;
+}
+
+.prose :where(th, td)[align="right"] {
+  text-align: right;
 }
