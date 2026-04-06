@@ -21,6 +21,7 @@ import { visit } from "unist-util-visit";
 
 /**
  * @import { Plugin as UnifiedPlugin } from "unified";
+ * @import { VFile } from "vfile";
  * @import { Element as HastElement } from "hast"
  * @import { Text as HastText } from "hast"
  * @import { Config as SvelteConfig } from "@sveltejs/kit"
@@ -115,6 +116,66 @@ const rehypeFixAlertLink = /** @type {UnifiedPlugin} */ () => tree => {
   });
 };
 
+const CONTENTS_ROOT = path.join(import.meta.dirname, "src", "contents");
+const POST_ROUTE_PREFIX = "/@post";
+const MD_LIKE_EXTS = /\.(md|svx)$/;
+
+/**
+ * Rehype plugin that rewrites relative `.md`/`.svx` links in content files to
+ * the corresponding `/@post/<slug>` SvelteKit routes.
+ *
+ * For example, inside `src/contents/python/http_client_vs_2.md`:
+ *   `./http_client_vs.md`  →  `/@post/python/http_client_vs`
+ *
+ * Works for both same-directory (`./foo.md`) and cross-directory
+ * (`../other/foo.md`) relative links. Absolute URLs and anchor-only links
+ * (`#section`) are left untouched.
+ *
+ * @type {UnifiedPlugin}
+ */
+const rehypeRewriteContentLinks = function () {
+  /**
+   * @param {import("hast").Node} tree
+   * @param {VFile} vfile
+   */
+  return (tree, vfile) => {
+    // MDsveX passes the source file path via vfile.path; older versions used vfile.filename
+    const vfile_any = /** @type {any} */ (vfile);
+    const file_path = /** @type {string | undefined} */ (vfile_any.path ?? vfile_any.filename);
+    if (!file_path) return;
+
+    // Derive the directory of the current content file relative to CONTENTS_ROOT
+    // e.g. "/abs/src/contents/python/foo.md" → "python"
+    const rel_to_contents = path.relative(CONTENTS_ROOT, path.dirname(file_path));
+
+    const base = process.argv.includes("dev") ? "" : (process.env.BASE_PATH ?? "");
+
+    visit(tree, "element", node => {
+      const el = /** @type {HastElement} */ (node);
+      if (el.tagName !== "a") return;
+
+      const href = /** @type {string | undefined} */ (el.properties?.href);
+      if (!href || typeof href !== "string") return;
+
+      // Skip absolute URLs (http/https/etc), protocol-relative, and anchor-only
+      if (/^([a-z][a-z\d+\-.]*:)?\/\//i.test(href) || href.startsWith("#")) return;
+
+      // Only rewrite links that end with a known content extension
+      if (!MD_LIKE_EXTS.test(href)) return;
+
+      // Resolve the relative href against the current file's content directory
+      // e.g. rel_to_contents="python", href="./http_client_vs.md"
+      //   → "python/http_client_vs"
+      const resolved = path.posix.normalize(
+        path.posix.join(rel_to_contents.split(path.sep).join("/"), href)
+      );
+      const slug = resolved.replace(MD_LIKE_EXTS, "");
+
+      el.properties.href = `${base}${POST_ROUTE_PREFIX}/${slug}`;
+    });
+  };
+};
+
 const COPY_SVG =
   `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"` +
   ` fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"` +
@@ -184,6 +245,7 @@ const config = {
       remarkPlugins: [remarkDirective, /** @type {UnifiedPlugin} */ (remarkFlexibleToc), remarkGfm],
       rehypePlugins: [
         rehypeFixAlertLink,
+        rehypeRewriteContentLinks,
         /** @type {any} */ (rehypeGithubAlerts),
         rehypeGithubColor,
         rehypeGithubDir,
