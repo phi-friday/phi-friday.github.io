@@ -12,7 +12,7 @@ publish: true
 
 > [!IMPORTANT]  
 > 이제 `rye` 대신 [`uv`](https://github.com/astral-sh/uv)를 사용하세요.
-> 자세한 내용은 [이곳](/@post/python/use_uv)을 확인하세요.
+> 자세한 내용은 [이곳](./use_uv.md)을 확인하세요.
 
 ## `poetry`도 충분히 좋은 도구다. 하지만
 지난 3년간 poetry는 내가 수행하고자 하는 바를 대부분 충족시켰다.

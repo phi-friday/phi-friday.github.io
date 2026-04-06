@@ -12,7 +12,7 @@ publish: true
 
 > [!WARNING] 
 > 이제 `isort`를 따로 사용하지 않습니다.
-> [`ruff`](/@post/python/type_hint_4)만 사용해도 동일한 작동을 보장합니다.
+> [`ruff`](./type_hint_4.md)만 사용해도 동일한 작동을 보장합니다.
 
 ## 1. 왜 `isort`를 사용해야 하는가
 
