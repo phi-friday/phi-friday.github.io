@@ -41,7 +41,7 @@ svelte-blog/
 ```bash
 bun install           # Install dependencies
 bun dev               # Start dev server
-bun build             # Build static site
+bun run build         # Build static site
 bun preview           # Preview built site
 bun check             # Type-check with svelte-check
 bun check:watch       # Type-check in watch mode
