@@ -14,7 +14,7 @@ class SearchStore {
   #results = $state.raw<SearchResult[]>([]);
   #fuse: Fuse<SearchPost> | null = null;
 
-  async _initFuse(): Promise<Fuse<SearchPost>> {
+  async #initFuse(): Promise<Fuse<SearchPost>> {
     if (this.#fuse) return this.#fuse;
     const [{ default: Fuse }, posts] = await Promise.all([
       import("fuse.js"),
@@ -35,12 +35,12 @@ class SearchStore {
     });
     return this.#fuse;
   }
-  async startSearch(query: string): Promise<void> {
+  public async startSearch(query: string): Promise<void> {
     this.#last_query = query;
     this.#dialog_open = true;
     this.#is_loading = true;
     try {
-      const fuse = await this._initFuse();
+      const fuse = await this.#initFuse();
       const raw = fuse.search(query, { limit: 20 });
       this.#results = raw.map(r => ({ item: r.item, score: r.score ?? 1 }));
     } finally {
@@ -48,23 +48,23 @@ class SearchStore {
     }
   }
 
-  openDialog(): void {
+  public openDialog(): void {
     this.#dialog_open = true;
   }
 
-  closeDialog(): void {
+  public closeDialog(): void {
     this.#dialog_open = false;
   }
-  get dialog_open(): boolean {
+  public get dialog_open(): boolean {
     return this.#dialog_open;
   }
-  get last_query(): string {
+  public get last_query(): string {
     return this.#last_query;
   }
-  get is_loading(): boolean {
+  public get is_loading(): boolean {
     return this.#is_loading;
   }
-  get results(): SearchResult[] {
+  public get results(): SearchResult[] {
     return this.#results;
   }
 }

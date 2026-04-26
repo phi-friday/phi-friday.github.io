@@ -5,21 +5,21 @@ export type TocItem = {
 };
 
 class TocStore {
-  items = $state<TocItem[]>([]);
-  active_id = $state("");
-  header_height = $state(0);
-  footer_el = $state<HTMLElement | null>(null);
-  popup_open = $state(false);
+  public items = $state<TocItem[]>([]);
+  public active_id = $state("");
+  public header_height = $state(0);
+  public footer_el = $state<HTMLElement | null>(null);
+  public popup_open = $state(false);
 
-  get min_level(): number {
+  public get min_level(): number {
     return this.items.length > 0 ? Math.min(...this.items.map(i => i.level)) : 1;
   }
 
-  togglePopup(): void {
+  public togglePopup(): void {
     this.popup_open = !this.popup_open;
   }
 
-  closePopup(): void {
+  public closePopup(): void {
     this.popup_open = false;
   }
 }

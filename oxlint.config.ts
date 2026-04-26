@@ -147,6 +147,7 @@ const config: OxlintConfig = defineConfig({
     "typescript/no-unsafe-member-access": "off",
     "typescript/no-misused-promises": "off",
     "typescript/no-confusing-void-expression": "off",
+    "typescript/prefer-readonly-parameter-types": "off",
     // promise
     "promise/always-return": "off",
     // js: simple-import-sort
