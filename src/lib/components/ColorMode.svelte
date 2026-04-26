@@ -7,7 +7,12 @@
   import { readStoredMode, theme_mode } from "$lib/stores/theme.svelte";
 
   import { Button } from "$lib/components/ui/button";
-  import { Tooltip, TooltipContent, TooltipTrigger } from "$lib/components/ui/tooltip";
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "$lib/components/ui/tooltip";
 
   type Mode = "light" | "dark" | "system";
 
@@ -40,29 +45,31 @@
   let { ...rest }: Props = $props();
 </script>
 
-<Tooltip disableCloseOnTriggerClick>
-  <TooltipTrigger>
-    {#snippet child({ props })}
-      <Button
-        {...props}
-        type="button"
-        variant="ghost"
-        size="icon"
-        class="shrink-0 text-muted-foreground transition-colors hover:text-foreground"
-        aria-label="Toggle theme"
-        onclick={toggleMode}
-      >
-        {#if display_mode === "light"}
-          <SunIcon {...rest} />
-        {:else if display_mode === "dark"}
-          <MoonIcon {...rest} />
-        {:else}
-          <MonitorIcon {...rest} />
-        {/if}
-      </Button>
-    {/snippet}
-  </TooltipTrigger>
-  <TooltipContent side="bottom">
-    <p>{tooltip_text}</p>
-  </TooltipContent>
-</Tooltip>
+<TooltipProvider>
+  <Tooltip disableCloseOnTriggerClick>
+    <TooltipTrigger>
+      {#snippet child({ props })}
+        <Button
+          {...props}
+          type="button"
+          variant="ghost"
+          size="icon"
+          class="shrink-0 text-muted-foreground transition-colors hover:text-foreground"
+          aria-label="Toggle theme"
+          onclick={toggleMode}
+        >
+          {#if display_mode === "light"}
+            <SunIcon {...rest} />
+          {:else if display_mode === "dark"}
+            <MoonIcon {...rest} />
+          {:else}
+            <MonitorIcon {...rest} />
+          {/if}
+        </Button>
+      {/snippet}
+    </TooltipTrigger>
+    <TooltipContent side="bottom">
+      <p>{tooltip_text}</p>
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
