@@ -30,14 +30,15 @@
     "lint:prettier": "prettier --config prettier.config.ts --check .",
     "lint:oxlint": "oxlint --config oxlint.config.ts --deny-warnings .",
     "lint:eslint": "eslint --config eslint.config.ts --cache .",
-    "lint": "bun lint:prettier && bun lint:oxlint && bun lint:eslint"
+    "lint": "bun lint:prettier && bun lint:oxlint && bun lint:eslint",
+    "shadcn:update": "bun src/scripts/update-shadcn-components.ts"
   },
   "type": "module",
   "devDependencies": {
     "@eslint/compat": "^2.0.4",
     "@eslint/js": "^10.0.1",
     "@internationalized/date": "^3.12.0",
-    "@lucide/svelte": "^1.7.0",
+    "@lucide/svelte": "^1.11.0",
     "@prettier/plugin-oxc": "^0.1.3",
     "@shikijs/rehype": "^4.0.2",
     "@sveltejs/adapter-static": "^3.0.10",
@@ -45,6 +46,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
+    "@types/bun": "^1.3.13",
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.12.0",
     "bits-ui": "^2.16.5",

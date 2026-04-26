@@ -1,5 +1,4 @@
 <script lang="ts">
-  // @ts-nocheck
 	import { cn } from "$lib/utils/ui.js";
 	import Loader2Icon from '@lucide/svelte/icons/loader-2';
 	import type { SVGAttributes } from "svelte/elements";
@@ -7,7 +6,8 @@
 	let {
 		class: className,
 		role = "status",
-		// we add color and stroke for compatibility with different icon libraries props
+		// we add name, color, and stroke for compatibility with different icon libraries props
+		name,
 		color,
 		stroke,
 		"aria-label": ariaLabel = "Loading",
@@ -15,4 +15,4 @@
 	}: SVGAttributes<SVGSVGElement> = $props();
 </script>
 
-<Loader2Icon {role} color={color === null ? undefined : color} stroke={stroke === null ? undefined : stroke} aria-label={ariaLabel} class={cn("size-4 animate-spin", className)} {...restProps} />
+<Loader2Icon {role} name={name === null ? undefined : name} color={color === null ? undefined : color} stroke={stroke === null ? undefined : stroke} aria-label={ariaLabel} class={cn("size-4 animate-spin", className)} {...restProps} />
