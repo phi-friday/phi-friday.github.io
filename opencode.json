@@ -12,11 +12,6 @@
       "command": ["bunx", "-y", "@sveltejs/mcp"],
       "enabled": true
     },
-    "eslint": {
-      "type": "local",
-      "command": ["bunx", "@eslint/mcp@latest"],
-      "enabled": true
-    },
     "serena": {
       "type": "local",
       "command": [

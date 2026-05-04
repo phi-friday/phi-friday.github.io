@@ -177,11 +177,7 @@ Imports are auto-sorted by `simple-import-sort`. The enforced group order is:
 Always use Context7 for library/API documentation, setup steps, and code generation.
 Use `resolve_library_id` then `get_library_docs` automatically — no need to ask.
 
-### 2. ESLint MCP (`mcp_eslint_lint-files`)
-Lint frontend files instantly (faster than terminal). Provide **absolute** file paths as an array.
-Use this for ESLint checks — but **only after oxlint passes** (`bun lint:oxlint`). oxlint is faster and must run first; do not replace it with ESLint MCP.
-
-### 3. Svelte MCP
+### 2. Svelte MCP
 1. **`list-sections`** — call first to discover relevant Svelte/SvelteKit documentation sections
 2. **`get-documentation`** — fetch all relevant sections identified by `list-sections`
 3. **`svelte-autofixer`** — analyze Svelte code for issues; call before finalizing any `.svelte` file, iterate until clean
