@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://phi-friday.github.io</id>
     <title>phi.log</title>
-    <updated>2026-05-04T07:41:00.982Z</updated>
+    <updated>2026-05-04T14:50:14.813Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>phi</name>
@@ -13,6 +13,13 @@
     <link rel="self" href="./rss.atom.xml"/>
     <subtitle>phi.log</subtitle>
     <rights>All rights reserved 2026, phi</rights>
+    <entry>
+        <title type="html"><![CDATA[더 이상 GitHub Copilot을 쓸 이유가 없다]]></title>
+        <id>/@post/other/copilot/</id>
+        <link href="https://phi-friday.github.io/@post/other/copilot/"/>
+        <updated>2026-05-04T13:51:01.508Z</updated>
+        <summary type="html"><![CDATA[GitHub Copilot의 사용량 기반 과금 전환 이후, 더 이상 예전만큼 효율적인 선택이 아니게 된 이유]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[requests vs httpx vs aiohttp, 다시 해봤다]]></title>
         <id>/@post/python/http_client_vs_2/</id>

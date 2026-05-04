@@ -1,1 +1,0 @@
-import"./CKsEREWm.js";import{r as e}from"./C84DZ1m2.js";import"./DMq6l2hl.js";function t(t,n=!0){let r=document.getElementById(t);if(!r)return;let i=(document.querySelector(`header`)?.offsetHeight??64)+8,a=r.getBoundingClientRect().top+window.scrollY-i;if(window.scrollTo({top:a,behavior:`instant`}),n){let n=new URL(window.location.href);n.hash=t,e(n,{})}}export{t};

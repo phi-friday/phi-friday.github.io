@@ -10,6 +10,13 @@
     },
     "items": [
         {
+            "id": "/@post/other/copilot/",
+            "content_html": "GitHub Copilot의 사용량 기반 과금 전환 이후, 더 이상 예전만큼 효율적인 선택이 아니게 된 이유",
+            "url": "https://phi-friday.github.io/@post/other/copilot/",
+            "title": "더 이상 GitHub Copilot을 쓸 이유가 없다",
+            "date_modified": "2026-05-04T13:51:01.508Z"
+        },
+        {
             "id": "/@post/python/http_client_vs_2/",
             "content_html": "이번엔 제대로 측정했다",
             "url": "https://phi-friday.github.io/@post/python/http_client_vs_2/",

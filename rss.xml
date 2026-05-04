@@ -4,10 +4,17 @@
         <title>phi.log</title>
         <link>https://phi-friday.github.io</link>
         <description>phi.log</description>
-        <lastBuildDate>Mon, 04 May 2026 07:41:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 May 2026 14:50:14 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>All rights reserved 2026, phi</copyright>
+        <item>
+            <title><![CDATA[더 이상 GitHub Copilot을 쓸 이유가 없다]]></title>
+            <link>https://phi-friday.github.io/@post/other/copilot/</link>
+            <guid isPermaLink="false">/@post/other/copilot/</guid>
+            <pubDate>Mon, 04 May 2026 13:51:01 GMT</pubDate>
+            <description><![CDATA[GitHub Copilot의 사용량 기반 과금 전환 이후, 더 이상 예전만큼 효율적인 선택이 아니게 된 이유]]></description>
+        </item>
         <item>
             <title><![CDATA[requests vs httpx vs aiohttp, 다시 해봤다]]></title>
             <link>https://phi-friday.github.io/@post/python/http_client_vs_2/</link>
