@@ -1,0 +1,9 @@
+[install]
+minimumReleaseAge = 259200 # 3 days in seconds
+minimumReleaseAgeExcludes = [
+    "@types/node",
+    "typescript",
+    "oxlint",
+    "oxlint-tsgolint",
+    "eslint-plugin-oxlint",
+]
