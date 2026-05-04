@@ -106,6 +106,7 @@ const config: OxlintConfig = defineConfig({
     "eslint/no-void": "off",
     "eslint/no-use-before-define": "off",
     "eslint/no-promise-executor-return": "off",
+    "no-underscore-dangle": "off",
     // typescript
     // oxlint-disable-next-line unicorn/no-useless-spread
     ...{
