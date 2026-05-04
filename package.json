@@ -37,6 +37,7 @@
   "devDependencies": {
     "@eslint/compat": "^2.0.5",
     "@eslint/js": "^10.0.1",
+    "@fontsource-variable/inter": "^5.2.8",
     "@internationalized/date": "^3.12.1",
     "@lucide/svelte": "^1.14.0",
     "@prettier/plugin-oxc": "^0.1.4",
@@ -79,6 +80,7 @@
     "remark-gfm": "^4.0.1",
     "remark-github-break": "^0.0.0",
     "runed": "^0.37.1",
+    "shadcn-svelte": "^1.2.7",
     "shiki": "^4.0.2",
     "sitemap": "^9.0.1",
     "svelte": "^5.55.5",
