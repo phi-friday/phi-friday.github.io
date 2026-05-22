@@ -11,21 +11,6 @@
       "type": "local",
       "command": ["bunx", "-y", "@sveltejs/mcp"],
       "enabled": true
-    },
-    "serena": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena",
-        "start-mcp-server",
-        "--context",
-        "ide",
-        "--open-web-dashboard",
-        "false"
-      ],
-      "enabled": true
     }
   }
 }
